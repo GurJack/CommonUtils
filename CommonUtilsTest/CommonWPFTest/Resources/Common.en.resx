@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="VisualType" xml:space="preserve">
+    <value>Interface type frame</value>
+  </data>
+  <data name="ValueNotValid" xml:space="preserve">
+    <value>Value is not valid</value>
+  </data>
+  <data name="ValueChanged" xml:space="preserve">
+    <value>Value is changed</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+    <value>Use</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="UndoText" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TableCustomization" xml:space="preserve">
+    <value>Object list</value>
+  </data>
+  <data name="SystemConfigs" xml:space="preserve">
+    <value>System settings</value>
+  </data>
+  <data name="SystemConfigDialog" xml:space="preserve">
+    <value>System settings</value>
+  </data>
+  <data name="SSGroupGoods" xml:space="preserve">
+    <value>Goods manipulation</value>
+  </data>
+  <data name="SSFinishActions" xml:space="preserve">
+    <value>Finishing actions</value>
+  </data>
+  <data name="SSDeleteGood" xml:space="preserve">
+    <value>Remove good</value>
+  </data>
+  <data name="SSDelayCheck" xml:space="preserve">
+    <value>Delay check</value>
+  </data>
+  <data name="SSClearList" xml:space="preserve">
+    <value>Clear list</value>
+  </data>
+  <data name="SSChequeCaption" xml:space="preserve">
+    <value>Cheque № {0}</value>
+  </data>
+  <data name="SSAddGood" xml:space="preserve">
+    <value>Add good</value>
+  </data>
+  <data name="SSAcceptCheck" xml:space="preserve">
+    <value>Accept check</value>
+  </data>
+  <data name="ShowFilterPanel" xml:space="preserve">
+    <value>Show filter panel</value>
+  </data>
+  <data name="ShowColumnChooser" xml:space="preserve">
+    <value>Show columns...</value>
+  </data>
+  <data name="SetCurrentDateTime" xml:space="preserve">
+    <value>Set Current Date</value>
+  </data>
+  <data name="SetCurrentDatePeriodic" xml:space="preserve">
+    <value>Set Current Date</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="SelectObject" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectAllText" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="RowCount" xml:space="preserve">
+    <value>Rows count</value>
+  </data>
+  <data name="ResetUserConfigsLabel" xml:space="preserve">
+    <value>Resets the user configuration</value>
+  </data>
+  <data name="ResetUserConfigs" xml:space="preserve">
+    <value>Do you want to reset the user configuration?</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="RemoveSelectedObjects" xml:space="preserve">
+    <value>Do you want to remove all selected objects ({0})?</value>
+  </data>
+  <data name="RemoveObject" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RefreshData" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ProviderType" xml:space="preserve">
+    <value>Provider type</value>
+  </data>
+  <data name="ProviderLibrary" xml:space="preserve">
+    <value>Provider assembly</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="PressEnterToApplyFilter" xml:space="preserve">
+    <value>Press [Enter] to apply filter.</value>
+  </data>
+  <data name="PersistentCustomizationDialog" xml:space="preserve">
+    <value>Customization of the user interface</value>
+  </data>
+  <data name="PasteText" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="ParameterNotFound" xml:space="preserve">
+    <value>Parameter &lt;{0}&gt; is not found.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Objects" xml:space="preserve">
+    <value>Objects</value>
+  </data>
+  <data name="ObjectReadOnly" xml:space="preserve">
+    <value>Object &lt;{0}&gt; is read-only.</value>
+  </data>
+  <data name="ObjectNotFound" xml:space="preserve">
+    <value>Object &lt;{0}&gt; is not found.</value>
+  </data>
+  <data name="ObjectEditorFrame_GeneralTabPageName" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ObjectEditorDialog_CloseWithoutSaving" xml:space="preserve">
+    <value>Are you sure you want to close this window?
+All unsaved changes are going to be lost.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="MainApplicationSystemMenu" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LogoName" xml:space="preserve">
+    <value>Logo name</value>
+  </data>
+  <data name="LoginType" xml:space="preserve">
+    <value>Authorization type</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Login name:</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoggedAs" xml:space="preserve">
+    <value>Logged as {0}</value>
+  </data>
+  <data name="Listening" xml:space="preserve">
+    <value>Listening...</value>
+  </data>
+  <data name="KeyAlreadyExists" xml:space="preserve">
+    <value>Value with this key already exists.</value>
+  </data>
+  <data name="InvalidXmlConfigFile" xml:space="preserve">
+    <value>Config file &lt;{0}&gt; is not valid XML document.</value>
+  </data>
+  <data name="InvalidObject" xml:space="preserve">
+    <value>&lt;{0}&gt; is not valid.</value>
+  </data>
+  <data name="InvalidLoginOrPassword" xml:space="preserve">
+    <value>Login name &lt;{0}&gt; or password is not valid.</value>
+  </data>
+  <data name="InvalidConfigPath" xml:space="preserve">
+    <value>Config path &lt;{0}&gt; is not valid.</value>
+  </data>
+  <data name="InvalidAttributeValue" xml:space="preserve">
+    <value>&lt;{0}&gt; value is not valid.</value>
+  </data>
+  <data name="Interface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="ImpossibleRemoveSystemObject" xml:space="preserve">
+    <value>It was not possible to remove system object &lt;{0}&gt;.</value>
+  </data>
+  <data name="ImpossibleRemoveInheritedAttribute" xml:space="preserve">
+    <value>It was not possible to remove inherited attribute &lt;{0}&gt;.</value>
+  </data>
+  <data name="IconSmallName" xml:space="preserve">
+    <value>Small icon name</value>
+  </data>
+  <data name="IconName" xml:space="preserve">
+    <value>Icon name</value>
+  </data>
+  <data name="HideFilterPanel" xml:space="preserve">
+    <value>Hide filter panel</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FileProviderNotFound" xml:space="preserve">
+    <value>File provider for the &lt;{0}&gt; path is not found.</value>
+  </data>
+  <data name="ErrorWritingParameter" xml:space="preserve">
+    <value>Error writing users parameter &lt;{0}&gt;.</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="EditorCustomization" xml:space="preserve">
+    <value>Object editing</value>
+  </data>
+  <data name="DialectProviderType" xml:space="preserve">
+    <value>SQL dialect provider type</value>
+  </data>
+  <data name="DialectProviderLibrary" xml:space="preserve">
+    <value>SQL dialect provider assembly</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DataAccessDenied" xml:space="preserve">
+    <value>Data access denied.</value>
+  </data>
+  <data name="CutText" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CryptoProviderNotFound" xml:space="preserve">
+    <value>Crypto provider for the &lt;{0}&gt; path is not found.</value>
+  </data>
+  <data name="Creating" xml:space="preserve">
+    <value>Creating</value>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>Connection string</value>
+  </data>
+  <data name="ConnectionManager" xml:space="preserve">
+    <value>Connections manager</value>
+  </data>
+  <data name="ConnectionChoice" xml:space="preserve">
+    <value>Connection choice</value>
+  </data>
+  <data name="Connection" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="ConfigProviderNotFound" xml:space="preserve">
+    <value>Config provider for the &lt;{0}&gt; path is not found.</value>
+  </data>
+  <data name="CompressionProviderNotFound" xml:space="preserve">
+    <value>Compression provider for the &lt;{0}&gt; path is not found.</value>
+  </data>
+  <data name="CommonConfigs" xml:space="preserve">
+    <value>Common settings</value>
+  </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Clear filter</value>
+  </data>
+  <data name="ClearAllText" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="ClassNotFound" xml:space="preserve">
+    <value>Class &lt;{0}&gt; is not found.</value>
+  </data>
+  <data name="ChangeObject" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ChangeLinkObject" xml:space="preserve">
+    <value>Edit reference object</value>
+  </data>
+  <data name="CannotRemoveEnumConst" xml:space="preserve">
+    <value>Cannot remove a constant declared in the code</value>
+  </data>
+  <data name="CannotChangeEnumConst" xml:space="preserve">
+    <value>Cannot change a constant declared in the code</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="ApplicationExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="AddressToAdministrator" xml:space="preserve">
+    <value>Address to your system administrator.</value>
+  </data>
+  <data name="AddObject" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AdditionalFilter" xml:space="preserve">
+    <value>Additional filter</value>
+  </data>
+  <data name="AddFromObject" xml:space="preserve">
+    <value>Add object copy</value>
+  </data>
+  <data name="Action_Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="AccessDeniedToUpdate" xml:space="preserve">
+    <value>You have not permissions to update &lt;{0}&gt;.</value>
+  </data>
+  <data name="AccessDeniedToReport" xml:space="preserve">
+    <value>You have not permissions to report</value>
+  </data>
+  <data name="AccessDeniedToRead" xml:space="preserve">
+    <value>You have not permissions to read &lt;{0}&gt;.</value>
+  </data>
+  <data name="AccessDeniedToDelete" xml:space="preserve">
+    <value>You have not permissions to delete &lt;{0}&gt;.</value>
+  </data>
+  <data name="AccessDeniedToCreate" xml:space="preserve">
+    <value>You have not permissions to create &lt;{0}&gt;.</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Access denied.</value>
+  </data>
+  <data name="ClearVisualCustomization" xml:space="preserve">
+    <value>Clear visual customization</value>
+  </data>
+  <data name="VisualCustomization" xml:space="preserve">
+    <value>Visual customization</value>
+  </data>
+  <data name="ScanAskMemory" xml:space="preserve">
+    <value>Download scanner memory</value>
+  </data>
+  <data name="ScanClearMemory" xml:space="preserve">
+    <value>Clear scanner memory</value>
+  </data>
+  <data name="AddObjectFromList" xml:space="preserve">
+    <value>Add objects from the list</value>
+  </data>
+  <data name="RemoveObjectFromList" xml:space="preserve">
+    <value>Exclude objects from the list</value>
+  </data>
+  <data name="ScanReportIn" xml:space="preserve">
+    <value>Codes to enter offline</value>
+  </data>
+  <data name="ScanReportOut" xml:space="preserve">
+    <value>Codes to exit offline</value>
+  </data>
+  <data name="ScanToInventory" xml:space="preserve">
+    <value>Offline scanner mode</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="AccessDeniedToWorkFlowStage" xml:space="preserve">
+    <value>You have not permissions to execute workflow stage &lt;{0}&gt;.</value>
+  </data>
+  <data name="ExecuteAccessDenied" xml:space="preserve">
+    <value>Operation access denied.</value>
+  </data>
+  <data name="WorkFlowIncorrectStage" xml:space="preserve">
+    <value>Incorrect stage &lt;{0}&gt; for object &lt;{1}&gt;.
+Initial state according stage: &lt;{2}&gt;.
+Current state of object: &lt;{3}&gt;.</value>
+  </data>
+  <data name="ScannerInteraction" xml:space="preserve">
+    <value>Interaction with the scanner</value>
+  </data>
+  <data name="WorkFlow" xml:space="preserve">
+    <value>Workflow</value>
+  </data>
+  <data name="ClassHasNotAttribute" xml:space="preserve">
+    <value>Class &lt;{0}&gt; has not attribute &lt;{1}&gt;.</value>
+  </data>
+  <data name="AttributeReadOnly" xml:space="preserve">
+    <value>Attribute &lt;{0}&gt; of &lt;{1}&gt; is read-only.</value>
+  </data>
+  <data name="ConstraintLetterOrDigit" xml:space="preserve">
+    <value>&lt;{0}&gt; must contains only letter or digit.</value>
+  </data>
+  <data name="ConstraintStartLetter" xml:space="preserve">
+    <value>&lt;{0}&gt; must starts with letter.</value>
+  </data>
+  <data name="InvalidExpression" xml:space="preserve">
+    <value>&lt;{0}&gt; contains invalid expression.</value>
+  </data>
+  <data name="LoadingData" xml:space="preserve">
+    <value>Loading data...
+Please wait.</value>
+  </data>
+  <data name="CannotChangeEnumProcessStage" xml:space="preserve">
+    <value>Cannot change a process stage declared in the code</value>
+  </data>
+  <data name="CannotRemoveEnumProcessStage" xml:space="preserve">
+    <value>Cannot remove a process stage declared in the code</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="SaveAndClose" xml:space="preserve">
+    <value>Save and close</value>
+  </data>
+  <data name="ImageProviderNotFound" xml:space="preserve">
+    <value>Image provider for the &lt;{0}&gt; path is not found.</value>
+  </data>
+  <data name="DeviceConfigs" xml:space="preserve">
+    <value>Device settings</value>
+  </data>
+  <data name="TradeEquipmentConfigs" xml:space="preserve">
+    <value>Trade equipment settings</value>
+  </data>
+  <data name="MetadataStorage" xml:space="preserve">
+    <value>Metadata storage</value>
+  </data>
+  <data name="WorkFlowConditionIsNotSatisfied" xml:space="preserve">
+    <value>Condition for stage &lt;{0}&gt; is not satisfied.</value>
+  </data>
+  <data name="TemplateVerificationGoodRow" xml:space="preserve">
+    <value>&lt;tr&gt; &lt;td width="100" valign="top" align="left"&gt; &lt;img src="{7}" alt="" title="{0}"/&gt; &lt;/td&gt; &lt;td style="padding-left:20px; padding-top:20px;"&gt; &lt;b style="text-transform:uppercase; font-size:12pt; font-family:arial"&gt;{1} {2}&lt;/b&gt;&lt;br /&gt; &lt;span style="line-height:20px;color:#8f8f8f; font-size:11pt;font-family:arial"&gt;Article: {3}&lt;/span&gt;&lt;br /&gt; &lt;span style="line-height:20px;color:#8f8f8f; font-size:11pt;font-family:arial"&gt;Color: {4}&lt;/span&gt;&lt;br /&gt; &lt;span style="line-height:20px;color:#8f8f8f; font-size:11pt;font-family:arial"&gt;Size: {5}&lt;/span&gt;&lt;br /&gt; &lt;span style="line-height:20px;color:#8f8f8f; font-size:11pt;font-family:arial"&gt;Material: {6}&lt;/span&gt; &lt;/td&gt; &lt;/tr&gt;</value>
+  </data>
+  <data name="ConstraintHierarchy" xml:space="preserve">
+    <value>&lt;{0}&gt; must be not current object or it's descendant.</value>
+  </data>
+  <data name="UserTokenIsNull" xml:space="preserve">
+    <value>User permission error. &lt;{0}&gt; is not specified for user &lt;{1}&gt;.</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Account &lt;{0}&gt; is locked.</value>
+  </data>
+  <data name="SelectClassDialog" xml:space="preserve">
+    <value>Object Type Selection</value>
+  </data>
+  <data name="SelectClassGroupBox" xml:space="preserve">
+    <value>Select object type:</value>
+  </data>
+  <data name="ConstraintLetterOrDigitOrUnderscore" xml:space="preserve">
+    <value>&lt;{0}&gt; must contains only letter, digit or underline.</value>
+  </data>
+  <data name="UrlToCheckConnection" xml:space="preserve">
+    <value>Check connection (URL)</value>
+  </data>
+  <data name="IncompatibleTypes" xml:space="preserve">
+    <value>Incompatible types: from &lt;{0}&gt; to &lt;{1}&gt;.</value>
+  </data>
+  <data name="CannotBeEmpty" xml:space="preserve">
+    <value>&lt;{0}&gt; must be not empty.</value>
+  </data>
+  <data name="ConstraintLetterOrDigitOrUnderscoreOrDot" xml:space="preserve">
+    <value>&lt;{0}&gt; must contains only letter, digit, underline or dot.</value>
+  </data>
+  <data name="LoadFromExcel" xml:space="preserve">
+    <value>Load from Excel</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="CopyObject" xml:space="preserve">
+    <value>Copy object to clipboard</value>
+  </data>
+  <data name="PasteObject" xml:space="preserve">
+    <value>Paste object from clipboard</value>
+  </data>
+  <data name="MultipleEditing" xml:space="preserve">
+    <value>Multiple objects editing</value>
+  </data>
+</root>

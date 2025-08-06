@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BaseData</name>
+    </assembly>
+    <members>
+        <member name="M:BaseData.DataController.GetProvider(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Инициализирует DataProvider
+            </summary>
+            <param name="nameProvider"></param>
+            <param name="connectionString">
+            Параметр содержит всю необходимую информацию для подключения к БД. Параметры отделяются друг от друга точкой с запятой (;),
+            название от значения знаком равно (=).
+            В значениях можно использовать следующие переменные:
+            %AppPath% - путь к исполняемому файлу
+            %AppName% - название исполняемого файла без расширения
+            Параметр "DataBase Path" 
+            </param>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+    </members>
+</doc>

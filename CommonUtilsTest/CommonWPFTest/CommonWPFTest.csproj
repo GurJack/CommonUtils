@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F485F85-8D26-4705-988F-E28A1E6D8E87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommonWPFTest</RootNamespace>
+    <AssemblyName>CommonWPFTest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonMessageBoxImage.cs" />
+    <Compile Include="Expressions\CommonFunctions_Visual.cs" />
+    <Compile Include="Extensions\BrushExtension.cs" />
+    <Compile Include="Extensions\ColorExtension.cs" />
+    <Compile Include="Extensions\GradientStopCollectionExtension.cs" />
+    <Compile Include="Extensions\ImageExtension.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="ImageProviders\FileImageProvider.cs" />
+    <Compile Include="ImageProviders\IImageProvider.cs" />
+    <Compile Include="ImageProviders\ImageProvider.cs" />
+    <Compile Include="ImageProviders\ResourceImageProvider.cs" />
+    <Compile Include="ImageProviders\ResourceManagerImageProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Common.en.Designer.cs">
+      <DependentUpon>Common.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Common.ru.Designer.cs">
+      <DependentUpon>Common.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\CommonMessages.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Common.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Common.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\ValidateIndicator_Error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\ValidateIndicator_Info.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\ValidateIndicator_Valid.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\ValidateIndicator_Warning.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ActivateAdditionalCard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\AddFrom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\additional1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\air.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\allseason_comfort.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Article_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\AssignToMe_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\avia_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Backward_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Backward_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Barcode_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\BODetails_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\brunello_cucinelli.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\calendar-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cam_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cancel-circle-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cart_add32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cart_delete32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cart_empty1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cashmere&amp;silk.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Catalog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Change.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\CheckBox_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Classes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\clear32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\clientCards_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ClientsCall_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ClientWithBag_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Colors_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Colors_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Constant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Constant_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Contact_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Content_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Country_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Country_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Customer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Customers_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Customization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\CustomizeGrid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\de.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Design.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Device_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Device_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Diagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Diagram_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\doc_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\document-revert32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\documents_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\dollar_32_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\DoubleNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\DoublePrev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\EAC_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\EditClientProfile_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\EditContact_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\en.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Error2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ErrorMessage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ExportToXLSX_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Eye_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Factor-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Find_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Find_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\FindCustomers_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Firm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\fiscal_32_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ForeignLink_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Forward_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Forward_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\freg_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\GiftCard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\half_day.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\half_day+additional1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\herno.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\InsertHeader_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\IssueAdditionalCard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Left_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\left40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\les_copains.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\listBook32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\LogoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\LogoImageNY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\LogoImageWCF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\medkit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\medkit_own.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\memory_mode_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\mic_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Microphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\model_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\modificator_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Modules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\move_order32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MoveDown_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MoveUp_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\newClientCard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\NewContact_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\newMessage-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\next_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Next_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\OK_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ok48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\operationWithCards_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\out_job_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Palette_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Palette_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Personal_Content_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\peserico.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Phone_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Prev_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Preview_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\previous_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\price_modificator_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\PrintLarge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\professors_hat_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ProjectFile_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\PublicFix_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Reference.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\RemoveItem_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\replace_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\report_32_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Reregistration_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Return_Slip_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Right_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\right40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Role.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\route_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ru.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Sale_Slip_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\santoni.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\save32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Select2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\SelectUndo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\SelectUndo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\send_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\send_doc_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\sendMessage_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\session_32_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ShowTestReport_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\sort_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\star%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\star2+additional1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\star2+half_day.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\star2+half_day+additional1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Sum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Tag_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Technology.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\telescope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\TextBox_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ticket-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Track32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Trade_equipment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Transport_succeed_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\TwoCards_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\undelivered_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Undo_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Upload_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Valid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Verification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\WarningMessage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Web_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Wizard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\zanellato.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ZoomLarge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Автобус-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Автобус-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Без кредитных карт-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Без наличных-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Бухгалтерский учет-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Бухгалтерский учет-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Вернуть покупку-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Влево в квадрате-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Возврат 2-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Возврат 2-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Встряхните телефон-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Высокое качество-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Выставленный счет-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Выставленный счет-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Выставленный счет-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Грузовая машина-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Грузовая машина-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Денежный поток-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Денежный поток-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Денежный поток-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Депозит-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Дисконтная карта-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Добавить-изображение-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Добавить-изображение-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Добавить в корзину-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Документ-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Доставка-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Доставка-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Досье-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Журнал-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Журнал-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Загрузить-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Загрузить-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Задолженность-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Задолженность-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Задолженность-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Заказ на покупку-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Импортировать-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Импортировать-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Инициировать денежный перевод-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Инициировать денежный перевод-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Инициировать денежный перевод-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Инспекция-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Инспекция-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Использовать купон-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Картина-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Картина-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Категория-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Категория-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Корзина-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Купить-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Купить-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Магазин приложений-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Магазин приложений-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Менеджер-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Менеджер-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Монеты-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Не тестировалась-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Не тестировалась-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Опрос-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Опрос-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Организация-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Организация-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Открыть папку-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Отправлено-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Оформить заказ-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Оформить заказ-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Очистить корзину-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Очистить корзину-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Папка с загрузками-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Папка с загрузками-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Перевод денег-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Перевод денег-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Перевод денег-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Перемещать на тележке-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Показатели продаж-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Продать запас-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Продать запас-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Сенсорный смартфон-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Система платежей-swift-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Система платежей-swift-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Система платежей-swift-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Скачать-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Скачать-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\СМС-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Соглашение-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Соглашение-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\СписокХештегов_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\СписокХештегов_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Сумка для покупок-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Сумка для покупок-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Таможенник-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Таможенник-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Таможня-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Таможня-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Тест пройден-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Тест пройден-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Торговый счет-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Торговый счет-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Торговый счет-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Транспорт-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Транспорт-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Фура-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Фура-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Чек-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Чековая книжка-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Чековая книжка-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Чековая книжка-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Электронные удостоверения личности-40.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
