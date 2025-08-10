@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonForms</name>
+    </assembly>
+    <members>
+        <member name="T:CommonForms.Module.AppCore">
+            <summary>
+            Центральное ядро приложения, обеспечивающее доступ к основным сервисам
+            </summary>
+            <remarks>
+            Реализует паттерн Singleton. Инициализирует все системные сервисы
+            в строгом порядке зависимостей.
+            </remarks>
+        </member>
+        <member name="P:CommonForms.Module.AppCore.Instance">
+            <summary>
+            Экземпляр ядра приложения (Singleton)
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.AppCore.GlobalSettings">
+            <summary>
+            Глобальные настройки приложения
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.AppCore.ModuleManager">
+            <summary>
+            Менеджер модулей
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.Autorization(System.String,System.String)">
+            <summary>
+            Основной метод инициализации приложения
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.Initialize">
+            <summary>
+            Основной метод инициализации приложения
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.InitializeDatabase">
+            <summary>
+            Инициализирует базу данных
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.SeedDatabase">
+            <summary>
+            Заполняет БД начальными данными
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.Shutdown">
+            <summary>
+            Корректно завершает работу приложения
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.LoadSettings">
+            <summary>
+            Загружает настройки из файла
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.AppCore.SaveSettings">
+            <summary>
+            Сохраняет текущие настройки в файл
+            </summary>
+        </member>
+        <member name="T:CommonForms.Module.GlobalSettings">
+            <summary>
+            Глобальные настройки приложения, доступные всем модулям
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.GlobalSettings.Theme">
+            <summary>
+            Текущая тема оформления
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.GlobalSettings.Language">
+            <summary>
+            Язык интерфейса (например, "ru-RU", "en-US")
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.GlobalSettings.AutoUpdate">
+            <summary>
+            Включено ли автоматическое обновление
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.GlobalSettings.ShowNotifications">
+            <summary>
+            Показывать ли системные уведомления
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.IModule.InitModule">
+            <summary>
+            Установка параметров программы/модуля
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.IModule.SettingsType">
+            <summary>
+            Тип настроек модуля
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.IModule.GetSettings">
+            <summary>
+            Возвращает текущие настройки модуля
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.IModule.ApplySettings(System.Object)">
+            <summary>
+            Применяет настройки к модулю
+            </summary>
+        </member>
+        <member name="T:CommonForms.Module.ModuleBase`1">
+            <summary>
+            Базовый класс для модулей с поддержкой настроек
+            </summary>
+            <typeparam name="T">Тип настроек модуля (наследник BaseSettings)</typeparam>
+        </member>
+        <member name="P:CommonForms.Module.ModuleBase`1.Settings">
+            <summary>
+            Настройки модуля
+            </summary>
+        </member>
+        <member name="P:CommonForms.Module.ModuleBase`1.DefaultSettings">
+            <summary>
+            Значение по умолчанию
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.ModuleBase`1.SafeExecute(System.Action)">
+            <summary>
+            Безопасное выполнение действия с обработкой ошибок
+            </summary>
+        </member>
+        <member name="T:CommonForms.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CommonForms.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CommonForms.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="F:CommonForms.SplashScreenBase.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.SplashScreenBase.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.SplashScreenBase.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.BaseDataControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.BaseDataControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.BaseDataControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.BaseForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.BaseForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.BaseForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.BaseGridControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.BaseGridControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.BaseGridControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.BaseTreeListControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.BaseTreeListControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.BaseTreeListControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.BaseUserControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.BaseUserControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.BaseUserControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.LoginForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.LoginForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.LoginForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CommonForms.Views.ReportConsole.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CommonForms.Views.ReportConsole.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CommonForms.Views.ReportConsole.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

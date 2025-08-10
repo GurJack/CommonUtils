@@ -23,7 +23,7 @@ namespace CommonUtils.Settings
         static SettingsFile()
         {
             _MapperConfig = new MapperConfiguration(
-                cfg => cfg.CreateMap<T, T>(MemberList.None));
+                cfg => cfg.CreateMap<T, T>(MemberList.None),null);
             _MapperConfig.AssertConfigurationIsValid();
             _Mapper = _MapperConfig.CreateMapper();
             

@@ -1,0 +1,1728 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonUtils</name>
+    </assembly>
+    <members>
+        <member name="T:CommonUtils.Attributes.AliasRealAttribute">
+            <summary>
+            Специфичный Alias для вставки/обновления/удаления объектов.
+            Обычно это название таблицы.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.AliasRealAttribute.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="value"></param>
+            <param name="storeInDB"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.AliasRealAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.AttributeBase">
+            <summary>
+            Base class for custorm attributes
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.AttributeBase.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="value"></param>
+            <param name="storeInDB"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.AttributeBase.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.AttributeBase.StoreInDB">
+            <summary>
+            Признак того, что этот атрибут может храниться дополнительно в БД, для переопределения значения.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.BackLinkAttribute">
+            <summary>
+            Атрибут для ссылки для BackLink
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.BackLinkAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.BackLinkAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.CopyOnCloneAttribute">
+            <summary>
+            Ignored properties to be copied when the object is cloned.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.CopyOnCloneAttribute.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.DependentListAttribute">
+            <summary>
+            Атрибут для ссылки для BackLink
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.DependentListAttribute.#ctor(System.String[])">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.DependentListAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.DisplayNameAttribute">
+            <summary>
+            Имя для показа
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.DisplayNameAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.DisplayNameAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.EditDisplayNameAttribute">
+            <summary>
+            Атрибут для выбора полей при редактировании GTIN во время загрузки
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.EditDisplayNameAttribute.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="T:CommonUtils.Attributes.ExcelNameAttribute">
+            <summary>
+            Имя для показа
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.ExcelNameAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.ExcelNameAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.ImageGalleryAttribute">
+            <summary>
+            Атрибут для галереи картинок
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.ImageGalleryAttribute.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.ImageGalleryAttribute.IsUseCode">
+            <summary>
+            IsUseCode
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.ImageGalleryAttribute.ObjectClassName">
+            <summary>
+            ObjectClass
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.ImageGalleryAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.ImportDisplayNameAttribute">
+            <summary>
+            Название для отображения при импорте данных
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.ImportDisplayNameAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.ImportDisplayNameAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.ImportDisplayNameAttribute.Required">
+            <summary>
+            Является ли поле обязательным
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.MapNameAttribute">
+            <summary>
+            Имя для показа
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.MapNameAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.MapNameAttribute.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.NotRequiredAttribute">
+            <summary>
+            Необязательность
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.NotRequiredAttribute.#ctor(System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="boolParam"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.NotRequiredAttribute.BoolParam">
+            <summary>
+            boolparam
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.RegistryKeyAttribute">
+            <summary>
+            Специфичный аттрибут указывающий в какое поле в реестре писать
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.RegistryKeyAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:CommonUtils.Attributes.RegistryKeyAttribute.PathKey">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Attributes.VirtualDataSourceAttribute">
+            <summary>
+            Attribute for custom collections combobox
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Attributes.VirtualDataSourceAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor for method, returns the coolection
+            </summary>
+            <param name="methodName">Method name, returns the collection</param>
+            <param name="allowEdit">Allow edit or not</param>
+        </member>
+        <member name="P:CommonUtils.Attributes.VirtualDataSourceAttribute.MethodName">
+            <summary>
+            Method returns collection
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Attributes.VirtualDataSourceAttribute.AllowEdit">
+            <summary>
+            Allow inline editing into control
+            </summary>
+        </member>
+        <member name="T:CommonUtils.ClassFactory">
+            <summary>
+            Static class for working with a dinamic libraries.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.GetAssembly(System.String)">
+            <summary>
+            Gets the assembly by the assembly name.
+            </summary>
+            <param name="assemblyName">The assembly name.</param>
+            <returns>The assembly instance.</returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.GetType(System.String)">
+            <summary>
+            Gets the type by the type name.
+            </summary>
+            <param name="typeName">The full type name.</param>
+            <returns>The type instance.</returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.GetType(System.String,System.String)">
+            <summary>
+            Gets the type by the type name.
+            </summary>
+            <param name="assemblyName">The assembly name.</param>
+            <param name="typeName">The full type name.</param>
+            <returns>The type instance.</returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.CreateInstance(System.String,System.Object[])">
+            <summary>
+            Creates the instance of the specified type name.
+            </summary>
+            <param name="typeName">The full type name.</param>
+            <param name="args">The constructor parameters.</param>
+            <returns>The new object instance.</returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.CreateInstance(System.String,System.String,System.Object[])">
+            <summary>
+            Creates the instance of the specified type in the specified assembly.
+            </summary>
+            <param name="assemblyName">The specified assembly name.</param>
+            <param name="typeName">The full type name.</param>
+            <param name="args">The constructor parameters.</param>
+            <returns>The new object instance.</returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            Creates the instance of the specified type
+            </summary>
+            <param name="type"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.CreateInstance``1(System.Object[])">
+            <summary>
+            Creates the instance of the specified type
+            </summary>
+            <typeparam name="T">The specified type</typeparam>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.GetTypesInNamespace(System.Reflection.Assembly,System.String)">
+            <summary>
+            Get types in specified assembly by namespace.
+            </summary>
+            <param name="assembly"></param>
+            <param name="nameSpace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.ClassFactory.GetTypesForParent(System.Reflection.Assembly,System.Type)">
+            <summary>
+            Get types in specified assembly assignable from the type.
+            </summary>
+            <param name="assembly"></param>
+            <param name="parentType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Compress.GZipCompressionProvider">
+            <summary>
+            Class for compressing and decompressing any data.
+            Algorithm is GZip.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Compress.GZipCompressionProvider.CompressData(System.IO.Stream)">
+            <summary>
+            Compressing data.
+            </summary>
+            <param name="stream">The origin stream.</param>
+            <returns>The compressed stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.GZipCompressionProvider.DecompressData(System.IO.Stream)">
+            <summary>
+            Decompressing data.
+            </summary>
+            <param name="stream">The compressed stream.</param>
+            <returns>The decompressed stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.GZipCompressionProvider.CompressString(System.String)">
+            <summary>
+            Compressing string.
+            </summary>
+            <param name="string">The origin string.</param>
+            <returns>The compressed string.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.GZipCompressionProvider.DecompressString(System.String)">
+            <summary>
+            Decompressing string.
+            </summary>
+            <param name="string">The compressed string.</param>
+            <returns>The decompressed string.</returns>
+        </member>
+        <member name="T:CommonUtils.Compress.ICompressionProvider">
+            <summary>
+            Interface for compressing and decompressing any data.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Compress.ICompressionProvider.CompressData(System.IO.Stream)">
+            <summary>
+            Compressing data.
+            </summary>
+            <param name="stream">The origin stream.</param>
+            <returns>The compressed stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.ICompressionProvider.DecompressData(System.IO.Stream)">
+            <summary>
+            Decompressing data.
+            </summary>
+            <param name="stream">The compressed stream.</param>
+            <returns>The decompressed stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.ICompressionProvider.CompressString(System.String)">
+            <summary>
+            Compressing string.
+            </summary>
+            <param name="string">The origin string.</param>
+            <returns>The compressed string.</returns>
+        </member>
+        <member name="M:CommonUtils.Compress.ICompressionProvider.DecompressString(System.String)">
+            <summary>
+            Decompressing string.
+            </summary>
+            <param name="string">The compressed string.</param>
+            <returns>The decompressed string.</returns>
+        </member>
+        <member name="T:CommonUtils.Exceptions.IExceptionManager">
+            <summary>
+            Interface for exceptions catching and logging.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Exceptions.IExceptionManager.IsCatcher(System.Exception)">
+            <summary>
+            Determinates is the exception will be catched by this exception manager.
+            </summary>
+            <param name="ex">Specified exception.</param>
+            <returns>Returns true if exception will be catched; else returns false.</returns>
+        </member>
+        <member name="M:CommonUtils.Exceptions.IExceptionManager.Log(System.Exception)">
+            <summary>
+            Logging specified exception and all inner exceptions.
+            </summary>
+            <param name="ex">Specified exception.</param>
+        </member>
+        <member name="M:CommonUtils.Exceptions.IExceptionManager.Show(System.Exception)">
+            <summary>
+            Shows information about exception.
+            </summary>
+            <param name="ex">Specified exception.</param>
+        </member>
+        <member name="M:CommonUtils.Exceptions.IExceptionManager.Feedback(System.Exception)">
+            <summary>
+            Sends the exception information to the developers.
+            </summary>
+            <param name="ex">Specified exception.</param>
+        </member>
+        <member name="T:CommonUtils.Extensions.ActionExtension">
+            <summary>
+             Расширение StopWatch
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.ActionExtension.GetElapsedTime(System.Action)">
+            <summary>
+             Возврашает время затраченное на выполнение дейтсвия (через Stopwatch)
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Extensions.AssemblyExtension">
+            <summary>
+            Assembly extensions
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.AssemblyExtension.GetLoadableTypes(System.Reflection.Assembly)">
+            <summary>
+            Get loadable types.
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Extensions.DictionaryExtension">
+            <summary>
+            Extension methods for IDictionary types
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.DictionaryExtension.GetValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            Returns the default value if the value by key was not found
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.DictionaryExtension.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Adds range to original dictionary.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Extensions.EnumerableExtension">
+            <summary>
+            Enumerable extension
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.AsObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Convert IEnumerable to ObservableCollection
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Fisher-Yates shuffle.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.ToConcatenatedString``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.String)">
+            <summary>
+            Concatenates to string.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="selector"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.ToConcatenatedString(System.Collections.IEnumerable,System.Func{System.Object,System.String},System.String)">
+            <summary>
+            Concatenates to string.
+            </summary>
+            <param name="source"></param>
+            <param name="selector"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.ToLinkedList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts to <see cref="T:System.Collections.Generic.LinkedList`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.Flatten(System.Collections.IEnumerable)">
+            <summary>
+            Flattens array.
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.GetCollectionType(System.Collections.IEnumerable)">
+            <summary>
+            Gets the real type of collection.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.EnumerableExtension.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Foreach by any IEnumerable source.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Extensions.ListExtention">
+            <summary>
+            The class of list extentions.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.ListExtention.Move``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">
+            <summary>
+            Move the element from old position to new position.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="oldIndex"></param>
+            <param name="newIndex"></param>
+        </member>
+        <member name="M:CommonUtils.Extensions.ListExtention.Split``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="chunkSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.ObjectExtension.MapTo``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <typeparam name="TTarget"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Extensions.ObservableCollectionExtension">
+            <summary>
+            ObservableCollection extensions
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.ObservableCollectionExtension.AddRange``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.IList)">
+            <summary>
+            AddRange to ObservableCollection
+            </summary>
+            <param name="target"></param>
+            <param name="sourceList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.ObservableCollectionExtension.AddRange``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.ObjectModel.ObservableCollection{``0})">
+            <summary>
+            AddRange to ObservableCollection
+            </summary>
+            <param name="target"></param>
+            <param name="sourceList"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Extensions.PropertyInfoExtenstion">
+            <summary>
+            PropertyInfo extenstion.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.PropertyInfoExtenstion.Virtual(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the virtual (readonly) flag.
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Extensions.StringExtension">
+            <summary>
+            String extensions.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.FirstLetterToUpper(System.String)">
+            <summary>
+            Return string with FirstLetterToUpper.
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.GetFirstName(System.String)">
+            <summary>
+            Gets the first attribute name (before first point).
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns>The first attribute name.</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.GetLastName(System.String)">
+            <summary>
+            Gets the last attribute name (after last point).
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns>The last attribute name.</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.GetFirstPart(System.String)">
+            <summary>
+            Gets the head attribute part of name (before last point).
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns>The head attribute part of name.</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.GetLastPart(System.String)">
+            <summary>
+            Gets the last part attribute name (after first point).
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns>The last part attribute name.</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.IsAggregate(System.String)">
+            <summary>
+            Gets the aggregate mode flag.
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns>The aggregate mode flag.</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.IsGenericType(System.String)">
+            <summary>
+            Gets the generic type flag.
+            </summary>
+            <param name="realTypeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.GetCountCharacter(System.String,System.Char)">
+            <summary>
+            Gets the count occurrences of a character within current string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.Split(System.String,System.String,System.StringSplitOptions)">
+            <summary>
+              Splits a string into substrings based on the separator string. You can specify
+               whether the substrings include empty array elements.
+            </summary>
+            <param name="source"></param>
+            <param name="separator">A string array that delimits the substrings in this string, an empty array that
+                     contains no delimiters, or null.</param>
+            <param name="options">System.StringSplitOptions.RemoveEmptyEntries to omit empty array elements from
+                   the array returned; or System.StringSplitOptions.None to include empty array
+                   elements in the array returned.</param>
+            <returns>An array whose elements contain the substrings in this string that are delimited by  separator. </returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.NameFromPath(System.String,System.String)">
+            <summary>
+            Gets the name from group path (last item)
+            </summary>
+            <param name="path">path string (root2|root1|RealName)</param>
+            <param name="separator">separate sybbol ("|")</param>
+            <returns>returns the last name (RealName)</returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.Left(System.String,System.Int32)">
+            <summary>
+            Returns the part of a character string starting at a specified number of characters from the left.
+            </summary>
+            <param name="value">The original string.</param>
+            <param name="length">The limit length.</param>
+            <returns>The part of a character string starting at a specified number of characters from the left.</returns> 
+        </member>
+        <member name="M:CommonUtils.Extensions.StringExtension.Right(System.String,System.Int32)">
+            <summary>
+            Returns the part of a character string starting at a specified number of characters from the right.
+            </summary>
+            <param name="value">The original string.</param>
+            <param name="length">The limit length.</param>
+            <returns>The part of a character string starting at a specified number of characters from the right.</returns> 
+        </member>
+        <member name="T:CommonUtils.Extensions.TypeExtension">
+            <summary>
+            Type extensions.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.TypeExtension.IsNullableType(System.Type)">
+            <summary>
+            Determinates is the type nullable.
+            </summary>
+            <param name="theType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Extensions.TypeExtension.GetRealType(System.Type)">
+            <summary>
+            Gets the real type: if type is nullable it will be underlying type.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.TypeExtension.IsSubclassOrEqual(System.Type,System.Type)">
+            <summary>
+            Determines whether the current System.Type derives from the specified System.Type or equal to it.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Extensions.TypeExtension.IsSubclassOrEqualFromGenericType(System.Type,System.Type)">
+            <summary>
+            Determines whether the current generic System.Type derives from the specified generic System.Type or equal to it.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Helpers.StreamHelper">
+            <summary>
+            Static class for stream data translation.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.Translate(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Translates the source data to the destination stream.
+            </summary>
+            <param name="source">The source stream.</param>
+            <param name="destination">The destination stream.</param>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.ReadBytes(System.IO.Stream)">
+            <summary>
+            Reads the binary content from the stream.
+            </summary>
+            <param name="source">The source stream.</param>
+            <returns>The binary content of the stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.ReadText(System.IO.Stream)">
+            <summary>
+            Reads the text content from the stream.
+            </summary>
+            <param name="source">The source stream.</param>
+            <returns>The text content of the stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.ReadText(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Reads the text content from the stream.
+            </summary>
+            <param name="source">The source stream.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>The text content of the stream.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.WriteBytes(System.IO.Stream,System.Byte[])">
+            <summary>
+            Writes the binary content into the stream.
+            </summary>
+            <param name="destination">The destination stream.</param>
+            <param name="content">The content.</param>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.WriteText(System.IO.Stream,System.String)">
+            <summary>
+            Writes the text content into the stream.
+            </summary>
+            <param name="destination">The destination stream.</param>
+            <param name="text">The text content.</param>
+        </member>
+        <member name="M:CommonUtils.Helpers.StreamHelper.WriteText(System.IO.Stream,System.String,System.Text.Encoding)">
+            <summary>
+            Writes the text content into the stream.
+            </summary>
+            <param name="destination">The destination stream.</param>
+            <param name="text">The text content.</param>
+            <param name="encoding">The encoding.</param>
+        </member>
+        <member name="T:CommonUtils.Helpers.StringHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.GetSHA256CryptoServiceProvider">
+            <summary>
+            Gets the SHA256CryptoServiceProvider.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.ConvertRuToEu(System.String,System.Boolean)">
+            <summary>
+            convert string of ru chars to eu chars
+            ONLY FOR ЙЦУКЕН-QWERTY KEYBOARDS
+            TODO: multilanguage and other keyboards
+            </summary>
+            <param name="input"></param>
+            <param name="isToUpper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.GetHash(System.String,System.Text.Encoding,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Get hash for string.
+            </summary>
+            <param name="stringToHash">Original string.</param>
+            <param name="enc">Character encoding.</param>
+            <param name="hashProvider">Hash algorithm.</param>
+            <returns>Hash for string.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.GetHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Get hash for string (encoding Unicode).
+            </summary>
+            <param name="stringToHash">Original string.</param>
+            <param name="hashProvider">Hash algorithm.</param>
+            <returns>Hash for string.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.GetHash(System.String,System.Text.Encoding)">
+            <summary>
+            Get SHA1 hash for string.
+            </summary>
+            <param name="stringToHash">Original string.</param>
+            <param name="enc">Character encoding.</param>
+            <returns>SHA1 hash for string.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.GetHash(System.String)">
+            <summary>
+            Get SHA1 hash for string (encoding Unicode).
+            </summary>
+            <param name="stringToHash">Original string.</param>
+            <returns>Hash for string.</returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.Compare(System.String,System.String)">
+            <summary>
+            Compares original value and hash string.
+            </summary>
+            <param name="hash">The hash string.</param>
+            <param name="value">The original string value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.Compare(System.String,System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Compares original value and hash string.
+            </summary>
+            <param name="value">The original string value.</param>
+            <param name="hash">The hash string.</param>
+            <param name="hashProvider">The specified hash provider.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.StringHelper.FormatMessage(System.String,System.Object[])">
+            <summary>
+            Gets the localization message.
+            Text parameters will be replaced with a specified arguments.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="args">Specified arguments.</param>
+            <returns>Localization message.</returns>
+        </member>
+        <member name="T:CommonUtils.Helpers.ThreadHelper">
+            <summary>
+            Thread helper.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Helpers.ThreadHelper.UserInteractive">
+            <summary>
+             Gets a value indicating whether the current process is running in user interactive mode.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.ThreadHelper.SetUserInteractive(System.Boolean)">
+            <summary>
+             Sets the value indicating whether the current process is running in user interactive mode.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.ThreadHelper.ExecuteUI(System.Threading.ThreadStart)">
+            <summary>
+            Execute action dependent with the user interface.
+            </summary>
+            <param name="uiAction"></param>
+        </member>
+        <member name="M:CommonUtils.Helpers.ThreadHelper.ExecuteUI``1(System.Func{``0})">
+            <summary>
+            Execute function dependent with the user interface.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.ThreadHelper.ExecuteFunc``1(System.Func{``0},CommonUtils.Helpers.ThreadHelper.ThreadResult{``0})">
+            <summary>
+            Execute action dependent with the user interface.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Helpers.TypeHelper">
+            <summary>
+            Type helper.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.AddKnownTypes``1(System.Collections.Generic.IEnumerable{System.Type},System.Boolean)">
+            <summary>
+            Adding known types.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.AddKnownTypes``1(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean)">
+            <summary>
+            Adding known types from assemblies.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.AddKnownTypes``1(System.Reflection.Assembly,System.Boolean)">
+            <summary>
+            Adding known types from assemblies.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.GetInrefaces``1(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets interfaces from assemblies.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.GetInrefaces``1(System.Reflection.Assembly)">
+            <summary>
+            Gets interfaces from assemblies.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.GetAllAssemblies">
+            <summary>
+            Gets all assemlies in the specified directory name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.GetAllAssemblies(System.String)">
+            <summary>
+            Gets all assemlies in the specified directory name.
+            </summary>
+            <param name="directoryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Helpers.TypeHelper.GetAllTypes``1(System.String,System.Boolean)">
+            <summary>
+            Gets all types with specified parent.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Information">
+            <summary>
+            Static class for getting application specific information.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.CompanyName">
+            <summary>
+            Developer company name.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProductName">
+            <summary>
+            Application name.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProductNameWithMajorVersion">
+            <summary>
+            Application name, major version info.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProductVersion">
+            <summary>
+            Application version.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProductVersionWithDate">
+            <summary>
+            Application version, date.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.Copyright">
+            <summary>
+            Copiright information.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramLocation">
+            <summary>
+            Full path of executable file.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramFile">
+            <summary>
+            Name of executable file.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramPath">
+            <summary>
+            Directory of executable file.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramName">
+            <summary>
+            Executable file name without extension.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramDataPath">
+            <summary>
+            Current user path for storage application specific data.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Information.ProgramTempPath">
+            <summary>
+            Current user path for application temporary storage.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Loggers.LogEntry">
+            <summary>
+            The log single entry for reading and writing log information.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Loggers.LogEntry.#ctor(CommonUtils.Loggers.LoggingLevel,System.String,System.DateTime,System.Exception)">
+            <summary>
+            Constructor with log entry information.
+            </summary>
+            <param name="type">The log entry type.</param>
+            <param name="message">The log text message.</param>
+            <param name="date">The lod entry writing date/time.</param>
+            <exception cref="T:System.ArgumentNullException">message is null.</exception>
+        </member>
+        <member name="M:CommonUtils.Loggers.LogEntry.#ctor(CommonUtils.Loggers.LoggingLevel,System.String,System.Exception)">
+            <summary>
+            Constructor with log entry information.
+            </summary>
+            <param name="type">The log entry type.</param>
+            <param name="message">The log text message.</param>
+            <param name="date">The lod entry writing date/time.</param>
+            <exception cref="T:System.ArgumentNullException">message is null.</exception>
+        </member>
+        <member name="M:CommonUtils.Loggers.LogEntry.#ctor(CommonUtils.Loggers.LoggingLevel,System.String,System.DateTime,System.String,System.String,System.Version,System.Exception)">
+            <summary>
+            Constructor with log entry information.
+            </summary>
+            <param name="type">The log entry type.</param>
+            <param name="message">The log text message.</param>
+            <param name="date">The lod entry writing date/time.</param>
+            <param name="version">The version.</param>
+            <exception cref="T:System.ArgumentNullException">message is null.</exception>
+            <exception cref="T:System.ArgumentNullException">version is null.</exception>
+        </member>
+        <member name="P:CommonUtils.Loggers.LogEntry.Level">
+            <summary>
+            Gets the log entry type.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Loggers.LogEntry.Message">
+            <summary>
+            Gets the log text message.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Loggers.LogEntry.Date">
+            <summary>
+            Gets the log entry writing date/time.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Loggers.LogEntry.Version">
+            <summary>
+            Gets the program version.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Loggers.LoggingLevel">
+            <summary>
+            The log entry type: information, warning, error.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Objects.CommonCommand">
+            <summary>
+            Class for attribute type
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Objects.LocalizableStringExtensions">
+            <summary>
+            LocalizableString extensions
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableStringExtensions.AsLocalizableString(System.String)">
+            <summary>
+            String AsLocalizableString
+            </summary>
+            <param name="s"></param>
+            <returns></returns> 
+        </member>
+        <member name="T:CommonUtils.Objects.LocalizableString">
+            <summary>
+            Multi-languages string
+            </summary>
+        </member>
+        <member name="F:CommonUtils.Objects.LocalizableString.DefaultLanguageKey">
+            <summary>
+            DefaultLanguageKey
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.HaveMultipleLanguages">
+            <summary>
+            HaveMultipleLanguages
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="originalString"></param>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToString(System.String)">
+            <summary>
+            ToString for languageCode
+            </summary>
+            <param name="languageCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToString(System.String,System.Boolean)">
+            <summary>
+            ToString for languageCode with getFirstValueIfNotExists option
+            </summary>
+            <param name="languageCode"></param>
+            <param name="getFirstValueIfNotExists"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.op_Implicit(CommonUtils.Objects.LocalizableString)~System.String">
+            <summary>
+            User-defined conversion from LocalizableString to String 
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.op_Implicit(System.String)~CommonUtils.Objects.LocalizableString">
+            <summary>
+            User-defined conversion from String to LocalizableString 
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.op_Inequality(CommonUtils.Objects.LocalizableString,CommonUtils.Objects.LocalizableString)">
+            <summary>
+            operator !=
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.op_Equality(CommonUtils.Objects.LocalizableString,CommonUtils.Objects.LocalizableString)">
+            <summary>
+            operator ==
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Equals(System.Object)">
+            <summary>
+            Equals
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.GetHashCode">
+            <summary>
+            GetHashCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.CompareTo(System.String)">
+            <summary>
+            CompareTo
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Equals(System.String)">
+            <summary>
+            Equals
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Clone">
+            <summary>
+            Clone
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.CompareTo(System.Object)">
+            <summary>
+            CompareTo
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.GetEnumerator">
+            <summary>
+            GetEnumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.System#Collections#Generic#IEnumerable{System#Char}#GetEnumerator">
+            <summary>
+            GetEnumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.GetTypeCode">
+            <summary>
+            GetTypeCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToBoolean(System.IFormatProvider)">
+            <summary>
+            ToBoolean
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToChar(System.IFormatProvider)">
+            <summary>
+            ToChar
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToSByte(System.IFormatProvider)">
+            <summary>
+            ToSByte
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToByte(System.IFormatProvider)">
+            <summary>
+            ToByte
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToInt16(System.IFormatProvider)">
+            <summary>
+            ToInt16
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToUInt16(System.IFormatProvider)">
+            <summary>
+            ToUInt16
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToInt32(System.IFormatProvider)">
+            <summary>
+            ToInt32
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToUInt32(System.IFormatProvider)">
+            <summary>
+            ToUInt32
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToInt64(System.IFormatProvider)">
+            <summary>
+            ToInt64
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToUInt64(System.IFormatProvider)">
+            <summary>
+            ToUInt64
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToSingle(System.IFormatProvider)">
+            <summary>
+            ToSingle
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToDouble(System.IFormatProvider)">
+            <summary>
+            ToDouble
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToDecimal(System.IFormatProvider)">
+            <summary>
+            ToDecimal
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToDateTime(System.IFormatProvider)">
+            <summary>
+            ToDateTime
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToString(System.IFormatProvider)">
+            <summary>
+            ToString
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToType(System.Type,System.IFormatProvider)">
+            <summary>
+            ToType
+            </summary>
+            <param name="conversionType"></param>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.Length">
+            <summary>
+            Length
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.Empty">
+            <summary>
+            Empty
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.OriginalString">
+            <summary>
+            OriginalString
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.CurrentLanguageKey">
+            <summary>
+            Текущий ключ языка.
+            Двухбуквенный, например, ru, en, de.
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.StringCurrent">
+            <summary>
+            StringCurrent
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.GetString(System.String,System.Boolean,System.String)">
+            <summary>
+            GetString
+            </summary>
+            <param name="s"></param>
+            <param name="getFirstValueIfNotExists"></param>
+            <param name="codeLanguage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.SetString(System.String,System.String)">
+            <summary>
+            Метод для установки значения в указанном языке.
+            Строка всегда дополняется штуками вроде "\u0010", даже если в строке присутствует всего один язык.
+            </summary>
+            <param name="languageKey"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.SetCurrentString(System.String)">
+            <summary>
+            Метод для установки значения в указанном языке.
+            Строка всегда дополняется штуками вроде "\u0010", даже если в строке присутствует всего один язык.
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.GetCurrentString(System.String)">
+            <summary>
+            Get current string by language key
+            </summary>
+            <param name="languageKey"></param>
+        </member>
+        <member name="P:CommonUtils.Objects.LocalizableString.Languages">
+            <summary>
+            Language codes in current string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Contains(System.String)">
+            <summary>
+            Contains
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Replace(System.Char,System.Char)">
+            <summary>
+            Replace
+            </summary>
+            <param name="oldChar"></param>
+            <param name="newChar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Replace(System.String,System.String)">
+            <summary>
+            Replace
+            </summary>
+            <param name="oldValue"></param>
+            <param name="newValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.Trim">
+            <summary>
+            Trim
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToLower">
+            <summary>
+            ToLower
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.ToUpper">
+            <summary>
+            ToUpper
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.IndexOf(System.String)">
+            <summary>
+            IndexOf
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.IndexOf(System.Char)">
+            <summary>
+            IndexOf
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Objects.LocalizableString.IndexOf(System.String,System.StringComparison)">
+            <summary>
+            IndexOf
+            </summary>
+            <param name="value"></param>
+            <param name="comparisonType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonUtils.Objects.StaticText">
+            <summary>
+            Class for attribute type
+            </summary>
+        </member>
+        <member name="T:CommonUtils.RandomGenerator">
+            <summary>
+            Represents a pseudo-random number generator.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.Next">
+            <summary>
+            Returns a nonnegative random number.
+            </summary>
+            <returns>A 32-bit signed integer greater than or equal to zero and less than System.Int32.MaxValue.</returns>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.Next(System.Int32)">
+            <summary>
+            Returns a nonnegative random number less than the specified maximum.
+            </summary>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. maxValue
+            must be greater than or equal to zero.</param>
+            <returns> A 32-bit signed integer greater than or equal to zero, and less than maxValue;
+            that is, the range of return values ordinarily includes zero but not maxValue.
+            However, if maxValue equals zero, maxValue is returned.</returns>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number within a specified range.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. maxValue must be greater than or equal to minValue.</param>
+            <returns>A 32-bit signed integer greater than or equal to minValue and less than maxValue;
+            that is, the range of return values includes minValue but not maxValue. If
+            minValue equals maxValue, minValue is returned.</returns>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.NextBytes(System.Int32)">
+            <summary>
+            Returns array of bytes with random numbers.
+            </summary>
+            <param name="length">Array length.</param>
+            <returns>An array of bytes to contain random numbers.</returns>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.NextDouble">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:CommonUtils.RandomGenerator.NextString(System.Int32)">
+            <summary>
+            Returns string with random chars.
+            </summary>
+            <param name="length">String length.</param>
+            <returns>A string with random chars.</returns>
+        </member>
+        <member name="T:CommonUtils.Serializer.ExpressionSerializer`1">
+            <summary>
+            The base class for all expression serializers.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.Deserialize(System.Object)">
+            <summary>
+            Deserializes from value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.Deserialize``1(System.Object)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.SerializeAsObject(System.Linq.Expressions.Expression)">
+            <summary>
+            Serializes expression to the value.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.DeserializeToBooleanExpression``1(System.Object)">
+            <summary>
+            Deserializes from the value to the boolean expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.Deserialize(`0)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.Deserialize``1(`0)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.ExpressionSerializer`1.Serialize(System.Linq.Expressions.Expression)">
+            <summary>
+            Serializes expression to the generic value.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Serializer.IExpressionBinarySerializer">
+            <summary>
+            The binary serializer.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionBinarySerializer.FromBinary``1(System.Byte[])">
+            <summary>
+            Converts from byte array to object.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionBinarySerializer.ToBinary``1(``0)">
+            <summary>
+            Converts to byte array.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Serializer.IExpressionSerializer">
+            <summary>
+            The serializer for <see cref="T:System.Linq.Expressions.Expression"/>.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer.Deserialize(System.Object)">
+            <summary>
+            Deserializes from value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer.Deserialize``1(System.Object)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer.SerializeAsObject(System.Linq.Expressions.Expression)">
+            <summary>
+            Serializes expression to the value.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Serializer.IExpressionSerializer`1">
+            <summary>
+            The generic serializer for <see cref="T:System.Linq.Expressions.Expression"/>.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer`1.Deserialize(`0)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer`1.Deserialize``1(`0)">
+            <summary>
+            Deserializes from generic value to the expression.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IExpressionSerializer`1.Serialize(System.Linq.Expressions.Expression)">
+            <summary>
+            Serializes expression to the generic value.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Serializer.IJsonSerializer">
+            <summary>
+            The json serializer.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IJsonSerializer.ToJsonString``1(``0)">
+            <summary>
+            Converts to json string.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Serializer.IJsonSerializer.ToJsonStringAsync``1(``0)">
+            <summary>
+            Async converts to json string.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Serializer.IJsonSerializer.FromJson(System.String)">
+            <summary>
+            Converts from json to object.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IJsonSerializer.FromJson``1(System.String)">
+            <summary>
+            Converts from json to object.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Serializer.IJsonSerializer.FromJsonAsync``1(System.String)">
+            <summary>
+            Async converts from json to object.
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.AppParams">
+            <summary>
+            Статический класс управления параметрами приложения
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Settings.AppParams.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.AppSettings">
+            <summary>
+            Контейнер для всех настроек приложения
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Settings.AppSettings.ModuleSettings">
+            <summary>
+            Настройки модулей (ключ - имя типа настроек)
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.Attributes.CryptAttribute">
+            <summary>
+            Указывает, должно ли свойство/поле шифроваться при сохранении
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Settings.Attributes.CryptAttribute.#ctor(System.Boolean)">
+            <param name="isCrypt">Требуется ли шифрование</param>
+        </member>
+        <member name="P:CommonUtils.Settings.Attributes.CryptAttribute.IsCrypt">
+            <summary>
+            Флаг необходимости шифрования
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.Attributes.DoNotSaveToFileAttribute">
+            <summary>
+            Указывает, что свойство/поле не записываться в файл настроек
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.BaseSettings">
+            <summary>
+            Базовый класс для настроек приложения
+            </summary>
+        </member>
+        <member name="P:CommonUtils.Settings.BaseSettings.ProgramPath">
+            <summary>
+            Путь к исполняемому файлу программы (не сохраняется в файл настроек)
+            </summary>
+        </member>
+        <member name="T:CommonUtils.Settings.Providers.IParamProvider">
+            <summary>
+            The application menu loader class.
+            </summary>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.GetParamInfo(System.String)">
+            <summary>
+            Получить полную информацию о параметре
+            </summary>
+            <param name="paramName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.SetParamInfo(System.String,CommonUtils.Settings.ParamItem,System.Boolean)">
+            <summary>
+            Записать полную информацию о параметре
+            </summary>
+            <param name="paramName"></param>
+            <param name="paramItem"></param>
+            <param name="insertIfAbsent">Добавить, если параметра не существует</param>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.GetParamValue(System.String,System.Boolean,System.String)">
+            <summary>
+            Записать значение параметра
+            </summary>
+            <param name="paramName"></param>
+            <param name="isCrypt"></param>
+            <param name="cryptoKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.SetParamValue(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Загрузить значение параметра
+            </summary>
+            <param name="paramName"></param>
+            <param name="paramItem"></param>
+            <param name="isCrypt"></param>
+            <param name="cryptoKey"></param>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.SetAllModulePatams(System.Collections.Generic.List{CommonUtils.Settings.ParamItem},System.Boolean)">
+            <summary>
+            Записать все параметры модуля
+            </summary>
+            <param name="paramList"></param>
+            <param name="insertIfAbsent"></param>
+        </member>
+        <member name="M:CommonUtils.Settings.Providers.IParamProvider.LoadAllModulePatams">
+            <summary>
+            Загрузить все параметры модуля
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

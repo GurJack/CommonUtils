@@ -1,20 +1,24 @@
 ﻿using CommonUtils.Settings.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommonUtils.Settings
 {
-    
-    public class BaseSettings
-    {
-        //[ParamAttribute("None", "ProgramPath","Путь к исполняемому файлу")]
-        public string ProgramPath { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
 
+    /// <summary>
+    /// Базовый класс для настроек приложения
+    /// </summary>
+    public abstract class BaseSettings
+    {
+        /// <summary>
+        /// Путь к исполняемому файлу программы (не сохраняется в файл настроек)
+        /// </summary>
+        [DoNotSaveToFile]
+        public string ProgramPath { get; set; }
+        [DoNotSaveToFile]
+        public string Login { get; set; }
+        public abstract void InitializeDefaultValues();
+        public BaseSettings()
+        {
+            InitializeDefaultValues();
+        }
     }
 }

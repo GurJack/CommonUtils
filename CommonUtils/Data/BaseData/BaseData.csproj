@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>BaseData.xml</DocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>D:\Jack\GitHub\CommonUtils\Documentation\BaseData.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
