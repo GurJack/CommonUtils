@@ -16,7 +16,8 @@ namespace CommonForms.Module
     public static class LoggerHandler
     {
         private static readonly ILogger _logger;
-        public static bool RealError { get; set; } = false;
+        private static bool _realError { get; set; } = false;
+        private static bool _errorAlreadyShown { get; set; } = false;
         public static bool EnableErrorNotifications { get; set; } = false;
         public static bool ShowErrorDetails { get; set; } = false;
 
@@ -97,12 +98,12 @@ namespace CommonForms.Module
         {
             _logger.Debug($"{contextMessage}");
         }
-        public static void Fatal(Exception ex, string contextMessage = "Ошибка в приложении")
+        public static void Fatal(Exception ex, string contextMessage = "Ошибка в приложении", bool passTheErrorOn = true)
         {
             
             try
             {
-                RealError = true;
+                _realError = true;
                 // Логирование с дополнительным контекстом
                 _logger.Fatal($"{contextMessage}: {ex.GetType().Name}", ex);
 
@@ -113,12 +114,17 @@ namespace CommonForms.Module
                 }
 
                 // Показать пользователю
-                ShowUserError(contextMessage, ex);
-                if (RealError)
-                    throw ex;
+                if(!_errorAlreadyShown)
+                {
+                    ShowUserError(contextMessage, ex);
+                    _errorAlreadyShown=true;
+                }
+                
+                
             }
             catch (Exception handlerEx)
             {
+                _logger.Fatal($"CRITICAL ERROR: {handlerEx.GetType().Name}", handlerEx);
                 // Фолбэк на консоль, если всё сломалось
                 XtraMessageBox.Show($"CRITICAL ERROR: {handlerEx}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,11 +132,12 @@ namespace CommonForms.Module
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            
-            
-            
-            
-            
+            if (_realError && passTheErrorOn)
+                throw ex;
+
+
+
+
         }
         public static void Error(Exception ex, string contextMessage = "Ошибка в приложении",bool showError = true)
         {
@@ -146,9 +153,9 @@ namespace CommonForms.Module
                 }
 
                 // Показать пользователю
-                if(showError)
+                if(showError && !_errorAlreadyShown)
                     ShowUserError(contextMessage, ex);
-                if (RealError)
+                if (_realError)
                     throw ex;
             }
             catch (Exception handlerEx)
@@ -160,6 +167,13 @@ namespace CommonForms.Module
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
+        }
+
+        public static void ResetError()
+        {
+            _errorAlreadyShown = false;
+            _realError = false;
+
         }
 
         private static void ShowUserError(string contextMessage, Exception ex)

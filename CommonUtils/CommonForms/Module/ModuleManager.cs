@@ -38,7 +38,7 @@ namespace CommonForms.Module
                     }
                     catch (Exception ex)
                     {
-                        LoggerHandler.Error(ex, $"Ошибка загрузки сборки {file}");
+                        LoggerHandler.Fatal(ex, $"Ошибка загрузки сборки {file}");
                     }
                 }
                 
@@ -64,7 +64,7 @@ namespace CommonForms.Module
                 }
                 catch (Exception ex)
                 {
-                    LoggerHandler.Error(ex, $"Ошибка создания модуля {type.Name}");
+                    LoggerHandler.Fatal (ex, $"Ошибка создания модуля {type.Name}");
                 }
             }
         }
