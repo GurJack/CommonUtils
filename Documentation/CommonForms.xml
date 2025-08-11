@@ -68,6 +68,11 @@
             Глобальные настройки приложения, доступные всем модулям
             </summary>
         </member>
+        <member name="P:CommonForms.Module.GlobalSettings.ProgramName">
+            <summary>
+            Название программы
+            </summary>
+        </member>
         <member name="P:CommonForms.Module.GlobalSettings.Theme">
             <summary>
             Текущая тема оформления
@@ -86,6 +91,11 @@
         <member name="P:CommonForms.Module.GlobalSettings.ShowNotifications">
             <summary>
             Показывать ли системные уведомления
+            </summary>
+        </member>
+        <member name="M:CommonForms.Module.IModule.OnGlobalSettingsChanged(CommonForms.Module.GlobalSettings)">
+            <summary>
+            Вызывается при изменении глобальных настроек
             </summary>
         </member>
         <member name="M:CommonForms.Module.IModule.InitModule">

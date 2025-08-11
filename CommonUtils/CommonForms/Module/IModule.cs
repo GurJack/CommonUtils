@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars.Ribbon;
+﻿using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 
 namespace CommonForms.Module
@@ -9,6 +10,10 @@ namespace CommonForms.Module
         string DisplayName { get; }
         string ModuleVersion { get; }
         string ModuleDescription { get; }
+        /// <summary>
+        /// Вызывается при изменении глобальных настроек
+        /// </summary>
+        void OnGlobalSettingsChanged(GlobalSettings settings);
         int Order { get; }
         //AppCore AppCore { get; private set; }
         void Initialize(AppCore appCore);
@@ -16,7 +21,8 @@ namespace CommonForms.Module
         /// Установка параметров программы/модуля
         /// </summary>
         void InitModule();
-        RibbonPage CreateRibbonPage();
+        RibbonPage CreateRibbonPage(RibbonBarItems barItems);
+        
         XtraUserControl CreateSettingsControl();
         /// <summary>
         /// Тип настроек модуля

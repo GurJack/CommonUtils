@@ -21,6 +21,21 @@ namespace CommonForms.Module
             _appCore = appCore;
         }
 
+        public void InitModules()
+        {
+            try
+            {
+                foreach (IModule module in Modules)
+                    module.InitModule();
+            }
+            catch (Exception ex)
+            {
+                LoggerHandler.Fatal(ex, "Ошибка инициализации модулей");
+            }
+            
+            
+        }
+
         public void LoadModules()
         {
             try
@@ -59,7 +74,7 @@ namespace CommonForms.Module
                     IModule module = Activator.CreateInstance(type) as IModule;
                     module.Initialize(_appCore);
                     _modules.Add(module);
-                    module.InitModule();
+                    //module.InitModule();
                     LoggerHandler.Info($"Загружен модуль: {module.ModuleName} v{module.ModuleVersion}");
                 }
                 catch (Exception ex)

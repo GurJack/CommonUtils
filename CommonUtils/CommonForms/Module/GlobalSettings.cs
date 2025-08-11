@@ -1,4 +1,5 @@
 ﻿using CommonUtils.Settings;
+using CommonUtils.Settings.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,13 @@ namespace CommonForms.Module
         private string _language;
         private bool _autoUpdate;
         private bool _showNotifications;
+
+
+        /// <summary>
+        /// Название программы
+        /// </summary>
+        [DoNotSaveToFile]
+        public string ProgramName => "База знаний";
 
         /// <summary>
         /// Текущая тема оформления

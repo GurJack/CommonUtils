@@ -56,7 +56,7 @@ namespace CommonForms.Module
         {
             //Logger = new LoggerHandler(false, false);
             LoggerHandler.Info("Инициализация логера прошла успешно");
-            _settingsPath = Path.Combine((new FileInfo(Process.GetCurrentProcess().MainModule.FileName)).DirectoryName,"AppData","settings.json");
+            _settingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppData","settings.json");
             Settings = new AppSettings();
             GlobalSettings = new GlobalSettings();
 
@@ -87,6 +87,7 @@ namespace CommonForms.Module
                 ModuleManager.LoadModules();
                 // 2. Загрузка настроек
                 LoadSettings();
+                ModuleManager.InitModules();
                 // 3. Инициализация БД
                 InitializeDatabase();
 
@@ -151,7 +152,29 @@ namespace CommonForms.Module
             }
         }
 
-        
+        public void UpdateGlobalSettings(Action<GlobalSettings> updateAction)
+        {
+            try
+            {
+                updateAction?.Invoke(GlobalSettings);
+                ModuleManager.Modules.FirstOrDefault().InitModule();
+                
+
+                // Уведомляем все модули об изменении настроек
+                foreach (var module in ModuleManager.Modules)
+                {
+                    module.OnGlobalSettingsChanged(GlobalSettings);
+                }
+
+                // Сохраняем настройки
+                SaveSettings();
+            }
+            catch (Exception ex)
+            {
+                LoggerHandler.Error(ex, "Ошибка обновления глобальных настроек");
+            }
+        }
+
         /// <summary>
         /// Корректно завершает работу приложения
         /// </summary>
@@ -204,9 +227,8 @@ namespace CommonForms.Module
                     var typeName = module.SettingsType.FullName;
                     if (Settings.ModuleSettings.TryGetValue(typeName, out var settings))
                     {
-                        var fi = new FileInfo(Process.GetCurrentProcess().MainModule.FileName);
                         ((BaseSettings)settings).Login = CurrentUsername;
-                        ((BaseSettings)settings).ProgramPath = (new FileInfo(Process.GetCurrentProcess().MainModule.FileName)).DirectoryName;
+                        ((BaseSettings)settings).ProgramPath = AppDomain.CurrentDomain.BaseDirectory;
                         module.ApplySettings(settings);
                     }
                     

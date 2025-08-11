@@ -31,8 +31,6 @@ namespace CommonForms.Module
         /// Значение по умолчанию
         /// </summary>
         public T DefaultSettings { get; protected set; }
-        protected abstract void SetDefaultSettings();
-
         public abstract string ModuleName { get; }
         public abstract string DisplayName { get; }
         public abstract string ModuleVersion { get; }
@@ -47,8 +45,8 @@ namespace CommonForms.Module
         {
             AppCore = appCore;
         }
-
-        public virtual RibbonPage CreateRibbonPage()
+        
+        public virtual RibbonPage CreateRibbonPage(RibbonBarItems barItems)
         {
             RibbonPage page = new RibbonPage(DisplayName);
             
@@ -105,6 +103,11 @@ namespace CommonForms.Module
         }
 
         public abstract void InitModule();
-        
+
+        public virtual void OnGlobalSettingsChanged(GlobalSettings settings)
+        {
+            
+        }
+
     }
 }
