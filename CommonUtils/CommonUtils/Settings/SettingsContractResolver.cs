@@ -7,6 +7,9 @@ using System.Text;
 
 namespace CommonUtils.Settings
 {
+    /// <summary>
+    /// Кастомный резолвер для сериализации настроек
+    /// </summary>
     public class SettingsContractResolver : DefaultContractResolver
     {
         private readonly string _encryptionKey;
@@ -15,6 +18,7 @@ namespace CommonUtils.Settings
         {
             _encryptionKey = encryptionKey;
         }
+
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             var property = base.CreateProperty(member, memberSerialization);
@@ -27,10 +31,16 @@ namespace CommonUtils.Settings
 
             // Шифрование значений
             var cryptAttr = member.GetCustomAttribute<CryptAttribute>();
-            if (cryptAttr?.IsCrypt == true)
+            if (cryptAttr?.IsCrypt == true && property.PropertyType == typeof(string))
             {
                 property.ValueProvider = new EncryptedValueProvider(property.ValueProvider, _encryptionKey);
             }
+
+            //// Преобразование имен полей для SQL
+            //if (GlobalConstant.UseDataBase)
+            //{
+            //    property.PropertyName = $"_{char.ToLower(property.PropertyName[0])}{property.PropertyName.Substring(1)}";
+            //}
 
             return property;
         }
@@ -71,11 +81,13 @@ namespace CommonUtils.Settings
                     }
                     catch
                     {
-                        // Оставляем зашифрованное значение при ошибке
+                        // Оставляем зашифрованное значение
                     }
                 }
                 _innerProvider.SetValue(target, value);
             }
         }
+
+
     }
 }
