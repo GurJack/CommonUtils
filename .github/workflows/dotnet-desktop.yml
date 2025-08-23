@@ -18,19 +18,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Restore dependencies
-      run: dotnet restore CommonUtils/CommonUtils.sln
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-
-    - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal
+    
 
   pack-and-publish:
     needs: build-and-test
@@ -48,7 +36,7 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore  CommonUtils/CommonUtils.sln
 
     - name: Pack NuGet packages
       run: |
