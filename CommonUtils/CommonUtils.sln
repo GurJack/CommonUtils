@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonForms", "CommonForms\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{70764987-86E2-4CD3-A554-056964BA4E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCore", "Tests\TestCore\TestCore.csproj", "{C884B3FD-1B09-464A-94EE-3D51122F4136}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Tests\TestCore\Core.Tests.csproj", "{C884B3FD-1B09-464A-94EE-3D51122F4136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWindows", "Tests\TestWindows\TestWindows.csproj", "{251CDB6D-8492-48A8-9539-570D9EEAA2F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows.Tests", "Tests\TestWindows\Windows.Tests.csproj", "{251CDB6D-8492-48A8-9539-570D9EEAA2F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
