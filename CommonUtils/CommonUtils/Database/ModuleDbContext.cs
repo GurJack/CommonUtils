@@ -18,6 +18,13 @@ namespace CommonUtils.Database
             SchemaName = $"{moduleName}Schema";
         }
 
+        protected ModuleDbContext( string moduleName)
+            : base()
+        {
+            ModuleName = moduleName;
+            SchemaName = $"{moduleName}Schema";
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema(SchemaName);
@@ -28,9 +35,11 @@ namespace CommonUtils.Database
         {
             try
             {
-                var schemaExists = Database.SqlQueryRaw<int>(
-                    $"SELECT COUNT(*) FROM sys.schemas WHERE name = '{SchemaName}'")
-                    .FirstOrDefault() > 0;
+                var q = Database.SqlQueryRaw<int>($"SELECT count(*) _count FROM sys.schemas WHERE name = '{SchemaName}'")
+                    .FirstOrDefault();
+                var schemaExists = (Database.SqlQueryRaw<int>(
+                    $"SELECT count(*) FROM sys.schemas WHERE name = '{SchemaName}'")
+                    .FirstOrDefault()) > 0;
 
                 if (!schemaExists)
                 {
@@ -45,6 +54,6 @@ namespace CommonUtils.Database
             }
         }
 
-        public abstract void SeedDatabase();
+        
     }
 }

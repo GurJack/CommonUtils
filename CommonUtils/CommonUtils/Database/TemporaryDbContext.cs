@@ -11,5 +11,10 @@ namespace CommonUtils.Database
     {
         public TemporaryDbContext(string connectionString, ILogger logger)
             : base(connectionString, logger) { }
+
+        public override void SeedDatabase()
+        {
+            
+        }
     }
 }

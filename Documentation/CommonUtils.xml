@@ -38,6 +38,11 @@
             Путь к файлу базы данных (актуально при UseDataBase = true)
             </summary>
         </member>
+        <member name="P:CommonUtils.GlobalConstant.DatabaseName">
+            <summary>
+            Название базы данных (актуально при UseDataBase = true)
+            </summary>
+        </member>
         <member name="P:CommonUtils.GlobalConstant.DatabaseDirectoryPath">
             <summary>
             Путь к файлу базы данных (актуально при UseDataBase = true)
@@ -46,6 +51,11 @@
         <member name="P:CommonUtils.GlobalConstant.SettingsFilePath">
             <summary>
             Путь к файлу настроек (актуально при UseDataBase = false)
+            </summary>
+        </member>
+        <member name="M:CommonUtils.GlobalConstant.GetConnectionString">
+            <summary>
+            Получает строку подключения к базе данных
             </summary>
         </member>
         <member name="T:CommonUtils.Objects.LocalizableStringExtensions">

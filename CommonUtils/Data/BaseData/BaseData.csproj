@@ -2,19 +2,48 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>D:\Jack\GitHub\CommonUtils\Documentation\BaseData.xml</DocumentationFile>
+    <!-- Включение генерации пакета -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
+    <PackageId>BaseData</PackageId>
+    <!-- Уникальное имя пакета -->
+    <!-- Базовая версия (Major.Minor). Patch будем задавать отдельно -->
+    <VersionPrefix>1.0</VersionPrefix>
+    <!-- Значение по умолчанию, если не передано извне -->
+    <VersionPatch>0</VersionPatch>
+
+    <!-- Собираем окончательную версию -->
+    <Version>$(VersionPrefix).$(VersionPatch)</Version>
+    <!-- СЕМАНТИЧЕСКОЕ ВЕРСИОНИРОВАНИЕ -->
+    <Authors>GurJack</Authors>
+    <!-- Ваше имя или имя компании -->
+    <Company>NoCompany</Company>
+    <!-- (Опционально) -->
+    <Description>
+      Это моя потрясающая библиотека, и пусть она потрясает только меня.
+    </Description>
+    <PackageTags>c#, utilities, helpers</PackageTags>
+    <!-- Теги для поиска -->
+
+    <!-- Важно для лицензии -->
+    <!--<PackageLicenseExpression>MIT</PackageLicenseExpression>-->
+    <!-- Или можно указать путь к файлу лицензии -->
+    <!-- <PackageLicenseFile>LICENSE.txt</PackageLicenseFile> -->
+
+    <!-- Ссылка на репозиторий (опционально, но очень рекомендуется) -->
+    <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>D:\Jack\GitHub\CommonUtils\Documentation\BaseData.xml</DocumentationFile>
+    
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.76.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\CommonUtils\CommonUtils.csproj" />
   </ItemGroup>
 
   

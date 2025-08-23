@@ -10,6 +10,37 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <IsPublishable>False</IsPublishable>
+    <!-- Включение генерации пакета -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
+    <PackageId>CommonUtils</PackageId>
+    <!-- Базовая версия (Major.Minor). Patch будем задавать отдельно -->
+    <VersionPrefix>1.0</VersionPrefix>
+    <!-- Значение по умолчанию, если не передано извне -->
+    <VersionPatch>0</VersionPatch>
+
+    <!-- Собираем окончательную версию -->
+    <Version>$(VersionPrefix).$(VersionPatch)</Version>
+    <!-- СЕМАНТИЧЕСКОЕ ВЕРСИОНИРОВАНИЕ -->
+    <Authors>GurJack</Authors>
+    <!-- Ваше имя или имя компании -->
+    <Company>NoCompany</Company>
+    <!-- (Опционально) -->
+    <Description>
+      Это моя потрясающая библиотека, и пусть она потрясает только меня.
+    </Description>
+    <PackageTags>c#, utilities, helpers</PackageTags>
+    <!-- Теги для поиска -->
+
+    <!-- Важно для лицензии -->
+    <!--<PackageLicenseExpression>MIT</PackageLicenseExpression>-->
+    <!-- Или можно указать путь к файлу лицензии -->
+    <!-- <PackageLicenseFile>LICENSE.txt</PackageLicenseFile> -->
+
+    <!-- Ссылка на репозиторий (опционально, но очень рекомендуется) -->
+    <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,7 +57,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="15.0.1" />
     <PackageReference Include="log4net" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
       

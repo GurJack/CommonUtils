@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 //using System.Data.Entity;
 using System.Reflection;
-using CommonUtils.Attributes;
+//using CommonUtils.Attributes;
 
 namespace CommonUtils.MSSQL
 {
@@ -19,56 +19,56 @@ namespace CommonUtils.MSSQL
 
         public ClassAttributeReader(List<T> values, string tableName, Func<object, bool>[] constraintsTable = null, Func<object, object>[] convertTable= null)
         {
-            _constraintsTable = constraintsTable;
-            _tableName = tableName;
-            //Пример использования
-            //var constraintsTable = new Func<string, bool>[4];
-            //constraintsTable[0] = x => !string.IsNullOrEmpty(x);
-            //constraintsTable[1] = constraintsTable[0];
-            //constraintsTable[2] = x => true;
-            //constraintsTable[3] = x => true;
+            //_constraintsTable = constraintsTable;
+            //_tableName = tableName;
+            ////Пример использования
+            ////var constraintsTable = new Func<string, bool>[4];
+            ////constraintsTable[0] = x => !string.IsNullOrEmpty(x);
+            ////constraintsTable[1] = constraintsTable[0];
+            ////constraintsTable[2] = x => true;
+            ////constraintsTable[3] = x => true;
 
-            _convertTable = convertTable;
-            //Пример использования
-            //var convertTable = new Func<object, object>[4];
+            //_convertTable = convertTable;
+            ////Пример использования
+            ////var convertTable = new Func<object, object>[4];
 
-            //// Функция преобразования первого столбца csv файла (фамилия)
-            //convertTable[0] = x => x;
-            //// Второго (имя)
-            //convertTable[1] = x => x;
-            //// Третьего (дата)
-            //// Разбираем строковое представление даты по определенному формату.
-            //convertTable[2] = x =>
+            ////// Функция преобразования первого столбца csv файла (фамилия)
+            ////convertTable[0] = x => x;
+            ////// Второго (имя)
+            ////convertTable[1] = x => x;
+            ////// Третьего (дата)
+            ////// Разбираем строковое представление даты по определенному формату.
+            ////convertTable[2] = x =>
+            ////{
+            ////    DateTime datetime;
+            ////    if (DateTime.TryParseExact(x.ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture,
+            ////        DateTimeStyles.None, out datetime))
+            ////    {
+            ////        return datetime;
+            ////    }
+            ////    return null;
+            ////};
+            ////// Четвертого (промо код)
+            ////convertTable[3] = x => Convert.ToInt32(x);
+
+            //_values = values;
+            //_fieldCount = 0;
+            //_currentPos = -1;
+
+            //_properties =new Dictionary<int, PropertyInfo>();
+            //foreach (var info in typeof(T).GetProperties())
             //{
-            //    DateTime datetime;
-            //    if (DateTime.TryParseExact(x.ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture,
-            //        DateTimeStyles.None, out datetime))
-            //    {
-            //        return datetime;
-            //    }
-            //    return null;
-            //};
-            //// Четвертого (промо код)
-            //convertTable[3] = x => Convert.ToInt32(x);
-
-            _values = values;
-            _fieldCount = 0;
-            _currentPos = -1;
-
-            _properties =new Dictionary<int, PropertyInfo>();
-            foreach (var info in typeof(T).GetProperties())
-            {
-                var attr = info.GetCustomAttribute<DataReaderAttribute>();
-                if (attr == null || (attr.TableName != null && attr.TableName.ToLower() != _tableName.ToLower()))
-                    return;
-                _fieldCount++;
-                _properties.Add(attr.Position,info);
+            //    var attr = info.GetCustomAttribute<DataReaderAttribute>();
+            //    if (attr == null || (attr.TableName != null && attr.TableName.ToLower() != _tableName.ToLower()))
+            //        return;
+            //    _fieldCount++;
+            //    _properties.Add(attr.Position,info);
                 
                 
-            }
+            //}
 
-            //if (fieldCount != null)
-            //    _fieldCount = (int)fieldCount;
+            ////if (fieldCount != null)
+            ////    _fieldCount = (int)fieldCount;
         }
         public void Dispose()
         {

@@ -6,19 +6,32 @@ using System.Collections.Generic;
 using System.Linq;
 using CommonUtils.Settings.Attributes;
 
+
 namespace CommonUtils.Database
 {
     public abstract class AppDbContext : DbContext
     {
         protected readonly string _connectionString;
         protected readonly ILogger _logger;
+        private static readonly Logger _nullLogger = LogManager.CreateNullLogger(); // Пустой логгер
 
         protected AppDbContext(string connectionString, ILogger logger)
+            : base(GetOptions(connectionString, logger))
         {
-            _connectionString = connectionString;
             _logger = logger;
+            _connectionString = connectionString;
         }
 
+        // Конструктор для времени разработки
+        protected AppDbContext() : this(GlobalConstant.GetConnectionString(), _nullLogger) { }
+
+
+        private static DbContextOptions GetOptions(string connectionString, ILogger logger)
+        {
+            return new DbContextOptionsBuilder()
+                .UseSqlServer(connectionString)
+                .Options;
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -31,10 +44,12 @@ namespace CommonUtils.Database
                         errorNumbersToAdd: null);
                 });
 
-                optionsBuilder.LogTo(message => _logger.Debug(message));
+                
                 
             }
         }
+
+        public abstract void SeedDatabase();
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
@@ -80,4 +95,7 @@ namespace CommonUtils.Database
             }
         }
     }
+
+    
+
 }
