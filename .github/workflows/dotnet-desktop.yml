@@ -32,6 +32,8 @@ jobs:
         dotnet nuget remove source "github-packages" || true
         # Добавляем источник GitHub Packages с аутентификацией
         dotnet nuget add source ${{ env.GITHUB_PACKAGES_URL }} -n github -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+        # Проверка добавленного источника
+        dotnet nuget list source
 
     - name: Restore dependencies
       run: dotnet restore $env:SOLUTION_PATH
@@ -60,10 +62,10 @@ jobs:
           exit 1
         }
 
+    
     - name: Publish to GitHub Packages
       run: |
-        
         $packages = Get-ChildItem -Path nupkg -Filter *.nupkg
         foreach ($package in $packages) {
-          dotnet nuget push $package.FullName --source "github"
+          dotnet nuget push $package.FullName --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
         }
