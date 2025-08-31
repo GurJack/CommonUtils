@@ -52,5 +52,5 @@ jobs:
         $packages = Get-ChildItem -Path nupkg -Filter *.nupkg
         foreach ($package in $packages) {
           # Используем полный URL вместо имени источника
-          dotnet nuget push $package.FullName --source ${{ env.GITHUB_PACKAGES_URL }} --api-key ${{ secrets.GITHUB_TOKEN }}
+          dotnet nuget push $package.FullName --source  "https://nuget.pkg.github.com/GurJack/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
         }
