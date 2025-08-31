@@ -51,4 +51,4 @@ jobs:
         }
 
     - name: Publish to GitHub Packages
-      run: dotnet nuget push nupkg/*.nupkg --source "github"
+      run: dotnet nuget push nupkg/*.nupkg --source "github-packages"
