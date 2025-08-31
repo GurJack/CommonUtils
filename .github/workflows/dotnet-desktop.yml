@@ -51,5 +51,6 @@ jobs:
       run: |
         $packages = Get-ChildItem -Path nupkg -Filter *.nupkg
         foreach ($package in $packages) {
-          dotnet nuget push $package.FullName --source ${{ env.GITHUB_PACKAGES_URL }} --api-key ${{ secrets.GH_PAT }}
+          # Используем полный URL вместо имени источника
+          dotnet nuget push $package.FullName --source ${{ env.GITHUB_PACKAGES_URL }} --api-key ${{ secrets.GITHUB_TOKEN }}
         }
