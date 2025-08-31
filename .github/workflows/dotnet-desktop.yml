@@ -27,6 +27,9 @@ jobs:
 
     - name: Configure GitHub Packages source
       run: |
+        # Удаляем источник, если он уже существует
+        dotnet nuget remove source "github" || true
+        dotnet nuget remove source "My GitHub" || true
         # Добавляем источник GitHub Packages с аутентификацией
         dotnet nuget add source ${{ env.GITHUB_PACKAGES_URL }} -n github-packages -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
