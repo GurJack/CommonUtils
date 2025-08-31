@@ -51,7 +51,7 @@ jobs:
         }
 
     - name: List files in nupkg directory
-      run: ls -la nupkg/
+      run: ls  nupkg/
 
     - name: Verify packages were created
       run: |
