@@ -53,6 +53,13 @@ jobs:
     - name: List files in nupkg directory
       run: ls -la nupkg/
 
+    - name: Verify packages were created
+      run: |
+        if (!(Test-Path nupkg/*.nupkg)) {
+          Write-Error "No nupkg files found!"
+          exit 1
+        }
+
     - name: Publish to GitHub Packages
       run: |
         cd nupkg
