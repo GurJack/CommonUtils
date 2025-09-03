@@ -22,21 +22,31 @@ foreach ($file in $projectFiles) {
             # Читаем файл как байты
             $bytes = [System.IO.File]::ReadAllBytes($fullPath)
 
-            # Проверяем на двойной BOM (UTF-8 BOM: EF BB BF)
-            if ($bytes.Length -ge 6 -and
-                $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF -and
-                $bytes[3] -eq 0xEF -and $bytes[4] -eq 0xBB -and $bytes[5] -eq 0xBF) {
+            # Проверяем на множественные BOM (UTF-8 BOM: EF BB BF)
+            $bomPattern = @(0xEF, 0xBB, 0xBF)
+            $bomCount = 0
 
-                Write-Host "❌ Найден двойной BOM в файле: $file" -ForegroundColor Red
+            # Считаем количество BOM в начале файла
+            for ($i = 0; $i -lt $bytes.Length - 2; $i += 3) {
+                if ($i + 2 -lt $bytes.Length -and
+                    $bytes[$i] -eq 0xEF -and $bytes[$i+1] -eq 0xBB -and $bytes[$i+2] -eq 0xBF) {
+                    $bomCount++
+                } else {
+                    break
+                }
+            }
 
-                # Убираем первые 3 байта (первый BOM)
-                $newBytes = $bytes[3..($bytes.Length-1)]
+            if ($bomCount -gt 1) {
+                Write-Host "❌ Найдено $bomCount BOM символов в файле: $file" -ForegroundColor Red
+
+                # Убираем все лишние BOM, оставляем только один
+                $startIndex = ($bomCount - 1) * 3
+                $newBytes = $bytes[$startIndex..($bytes.Length-1)]
                 [System.IO.File]::WriteAllBytes($fullPath, $newBytes)
 
-                Write-Host "✅ Исправлен двойной BOM в файле: $file" -ForegroundColor Green
+                Write-Host "✅ Исправлены множественные BOM в файле: $file" -ForegroundColor Green
                 $fixed++
-            } elseif ($bytes.Length -ge 3 -and
-                      $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
+            } elseif ($bomCount -eq 1) {
                 Write-Host "✅ $file - BOM корректный" -ForegroundColor Green
             } else {
                 Write-Host "⚠️  $file - BOM отсутствует, добавляем" -ForegroundColor Yellow
@@ -73,3 +83,13 @@ if ($fixed -gt 0) {
 } else {
     Write-Host "`n✅ Все файлы в порядке!" -ForegroundColor Green
 }
+
+# === ДОПОЛНИТЕЛЬНО: Настройки для предотвращения проблем с VSCode ===
+Write-Host "`n📝 Рекомендации для настройки VSCode:" -ForegroundColor Cyan
+Write-Host "1. Откройте File → Preferences → Settings" -ForegroundColor White
+Write-Host "2. Найдите 'files.encoding' и установите 'utf8'" -ForegroundColor White
+Write-Host "3. Найдите 'files.autoSave' и установите 'off' или 'onFocusChange'" -ForegroundColor White
+Write-Host "4. Добавьте в settings.json:" -ForegroundColor White
+Write-Host '   "files.encoding": "utf8",' -ForegroundColor Gray
+Write-Host '   "files.insertFinalNewline": true,' -ForegroundColor Gray
+Write-Host '   "files.trimFinalNewlines": true' -ForegroundColor Gray

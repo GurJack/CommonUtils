@@ -1,0 +1,29 @@
+# Автоматическое управление окончаниями строк
+* text=auto
+
+# Файлы проектов .NET должны иметь UTF-8 с BOM
+*.csproj text eol=crlf encoding=utf-8-bom
+*.props text eol=crlf encoding=utf-8-bom
+*.targets text eol=crlf encoding=utf-8-bom
+*.sln text eol=crlf encoding=utf-8-bom
+
+# Исходные файлы C#
+*.cs text eol=crlf encoding=utf-8-bom
+
+# Файлы конфигурации
+*.json text eol=crlf encoding=utf-8
+*.xml text eol=crlf encoding=utf-8-bom
+*.config text eol=crlf encoding=utf-8
+
+# Документация
+*.md text eol=crlf encoding=utf-8
+*.txt text eol=crlf encoding=utf-8
+
+# PowerShell скрипты
+*.ps1 text eol=crlf encoding=utf-8-bom
+
+# Бинарные файлы
+*.dll binary
+*.exe binary
+*.nupkg binary
+*.snupkg binary
