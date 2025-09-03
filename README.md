@@ -36,13 +36,16 @@ dotnet add package GurJack.CommonUtils.BaseMSSqlProvider --source github-gurjack
 ### Локальная проверка
 ```bash
 # Полная проверка (с автоматическим исправлением BOM)
-.\build-check.ps1
+.\Scripts\build-check.ps1
 
 # Только проверка/исправление BOM символов
-.\fix-bom.ps1
+.\Scripts\fix-bom.ps1
 
 # Тестирование процесса создания пакетов
-.\test-publish.ps1
+.\Scripts\test-publish.ps1
+
+# Настройка NuGet аутентификации
+.\Scripts\setup-nuget-auth.ps1
 ```
 
 ### Обычная сборка
@@ -75,15 +78,27 @@ dotnet test
 
 ```
 CommonUtils/
-├── Data/
-│   ├── BaseData/          # Базовые абстракции
-│   ├── CommonData/        # Общие утилиты
-│   └── BaseMSSqlProvider/ # SQL Server провайдеры
-├── Tests/
-│   ├── TestCore/         # Основные тесты
-│   └── TestWindows/      # Windows-специфичные тесты
-└── Documentation/        # XML документация
+├── CommonUtils/           # Основной проект
+│   ├── Data/
+│   │   ├── BaseData/          # Базовые абстракции
+│   │   ├── CommonData/        # Общие утилиты
+│   │   └── BaseMSSqlProvider/ # SQL Server провайдеры
+│   ├── Tests/
+│   │   ├── TestCore/         # Основные тесты
+│   │   └── TestWindows/      # Windows-специфичные тесты
+│   └── CommonUtils/       # Основная библиотека
+├── Scripts/              # PowerShell скрипты
+├── Documentation/        # Документация и XML файлы
+└── .github/workflows/    # CI/CD конфигурация
 ```
+
+## Документация
+
+- [PowerShell скрипты](Scripts/README.md)
+- [Руководство по устранению неполадок](Documentation/TROUBLESHOOTING.md)
+- [Настройка NuGet](Documentation/NUGET_SETUP_GUIDE.md)
+- [Исправление предупреждений](Documentation/WARNING_RESOLUTION.md)
+- [Полная документация](Documentation/README.md)
 
 ## Лицензия
 

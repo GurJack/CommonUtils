@@ -10,6 +10,10 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <IsPublishable>False</IsPublishable>
+
+    <!-- Подавление предупреждений -->
+    <NoWarn>$(NoWarn);CS1591;CS8618;CS8603;CS8625;CS8612;CS8765;CS8767;CA1051;CA1710;CA1036;CA1850;CA1305;CA1309;CA1310;CA1304;CA1311;CA1852;EF1002</NoWarn>
+
     <!-- Включение генерации пакета -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
@@ -65,7 +69,6 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
-
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -79,7 +82,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Attributes\" />
+    <ProjectReference Include="..\Data\BaseData\BaseData.csproj" />
+    <ProjectReference Include="..\Data\CommonData\CommonData.csproj" />
+    <ProjectReference Include="..\Data\BaseMSSqlProvider\BaseMSSqlProvider.csproj" />
   </ItemGroup>
 
   <ItemGroup>

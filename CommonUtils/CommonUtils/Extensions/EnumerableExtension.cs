@@ -1,40 +1,81 @@
-﻿//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using System.Collections.ObjectModel;
-//using System.Linq;
-//using System.Text;
+﻿﻿﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
 
-//namespace CommonUtils.Extensions
-//{
-//    /// <summary>
-//    /// Enumerable extension
-//    /// </summary>
-//    public static class EnumerableExtension
-//    {
-//        /// <summary>
-//        /// Convert IEnumerable to ObservableCollection
-//        /// </summary>
-//        /// <typeparam name="T"></typeparam>
-//        /// <param name="source"></param>
-//        /// <returns></returns>
-//        public static ObservableCollection<T> AsObservableCollection<T>(this IEnumerable<T> source)
-//        {
-//            return new ObservableCollection<T>(source);
-//        }
+namespace CommonUtils.Extensions
+{
+    /// <summary>
+    /// Enumerable extension
+    /// </summary>
+    public static class EnumerableExtension
+    {
+        /// <summary>
+        /// Convert IEnumerable to ObservableCollection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static ObservableCollection<T> AsObservableCollection<T>(this IEnumerable<T> source)
+        {
+            return new ObservableCollection<T>(source);
+        }
 
-//        /// <summary>
-//        /// Fisher-Yates shuffle.
-//        /// </summary>
-//        /// <typeparam name="T"></typeparam>
-//        /// <param name="source"></param>
-//        /// <returns></returns>
-//        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
-//        {
-//            T[] elements = source.ToArray();
-//            for (int i = elements.Length - 1; i >= 0; i--)
-//            {
-//                // Swap element "i" with a random earlier element it (or itself)
+        /// <summary>
+        /// Check if enumerable is null or empty
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T>? source)
+        {
+            return source == null || !source.Any();
+        }
+
+        /// <summary>
+        /// Fisher-Yates shuffle.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            T[] elements = source.ToArray();
+            var random = new Random();
+            for (int i = elements.Length - 1; i >= 0; i--)
+            {
+                // Swap element "i" with a random earlier element it (or itself)
+                int swapIndex = random.Next(i + 1);
+                (elements[i], elements[swapIndex]) = (elements[swapIndex], elements[i]);
+            }
+            return elements;
+        }
+
+        /// <summary>
+        /// Check if collection has items
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool HasItems<T>(this IEnumerable<T>? source)
+        {
+            return source != null && source.Any();
+        }
+
+        /// <summary>
+        /// Check if collection is empty
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsEmpty<T>(this IEnumerable<T>? source)
+        {
+            return source == null || !source.Any();
+        }
+    }
+}
 //                // ... except we don't really need to swap it fully, as we can
 //                // return it immediately, and afterwards it's irrelevant.
 //                int swapIndex = RandomGenerator.Next(i + 1);
@@ -55,7 +96,7 @@
 //        {
 //            var b = new StringBuilder();
 //            var needSeparator = false;
-            
+
 //            foreach (var item in source)
 //            {
 //                if (needSeparator)
@@ -160,7 +201,7 @@
 //                return type.GetElementType();
 //            }
 
-            
+
 //            throw new ApplicationException($"Неизвестный тип: {type}");
 //        }
 

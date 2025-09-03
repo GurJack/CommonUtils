@@ -5,6 +5,7 @@ $projectFiles = @(
     "CommonUtils\Data\BaseData\BaseData.csproj",
     "CommonUtils\Data\CommonData\CommonData.csproj",
     "CommonUtils\CommonUtils\CommonUtils.csproj",
+    "CommonUtils\Tests\TestWindows\Windows.Tests.csproj",
     "CommonUtils\Data\BaseMSSqlProvider\BaseMSSqlProvider.csproj"
 )
 

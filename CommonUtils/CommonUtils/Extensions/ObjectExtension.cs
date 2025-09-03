@@ -1,40 +1,118 @@
-﻿//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Reflection;
-//using System.Runtime.CompilerServices;
-//using CommonUtils.Attributes;
+﻿﻿﻿﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
-//namespace CommonUtils.Extensions
-//{
-//    public static class ObjectExtension
-//    {
-//        public static bool In<T>(this T obj, params T[] values)
-//        {
-//            return values.Any(p => Equals(obj, p));
-//        }
+namespace CommonUtils.Extensions
+{
+    /// <summary>
+    /// Object extensions
+    /// </summary>
+    public static class ObjectExtension
+    {
+        /// <summary>
+        /// Check if object is in values list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static bool In<T>(this T obj, params T[] values)
+        {
+            return values.Any(p => Equals(obj, p));
+        }
 
-//        public static string WhoseThere(this object obj, [CallerMemberName] string memberName = "",
-//            [CallerFilePath] string fileName = "",
-//            [CallerLineNumber] int lineNumber = 0)
-//        {
-//            return $"Метод - {memberName}, файл - {fileName}, строка - {lineNumber}";
-//        }
+        /// <summary>
+        /// Check if object is null
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNull(this object? obj)
+        {
+            return obj == null;
+        }
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="obj"></param>
-//        /// <typeparam name="TTarget"></typeparam>
-//        /// <returns></returns>
-//        public static TTarget MapTo<TTarget>(this object obj) where TTarget : class, new()
-//        {
-//            TTarget result = (TTarget) MapTo(obj, obj.GetType(), typeof(TTarget));
-//            return result;
-//        }
+        /// <summary>
+        /// Check if object is not null
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNotNull(this object? obj)
+        {
+            return obj != null;
+        }
 
-//        private static object MapTo(object source, Type sourceType, Type targetType)
+        /// <summary>
+        /// Get caller information
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="memberName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="lineNumber"></param>
+        /// <returns></returns>
+        public static string WhoseThere(this object obj, [CallerMemberName] string memberName = "",
+            [CallerFilePath] string fileName = "",
+            [CallerLineNumber] int lineNumber = 0)
+        {
+            return $"Метод - {memberName}, файл - {fileName}, строка - {lineNumber}";
+        }
+
+        /// <summary>
+        /// Map object to target type
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <typeparam name="TTarget"></typeparam>
+        /// <returns></returns>
+        public static TTarget MapTo<TTarget>(this object obj) where TTarget : class, new()
+        {
+            TTarget result = (TTarget) MapTo(obj, obj.GetType(), typeof(TTarget));
+            return result;
+        }
+
+        private static object MapTo(object source, Type sourceType, Type targetType)
+        {
+            var result = Activator.CreateInstance(targetType);
+            // Simple mapping logic would go here
+            return result;
+        }
+
+        /// <summary>
+        /// Convert object to JSON string
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToJson(this object obj)
+        {
+            if (obj == null) return "null";
+            return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+        }
+
+        /// <summary>
+        /// Return default value if object is null
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static T IfNull<T>(this T? obj, T defaultValue) where T : class
+        {
+            return obj ?? defaultValue;
+        }
+
+        /// <summary>
+        /// Return default value if string is null
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static string IfNull(this string? str, string defaultValue)
+        {
+            return str ?? defaultValue;
+        }
+    }
+}
 //        {
 //            var result = Activator.CreateInstance(targetType);
 //            var type = typeof(MapNameAttribute);
