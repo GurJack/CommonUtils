@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using System.Text;
 
 namespace CommonUtils
@@ -167,10 +167,11 @@ namespace CommonUtils
                 result.Append(upperChars[_random.Next(upperChars.Length)]);
                 result.Append(lowerChars[_random.Next(lowerChars.Length)]);
                 result.Append(digitChars[_random.Next(digitChars.Length)]);
+                result.Append(specialChars[_random.Next(specialChars.Length)]);
 
                 // Fill the rest
-                var allChars = upperChars + lowerChars + digitChars;
-                for (int i = 3; i < length; i++)
+                var allChars = upperChars + lowerChars + digitChars + specialChars;
+                for (int i = 4; i < length; i++)
                 {
                     result.Append(allChars[_random.Next(allChars.Length)]);
                 }

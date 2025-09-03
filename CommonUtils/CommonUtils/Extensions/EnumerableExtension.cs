@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿﻿﻿﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -73,6 +73,72 @@ namespace CommonUtils.Extensions
         public static bool IsEmpty<T>(this IEnumerable<T>? source)
         {
             return source == null || !source.Any();
+        }
+
+        /// <summary>
+        /// Execute action for each element
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="action"></param>
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            if (source == null || action == null)
+                return;
+
+            foreach (var item in source)
+            {
+                action(item);
+            }
+        }
+
+        /// <summary>
+        /// Split into batches
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> source, int size)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (size <= 0)
+                throw new ArgumentException("Size must be greater than 0", nameof(size));
+
+            var batch = new List<T>(size);
+            foreach (var item in source)
+            {
+                batch.Add(item);
+                if (batch.Count == size)
+                {
+                    yield return batch;
+                    batch = new List<T>(size);
+                }
+            }
+
+            if (batch.Count > 0)
+            {
+                yield return batch;
+            }
+        }
+
+        /// <summary>
+        /// Safe where filter
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> SafeWhere<T>(this IEnumerable<T> source, Func<T, bool>? predicate)
+        {
+            if (source == null)
+                return Enumerable.Empty<T>();
+
+            if (predicate == null)
+                return source;
+
+            return source.Where(predicate);
         }
     }
 }

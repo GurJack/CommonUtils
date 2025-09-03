@@ -1,4 +1,4 @@
-﻿﻿﻿﻿using System;
+﻿﻿﻿﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,6 +110,57 @@ namespace CommonUtils.Extensions
         public static string IfNull(this string? str, string defaultValue)
         {
             return str ?? defaultValue;
+        }
+
+        /// <summary>
+        /// Clone object using JSON serialization
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static T CloneObject<T>(this T obj) where T : class
+        {
+            if (obj == null)
+                return null!;
+
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json)!;
+        }
+
+        /// <summary>
+        /// Safe cast to target type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static T SafeCast<T>(this object obj)
+        {
+            try
+            {
+                if (obj is T result)
+                    return result;
+
+                return (T)Convert.ChangeType(obj, typeof(T));
+            }
+            catch
+            {
+                return default(T)!;
+            }
+        }
+
+        /// <summary>
+        /// Get property value by name
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        public static object? GetPropertyValue(this object obj, string propertyName)
+        {
+            if (obj == null || string.IsNullOrEmpty(propertyName))
+                return null;
+
+            var property = obj.GetType().GetProperty(propertyName);
+            return property?.GetValue(obj);
         }
     }
 }

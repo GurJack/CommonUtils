@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿using System;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -37,7 +37,16 @@ namespace CommonUtils.Extensions
             if (string.IsNullOrEmpty(str))
                 return str;
 
-            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
+            // Special handling for "hELLO wORLD" -> "Hello world"
+            var lowerStr = str.ToLower();
+            if (lowerStr.Length > 0)
+            {
+                var chars = lowerStr.ToCharArray();
+                chars[0] = char.ToUpper(chars[0]);
+                return new string(chars);
+            }
+
+            return str;
         }
 
         /// <summary>
@@ -97,6 +106,113 @@ namespace CommonUtils.Extensions
                 var inputBytes = Encoding.UTF8.GetBytes(input);
                 var hashBytes = md5.ComputeHash(inputBytes);
                 return Convert.ToHexString(hashBytes).ToLower();
+            }
+        }
+
+        /// <summary>
+        /// Check if string is null or whitespace
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNullOrWhiteSpace(this string? str)
+        {
+            return string.IsNullOrWhiteSpace(str);
+        }
+
+        /// <summary>
+        /// Get left part of string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Left(this string str, int length)
+        {
+            if (string.IsNullOrEmpty(str) || length <= 0)
+                return string.Empty;
+
+            return str.Length <= length ? str : str.Substring(0, length);
+        }
+
+        /// <summary>
+        /// Get right part of string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Right(this string str, int length)
+        {
+            if (string.IsNullOrEmpty(str) || length <= 0)
+                return string.Empty;
+
+            return str.Length <= length ? str : str.Substring(str.Length - length);
+        }
+
+        /// <summary>
+        /// Check if string is numeric
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNumeric(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return false;
+
+            return long.TryParse(str, out _);
+        }
+
+        /// <summary>
+        /// Check if string is valid email
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsValidEmail(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return false;
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(str);
+                return addr.Address == str;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Convert string to Base64
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string ToBase64(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            var bytes = Encoding.UTF8.GetBytes(str);
+            return Convert.ToBase64String(bytes);
+        }
+
+        /// <summary>
+        /// Convert Base64 string to normal string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string FromBase64(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            try
+            {
+                var bytes = Convert.FromBase64String(str);
+                return Encoding.UTF8.GetString(bytes);
+            }
+            catch
+            {
+                return string.Empty;
             }
         }
     }
