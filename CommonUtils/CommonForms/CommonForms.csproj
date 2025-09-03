@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>D:\Jack\Git\CommonUtils\Documentation\CommonForms.xml</DocumentationFile>
+    <DocumentationFile>..\..\Documentation\CommonForms.xml</DocumentationFile>
     <NeutralLanguage>ru-RU</NeutralLanguage>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>

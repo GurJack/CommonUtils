@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>D:\Jack\GitHub\CommonUtils\Documentation\CommonUtils.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\Documentation\CommonUtils.xml</DocumentationFile>
     <NeutralLanguage>ru-RU</NeutralLanguage>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
