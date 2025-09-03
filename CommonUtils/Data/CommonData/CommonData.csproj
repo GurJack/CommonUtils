@@ -1,9 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!-- Отключаем предупреждения о XML комментариях -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
 
     <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
     <PackageId>GurJack.CommonUtils.CommonData</PackageId>
