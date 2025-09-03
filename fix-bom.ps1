@@ -38,7 +38,15 @@ foreach ($file in $projectFiles) {
                       $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
                 Write-Host "✅ $file - BOM корректный" -ForegroundColor Green
             } else {
-                Write-Host "⚠️  $file - BOM отсутствует" -ForegroundColor Yellow
+                Write-Host "⚠️  $file - BOM отсутствует, добавляем" -ForegroundColor Yellow
+
+                # Добавляем BOM в начало файла
+                $bomBytes = @(0xEF, 0xBB, 0xBF)
+                $newBytes = $bomBytes + $bytes
+                [System.IO.File]::WriteAllBytes($fullPath, $newBytes)
+
+                Write-Host "✅ Добавлен BOM в файл: $file" -ForegroundColor Green
+                $fixed++
             }
 
             # Дополнительная проверка XML валидности
