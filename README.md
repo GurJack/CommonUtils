@@ -33,6 +33,16 @@ dotnet add package GurJack.CommonUtils.BaseMSSqlProvider --source github-gurjack
 
 ## Сборка проекта
 
+### Локальная проверка
+```bash
+# Полная проверка (с автоматическим исправлением BOM)
+.\build-check.ps1
+
+# Только проверка/исправление BOM символов
+.\fix-bom.ps1
+```
+
+### Обычная сборка
 ```bash
 # Восстановление зависимостей
 dotnet restore

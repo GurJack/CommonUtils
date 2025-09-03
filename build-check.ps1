@@ -1,6 +1,15 @@
 # Скрипт для локальной проверки сборки проектов
 Write-Host "Проверка сборки проектов CommonUtils..." -ForegroundColor Green
 
+# Сначала проверяем и исправляем BOM символы
+Write-Host "🔍 Проверка BOM символов..." -ForegroundColor Cyan
+& .\fix-bom.ps1
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Ошибка при проверке BOM символов" -ForegroundColor Red
+    exit $LASTEXITCODE
+}
+
 $solutionPath = "CommonUtils\CommonUtils.sln"
 
 # Проверка наличия solution файла
