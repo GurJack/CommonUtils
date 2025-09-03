@@ -4,5 +4,17 @@
         <name>BaseData</name>
     </assembly>
     <members>
+        <member name="T:BaseData.BaseModel">
+            <summary>
+            Базовая модель для всех сущностей в системе.
+            Предоставляет уникальный идентификатор для каждой сущности.
+            </summary>
+        </member>
+        <member name="P:BaseData.BaseModel.Id">
+            <summary>
+            Уникальный идентификатор сущности.
+            Автоматически генерируется при создании объекта.
+            </summary>
+        </member>
     </members>
 </doc>

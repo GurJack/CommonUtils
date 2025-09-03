@@ -214,7 +214,7 @@ namespace CommonUtils.MSSQL
         public bool Read()
         {
             _currentPos++;
-            if (_currentPos >= _values.Count) return false;
+            //if (_currentPos >= _values.Count) return false;
 
             //_currentLine = _streamReader.ReadLine();
 
