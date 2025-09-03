@@ -11,7 +11,9 @@ $fixed = 0
 $total = 0
 
 foreach ($file in $projectFiles) {
-    $fullPath = Join-Path $PSScriptRoot $file
+    # Получаем корректный путь к корню проекта
+    $rootPath = if ($PSScriptRoot) { $PSScriptRoot } else { Get-Location }
+    $fullPath = Join-Path $rootPath $file
     $total++
 
     if (Test-Path $fullPath) {
@@ -32,12 +34,10 @@ foreach ($file in $projectFiles) {
 
                 Write-Host "✅ Исправлен двойной BOM в файле: $file" -ForegroundColor Green
                 $fixed++
-            }
-            elseif ($bytes.Length -ge 3 -and
-                    $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
+            } elseif ($bytes.Length -ge 3 -and
+                      $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
                 Write-Host "✅ $file - BOM корректный" -ForegroundColor Green
-            }
-            else {
+            } else {
                 Write-Host "⚠️  $file - BOM отсутствует" -ForegroundColor Yellow
             }
 
