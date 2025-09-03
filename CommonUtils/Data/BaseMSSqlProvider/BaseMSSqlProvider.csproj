@@ -1,11 +1,36 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
+    <PackageId>GurJack.CommonUtils.BaseMSSqlProvider</PackageId>
+    <VersionPrefix>1.0</VersionPrefix>
+    <VersionPatch Condition="'$(VersionPatch)' == ''">0</VersionPatch>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(VersionPrefix).$(VersionPatch)</PackageVersion>
+    <Version>$(PackageVersion)</Version>
+
+    <Authors>GurJack</Authors>
+    <Company>GurJack</Company>
+    <Product>CommonUtils</Product>
+    <Description>
+      Базовые провайдеры для работы с Microsoft SQL Server в CommonUtils библиотеке.
+      Предоставляет абстракции для SQL Server провайдеров.
+    </Description>
+    <PackageTags>commonutils;sql;sqlserver;mssql;provider;database</PackageTags>
+
+    <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/GurJack/CommonUtils</PackageProjectUrl>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  
+
 
 </Project>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,43 +8,46 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
-    <PackageId>BaseData</PackageId>
-    <!-- Уникальное имя пакета -->
-    <!-- Базовая версия (Major.Minor). Patch будем задавать отдельно -->
+    <PackageId>GurJack.CommonUtils.BaseData</PackageId>
+    <!-- Уникальное имя пакета для GitHub Packages -->
     <VersionPrefix>1.0</VersionPrefix>
-    <!-- Значение по умолчанию, если не передано извне -->
-    <VersionPatch>0</VersionPatch>
+    <VersionPatch Condition="'$(VersionPatch)' == ''">0</VersionPatch>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(VersionPrefix).$(VersionPatch)</PackageVersion>
+    <Version>$(PackageVersion)</Version>
 
-    <!-- Собираем окончательную версию -->
-    <Version>$(VersionPrefix).$(VersionPatch)</Version>
     <!-- СЕМАНТИЧЕСКОЕ ВЕРСИОНИРОВАНИЕ -->
     <Authors>GurJack</Authors>
-    <!-- Ваше имя или имя компании -->
-    <Company>NoCompany</Company>
-    <!-- (Опционально) -->
+    <Company>GurJack</Company>
+    <Product>CommonUtils</Product>
     <Description>
-      Это моя потрясающая библиотека, и пусть она потрясает только меня.
+      Базовые классы и интерфейсы для работы с данными в CommonUtils библиотеке.
+      Предоставляет абстракции для провайдеров баз данных и базовые модели.
     </Description>
-    <PackageTags>c#, utilities, helpers</PackageTags>
-    <!-- Теги для поиска -->
+    <PackageTags>commonutils;data;database;provider;orm;entity;basemodel</PackageTags>
 
     <!-- Важно для лицензии -->
     <!--<PackageLicenseExpression>MIT</PackageLicenseExpression>-->
     <!-- Или можно указать путь к файлу лицензии -->
     <!-- <PackageLicenseFile>LICENSE.txt</PackageLicenseFile> -->
 
-    <!-- Ссылка на репозиторий (опционально, но очень рекомендуется) -->
+    <!-- Ссылка на репозиторий -->
     <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/GurJack/CommonUtils</PackageProjectUrl>
+
+    <!-- Настройки для GitHub Packages -->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    
+
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.76.0" />
   </ItemGroup>
 
-  
+
 </Project>

@@ -1,9 +1,34 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
+    <PackageId>GurJack.CommonUtils.CommonData</PackageId>
+    <VersionPrefix>1.0</VersionPrefix>
+    <VersionPatch Condition="'$(VersionPatch)' == ''">0</VersionPatch>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(VersionPrefix).$(VersionPatch)</PackageVersion>
+    <Version>$(PackageVersion)</Version>
+
+    <Authors>GurJack</Authors>
+    <Company>GurJack</Company>
+    <Product>CommonUtils</Product>
+    <Description>
+      Общие классы и утилиты для работы с данными в CommonUtils библиотеке.
+      Включает контексты для MSSQL и MySQL, а также вспомогательные классы.
+    </Description>
+    <PackageTags>commonutils;data;mssql;mysql;context;entityframework</PackageTags>
+
+    <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/GurJack/CommonUtils</PackageProjectUrl>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  
+
 
 </Project>

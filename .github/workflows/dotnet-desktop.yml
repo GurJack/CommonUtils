@@ -3,6 +3,7 @@ name: .NET NuGet Package CI
 on:
   push:
     branches: [ "main" ]
+    tags: [ 'v*' ]
   workflow_dispatch:
 
 env:
@@ -15,7 +16,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -44,12 +45,24 @@ jobs:
     - name: Test
       run: dotnet test $env:SOLUTION_PATH --configuration Release --no-build --verbosity normal
 
+    - name: Set Package Version
+      run: |
+        if ($env:GITHUB_REF -match '^refs/tags/v(.+)$') {
+          $version = $matches[1]
+          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
+          echo "Building release version: $version"
+        } else {
+          $version = "1.0.0-ci-${{ github.run_number }}"
+          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
+          echo "Building CI version: $version"
+        }
+
     - name: Pack NuGet packages
       run: |
         $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object { $_.FullName -notmatch 'test|Test' }
         foreach ($project in $projects) {
-          Write-Host "Packing $($project.Name)"
-          dotnet pack $project.FullName --configuration Release -p:PackageVersion=1.0.0-ci-${{ github.run_number }} --output nupkg
+          Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"
+          dotnet pack $project.FullName --configuration Release -p:PackageVersion=$env:PACKAGE_VERSION --output nupkg
         }
 
     - name: List files in nupkg directory
@@ -62,10 +75,11 @@ jobs:
           exit 1
         }
 
-    
+
     - name: Publish to GitHub Packages
       run: |
         $packages = Get-ChildItem -Path nupkg -Filter *.nupkg
         foreach ($package in $packages) {
-          dotnet nuget push $package.FullName --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+          Write-Host "Publishing $($package.Name)"
+          dotnet nuget push $package.FullName --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         }
