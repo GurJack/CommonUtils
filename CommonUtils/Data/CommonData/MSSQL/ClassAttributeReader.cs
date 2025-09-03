@@ -1,4 +1,4 @@
-﻿﻿﻿﻿using System;
+﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Data;
 //using System.Data.Entity;
@@ -214,7 +214,8 @@ namespace CommonUtils.MSSQL
         public bool Read()
         {
             _currentPos++;
-            if (_currentPos >= _values.Count) return false;
+            // if (_currentPos >= _values.Count) return false; // Поле _values закомментировано
+            return false; // Метод не реализован
 
             //_currentLine = _streamReader.ReadLine();
 
