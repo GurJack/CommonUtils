@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿﻿﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -14,33 +14,38 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
-    <PackageId>CommonUtils</PackageId>
-    <!-- Базовая версия (Major.Minor). Patch будем задавать отдельно -->
+    <PackageId>GurJack.CommonUtils</PackageId>
+    <!-- Уникальное имя пакета для GitHub Packages -->
     <VersionPrefix>1.0</VersionPrefix>
-    <!-- Значение по умолчанию, если не передано извне -->
-    <VersionPatch>0</VersionPatch>
-
-    <!-- Собираем окончательную версию -->
-    <Version>$(VersionPrefix).$(VersionPatch)</Version>
+    <VersionPatch Condition="'$(VersionPatch)' == ''">0</VersionPatch>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(VersionPrefix).$(VersionPatch)</PackageVersion>
+    <Version>$(PackageVersion)</Version>
     <!-- СЕМАНТИЧЕСКОЕ ВЕРСИОНИРОВАНИЕ -->
     <Authors>GurJack</Authors>
-    <!-- Ваше имя или имя компании -->
-    <Company>NoCompany</Company>
-    <!-- (Опционально) -->
+    <Company>GurJack</Company>
+    <Product>CommonUtils</Product>
     <Description>
-      Это моя потрясающая библиотека, и пусть она потрясает только меня.
+      Комплексная библиотека утилит для .NET 8.0.
+      Включает работу с базами данных, логированием, сериализацией, безопасностью и много другого.
     </Description>
-    <PackageTags>c#, utilities, helpers</PackageTags>
-    <!-- Теги для поиска -->
+    <PackageTags>commonutils;utilities;helpers;database;entityframework;logging;serialization;security;extensions</PackageTags>
 
     <!-- Важно для лицензии -->
     <!--<PackageLicenseExpression>MIT</PackageLicenseExpression>-->
     <!-- Или можно указать путь к файлу лицензии -->
     <!-- <PackageLicenseFile>LICENSE.txt</PackageLicenseFile> -->
 
-    <!-- Ссылка на репозиторий (опционально, но очень рекомендуется) -->
+    <!-- Ссылка на репозиторий -->
     <RepositoryUrl>https://github.com/GurJack/CommonUtils.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/GurJack/CommonUtils</PackageProjectUrl>
+
+    <!-- Настройки для GitHub Packages -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- README файл для пакета -->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -60,7 +65,7 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
-      
+
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -75,6 +80,10 @@
 
   <ItemGroup>
     <Folder Include="Attributes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
