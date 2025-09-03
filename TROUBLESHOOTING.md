@@ -1,24 +1,36 @@
-# Решение проблем с NuGet конфигурацией в GitHub Actions
+# Решение проблем с NuGet конфигурацией и проектами в GitHub Actions
 
-## Проблема
+## Проблема 1: Ошибка парсинга NuGet конфигурации
 ```
 error: Unable to parse config file because: Credentials item must have username and password.
 ```
 
-## Причина
+### Причина
 В файле `nuget.config` была секция `packageSourceCredentials` с username, но без password, что приводило к ошибке парсинга в CI/CD.
 
-## Решение
-
-### 1. Исправлен основной nuget.config
+### Решение
 - Убрана секция `packageSourceCredentials` из основного файла
 - Credentials перенесены в комментарий как пример
 - CI/CD теперь использует динамическую настройку источников
 
-### 2. Обновлен GitHub Actions workflow
-- Добавлен шаг очистки локальных конфигов
-- Добавлена очистка глобального кеша NuGet
-- Динамическая настройка источника с токеном из secrets
+## Проблема 2: Ошибка загрузки файлов проектов
+```
+error MSB4025: The project file could not be loaded. Data at the root level is invalid. Line 1, position 1.
+```
+
+### Причина
+В .csproj файлах присутствовал двойной BOM (Byte Order Mark) символ в начале файла (`﻿﻿<Project ...`), что делало XML невалидным.
+
+### Решение
+Убран лишний BOM символ из начала всех .csproj файлов:
+- `CommonData.csproj`
+- `BaseMSSqlProvider.csproj`
+- `BaseData.csproj`
+
+### Как избежать в будущем
+- Используйте редакторы, которые корректно обрабатывают BOM
+- При копировании XML содержимого следите за кодировкой
+- Регулярно проверяйте валидность XML файлов
 
 ### 3. Для локальной разработки
 Создайте файл `nuget.config.user` на основе `nuget.config.user.example`:
@@ -38,4 +50,4 @@ error: Unable to parse config file because: Credentials item must have username 
 ⚠️ **Важно**: Файл `nuget.config.user` должен быть в `.gitignore` и не попадать в репозиторий!
 
 ## Проверка исправления
-После этих изменений GitHub Actions должен работать без ошибок парсинга конфигурации.
+После этих изменений GitHub Actions должен работать без ошибок парсинга конфигурации и загрузки проектов.
