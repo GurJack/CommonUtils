@@ -317,11 +317,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# === DevExpress пакеты (лицензионные ограничения) ===
-# Исключаем локальные пакеты DevExpress из репозитория
-LocalPackages/*.nupkg
-LocalPackages/DevExpress.*
-
-# Но оставляем README и структуру папки
-!LocalPackages/README.md
-!LocalPackages/.gitkeep
+# === DevExpress пакеты ===
+# Включаем локальные пакеты DevExpress в репозиторий для GitHub Actions
+# Примечание: Убедитесь, что у вас есть права на распространение этих пакетов

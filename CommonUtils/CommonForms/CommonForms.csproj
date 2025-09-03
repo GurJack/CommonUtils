@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -64,8 +64,8 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <!-- Условные зависимости: DevExpress только если не CI -->
-  <ItemGroup Condition="'$(CI)' != 'true'">
+  <!-- Зависимости DevExpress -->
+  <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="23.2.3" />
     <PackageReference Include="DevExpress.Office.Core" Version="23.2.3" />
     <PackageReference Include="DevExpress.Utils" Version="23.2.3" />
