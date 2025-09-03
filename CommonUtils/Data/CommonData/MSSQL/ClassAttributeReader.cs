@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Data;
 //using System.Data.Entity;
@@ -9,13 +9,14 @@ namespace CommonUtils.MSSQL
 {
     public class ClassAttributeReader<T>  : IDataReader where T : class
     {
-        private readonly Func<object, object>[] _convertTable;
-        private readonly Func<object, bool>[] _constraintsTable;
-        private readonly List<T> _values;
-        private readonly string _tableName;
-        private readonly int _fieldCount;
+        // Поля закомментированы, так как функциональность не реализована
+        // private readonly Func<object, object>[] _convertTable;
+        // private readonly Func<object, bool>[] _constraintsTable;
+        // private readonly List<T> _values;
+        // private readonly string _tableName;
+        // private readonly int _fieldCount;
         private int _currentPos;
-        private readonly Dictionary<int,PropertyInfo> _properties;
+        // private readonly Dictionary<int,PropertyInfo> _properties;
 
         public ClassAttributeReader(List<T> values, string tableName, Func<object, bool>[] constraintsTable = null, Func<object, object>[] convertTable= null)
         {
@@ -63,8 +64,8 @@ namespace CommonUtils.MSSQL
             //        return;
             //    _fieldCount++;
             //    _properties.Add(attr.Position,info);
-                
-                
+
+
             //}
 
             ////if (fieldCount != null)
@@ -92,17 +93,11 @@ namespace CommonUtils.MSSQL
 
         public object GetValue(int i)
         {
-            //try
-            //{
-                
-                return _properties[i].GetValue(_values[_currentPos]);
+            // Метод не реализован, так как класс находится в разработке
+            throw new NotImplementedException("ClassAttributeReader is under development");
 
-                //return _convertTable[i](_properties[i].GetValue(_values[_currentPos]));
-            //}
-            //catch (Exception)
-            //{
-            //    return null;
-            //}
+            // Комментарий оригинального кода:
+            // return _properties[i].GetValue(_values[_currentPos]);
         }
 
         public int GetValues(object[] values)
@@ -195,7 +190,7 @@ namespace CommonUtils.MSSQL
             throw new NotImplementedException();
         }
 
-        public int FieldCount => _fieldCount;
+        public int FieldCount => 0; // Не реализовано
 
         public object this[int i] => throw new NotImplementedException();
 
@@ -244,6 +239,6 @@ namespace CommonUtils.MSSQL
         public int Depth { get; }
         public bool IsClosed { get; }
         public int RecordsAffected { get; }
-       
+
     }
 }
