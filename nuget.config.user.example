@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSourceCredentials>
+    <github-gurjack>
+      <add key="Username" value="GurJack" />
+      <!-- Замените YOUR_GITHUB_TOKEN на ваш персональный токен доступа GitHub -->
+      <add key="ClearTextPassword" value="YOUR_GITHUB_TOKEN" />
+    </github-gurjack>
+  </packageSourceCredentials>
+</configuration>

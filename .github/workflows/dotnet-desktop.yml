@@ -26,6 +26,16 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    - name: Clean NuGet configuration
+      run: |
+        # Очищаем любые локальные конфиги с credentials чтобы избежать конфликтов
+        if (Test-Path "nuget.config.user") {
+          Remove-Item "nuget.config.user" -Force
+          Write-Host "Removed local nuget.config.user file"
+        }
+        # Очищаем глобальные конфигурации NuGet
+        dotnet nuget locals all --clear
+
     - name: Configure GitHub Packages source
       run: |
         # Удаляем источник, если он уже существует
