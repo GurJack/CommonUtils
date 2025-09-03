@@ -82,12 +82,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\BaseData\BaseData.csproj" />
-    <ProjectReference Include="..\Data\CommonData\CommonData.csproj" />
-    <ProjectReference Include="..\Data\BaseMSSqlProvider\BaseMSSqlProvider.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 

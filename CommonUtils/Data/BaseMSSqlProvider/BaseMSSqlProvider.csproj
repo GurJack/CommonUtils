@@ -37,11 +37,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../BaseData/BaseData.csproj" />
-    <ProjectReference Include="../CommonData/CommonData.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
   </ItemGroup>
 
