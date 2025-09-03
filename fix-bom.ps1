@@ -4,6 +4,7 @@ Write-Host "Проверка BOM символов в .csproj файлах..." -F
 $projectFiles = @(
     "CommonUtils\Data\BaseData\BaseData.csproj",
     "CommonUtils\Data\CommonData\CommonData.csproj",
+    "CommonUtils\CommonUtils\CommonUtils.csproj",
     "CommonUtils\Data\BaseMSSqlProvider\BaseMSSqlProvider.csproj"
 )
 
