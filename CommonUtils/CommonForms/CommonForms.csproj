@@ -64,13 +64,22 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- Условные зависимости: DevExpress только если не CI -->
+  <ItemGroup Condition="'$(CI)' != 'true'">
     <PackageReference Include="DevExpress.Win.Design" Version="23.2.3" />
     <PackageReference Include="DevExpress.Office.Core" Version="23.2.3" />
     <PackageReference Include="DevExpress.Utils" Version="23.2.3" />
     <PackageReference Include="DevExpress.Win" Version="23.2.3" />
+  </ItemGroup>
+
+  <!-- Обязательные зависимости -->
+  <ItemGroup>
     <PackageReference Include="NLog" Version="6.0.3" />
     <PackageReference Include="NLog.Extensions.Logging" Version="6.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -89,5 +98,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>

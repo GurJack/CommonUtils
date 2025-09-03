@@ -54,7 +54,10 @@ jobs:
       run: dotnet restore $env:SOLUTION_PATH
 
     - name: Build
-      run: dotnet build $env:SOLUTION_PATH --configuration Release --no-restore
+      run: |
+        # Устанавливаем CI=true для исключения DevExpress пакетов
+        $env:CI = "true"
+        dotnet build $env:SOLUTION_PATH --configuration Release --no-restore
 
     - name: Test
       run: dotnet test $env:SOLUTION_PATH --configuration Release --no-build --verbosity normal
@@ -73,6 +76,8 @@ jobs:
 
     - name: Pack NuGet packages
       run: |
+        # Устанавливаем CI=true для сохранения контекста
+        $env:CI = "true"
         $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object { $_.FullName -notmatch 'test|Test' }
         foreach ($project in $projects) {
           Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"
