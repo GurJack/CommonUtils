@@ -40,6 +40,9 @@ dotnet add package GurJack.CommonUtils.BaseMSSqlProvider --source github-gurjack
 
 # Только проверка/исправление BOM символов
 .\fix-bom.ps1
+
+# Тестирование процесса создания пакетов
+.\test-publish.ps1
 ```
 
 ### Обычная сборка

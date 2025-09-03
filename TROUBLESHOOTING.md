@@ -63,6 +63,19 @@ error NU5039: The readme file 'README.md' does not exist in the package.
 - Добавлены XML комментарии к `BaseModel`
 - Отключены предупреждения CS1591 в проектах через `<NoWarn>`
 
+## Проблема 5: Ошибка публикации в GitHub Packages
+```
+error: The specified source 'github' is invalid. Provide a valid source.
+```
+
+### Причина
+Настроенный источник NuGet по имени "github" не работает корректно в CI/CD среде или был удалён.
+
+### Решение
+- Заменили `--source "github"` на `--source "${{ env.GITHUB_PACKAGES_URL }}"`
+- Улучшили настройку источника с лучшей обработкой ошибок
+- Добавили логирование для отладки
+
 ### 3. Для локальной разработки
 Создайте файл `nuget.config.user` на основе `nuget.config.user.example`:
 
