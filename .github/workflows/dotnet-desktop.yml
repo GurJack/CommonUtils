@@ -66,14 +66,15 @@ jobs:
 
         # Пробуем восстановить только CommonForms
         $restoreSuccess = $false
-        try {
-          dotnet restore "CommonUtils\CommonForms\CommonForms.csproj" --verbosity quiet
+        $ErrorActionPreference = "SilentlyContinue"
+
+        $restoreResult = dotnet restore "CommonUtils\CommonForms\CommonForms.csproj" --verbosity quiet 2>&1
+        if ($LASTEXITCODE -eq 0) {
           $restoreSuccess = $true
           Write-Host "✅ DevExpress зависимости доступны - CommonForms будет включен"
           echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
           echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
-        }
-        catch {
+        } else {
           Write-Host "❌ DevExpress зависимости недоступны - создаем fallback solution"
           echo "INCLUDE_COMMONFORMS=false" >> $env:GITHUB_ENV
           echo "TARGET_SOLUTION=$env:TEMP_SOLUTION_PATH" >> $env:GITHUB_ENV
@@ -108,6 +109,8 @@ jobs:
           $filteredLines -join "`r`n" | Set-Content "$env:TEMP_SOLUTION_PATH" -NoNewline
           Write-Host "Создан fallback solution: $env:TEMP_SOLUTION_PATH"
         }
+
+        $ErrorActionPreference = "Stop"
 
     - name: Restore dependencies
       run: |
