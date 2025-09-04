@@ -60,28 +60,18 @@ jobs:
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
-    - name: Create temporary solution file
-      run: |
-        # Исключаем CommonForms проект из сборки в CI/CD так как он требует DevExpress пакеты
-        $solutionContent = Get-Content "$env:SOLUTION_PATH"
-        $filteredContent = $solutionContent | Where-Object { $_ -notmatch "CommonForms" }
-        $filteredContent | Set-Content "$env:TEMP_SOLUTION_PATH"
-
-        Write-Host "Создан временный solution файл без CommonForms проекта для CI/CD"
-        Write-Host "Содержимое временного solution файла:"
-        Get-Content "$env:TEMP_SOLUTION_PATH"
-
     - name: Restore dependencies
       run: |
-        dotnet restore "$env:TEMP_SOLUTION_PATH"
+        Write-Host "Восстанавливаем зависимости для всех проектов (включая CommonForms)"
+        dotnet restore "$env:SOLUTION_PATH"
 
     - name: Build
       run: |
-        dotnet build "$env:TEMP_SOLUTION_PATH" --configuration Release --no-restore
+        dotnet build "$env:SOLUTION_PATH" --configuration Release --no-restore
 
     - name: Test
       run: |
-        dotnet test "$env:TEMP_SOLUTION_PATH" --configuration Release --no-build --verbosity normal
+        dotnet test "$env:SOLUTION_PATH" --configuration Release --no-build --verbosity normal
 
     - name: Set Package Version
       run: |
