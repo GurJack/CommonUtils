@@ -1,4 +1,4 @@
-﻿//using CommonUtils.Settings;
+//using CommonUtils.Settings;
 //using Microsoft.Data.SqlClient;
 //using System;
 //using System.Collections.Generic;

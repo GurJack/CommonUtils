@@ -1,4 +1,4 @@
-﻿using CommonUtils.Security;
+using CommonUtils.Security;
 using CommonUtils.Settings.Attributes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;

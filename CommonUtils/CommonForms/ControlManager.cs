@@ -1,4 +1,4 @@
-﻿//using DevExpress.XtraSplashScreen;
+//using DevExpress.XtraSplashScreen;
 //using System.Windows;
 //using static CommonForms.SplashScreenBase;
 

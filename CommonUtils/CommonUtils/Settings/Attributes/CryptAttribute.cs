@@ -1,4 +1,4 @@
-﻿namespace CommonUtils.Settings.Attributes
+namespace CommonUtils.Settings.Attributes
 {
     /// <summary>
     /// Указывает, должно ли свойство/поле шифроваться при сохранении

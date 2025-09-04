@@ -1,4 +1,4 @@
-﻿//namespace CommonUtils.Loggers.Appenders
+//namespace CommonUtils.Loggers.Appenders
 //{
 //    public interface IAppenderLogInfo
 //    {

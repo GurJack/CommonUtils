@@ -1,4 +1,4 @@
-﻿using CommonUtils.Settings.Attributes;
+using CommonUtils.Settings.Attributes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using System.Reflection;
 using System.Reflection.Emit;

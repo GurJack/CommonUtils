@@ -1,4 +1,4 @@
-﻿//namespace CommonUtils.Event
+//namespace CommonUtils.Event
 //{
 //    public enum StatusTypes
 //    {

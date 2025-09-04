@@ -1,4 +1,4 @@
-﻿//using CommonForms.ViewModels;
+//using CommonForms.ViewModels;
 //using DevExpress.XtraEditors;
 //using System;
 //using System.Collections.Generic;

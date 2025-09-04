@@ -1,4 +1,4 @@
-﻿//namespace CommonUtils.Loggers
+//namespace CommonUtils.Loggers
 //{
 //    public class LogParam
 //    {

@@ -1,4 +1,4 @@
-﻿//using BaseData;
+//using BaseData;
 //using CommonUtils;
 //using DevExpress.XtraEditors;
 //using DevExpress.XtraGrid;

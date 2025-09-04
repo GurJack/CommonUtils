@@ -1,4 +1,4 @@
-﻿//namespace CommonUtils.Loggers
+//namespace CommonUtils.Loggers
 //{
 //    /// <summary>
 //    /// The log entry type: information, warning, error.

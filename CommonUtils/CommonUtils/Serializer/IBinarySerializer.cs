@@ -1,4 +1,4 @@
-﻿//namespace CommonUtils.Serializer
+//namespace CommonUtils.Serializer
 //{
 //    /// <summary>
 //    /// The binary serializer.

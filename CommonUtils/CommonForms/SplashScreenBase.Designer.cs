@@ -1,4 +1,4 @@
-﻿namespace CommonForms
+namespace CommonForms
 {
     partial class SplashScreenBase
     {

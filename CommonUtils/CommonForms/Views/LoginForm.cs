@@ -1,4 +1,4 @@
-﻿using CommonUtils.Security;
+using CommonUtils.Security;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;

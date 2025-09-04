@@ -1,4 +1,4 @@
-﻿//using CommonUtils.Event;
+//using CommonUtils.Event;
 //using DevExpress.XtraEditors;
 //using DevExpress.XtraRichEdit.API.Native;
 //using System;

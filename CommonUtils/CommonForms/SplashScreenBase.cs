@@ -1,4 +1,4 @@
-﻿using DevExpress.CodeParser;
+using DevExpress.CodeParser;
 using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;

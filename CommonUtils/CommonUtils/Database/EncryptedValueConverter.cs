@@ -1,4 +1,4 @@
-﻿using CommonUtils.Security;
+using CommonUtils.Security;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 

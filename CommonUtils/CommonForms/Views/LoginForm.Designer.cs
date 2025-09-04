@@ -1,4 +1,4 @@
-﻿namespace CommonForms.Views
+namespace CommonForms.Views
 {
     partial class LoginForm
     {

@@ -1,4 +1,4 @@
-﻿//using CommonUtils.Exceptions;
+//using CommonUtils.Exceptions;
 //using CommonUtils.Loggers;
 //using CommonUtils.Loggers.Appenders;
 //using CommonUtils.Settings;
