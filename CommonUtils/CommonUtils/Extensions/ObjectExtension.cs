@@ -1,6 +1,7 @@
-﻿using System;
+﻿﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -140,7 +141,7 @@ namespace CommonUtils.Extensions
                 if (obj is T result)
                     return result;
 
-                return (T)Convert.ChangeType(obj, typeof(T));
+                return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
             }
             catch
             {

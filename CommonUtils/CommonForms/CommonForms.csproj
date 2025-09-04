@@ -1,4 +1,4 @@
-﻿﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -12,8 +12,8 @@
     <IsPublishable>False</IsPublishable>
     <UseWindowsForms>true</UseWindowsForms>
 
-    <!-- Подавление предупреждений -->
-    <NoWarn>$(NoWarn);CS1591;CS8618;CS8603;CS8625;CS8612;CS8765;CS8767;CA1051;CA1710;CA1036;CA1850;CA1305;CA1309;CA1310;CA1304;CA1311;CA1852;EF1002;CA1510;CA5351</NoWarn>
+    <!-- Предупреждения будут исправлены в коде -->
+    <!-- <NoWarn>$(NoWarn);CS1591;CS8618;CS8603;CS8625;CS8612;CS8765;CS8767;CA1051;CA1710;CA1036;CA1850;CA1305;CA1309;CA1310;CA1304;CA1311;CA1852;EF1002;CA1510;CA5351</NoWarn> -->
 
     <!-- Включение генерации пакета -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

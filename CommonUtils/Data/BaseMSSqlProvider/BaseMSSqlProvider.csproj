@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!-- Отключаем неиспользуемые поля и предупреждения XML -->
-    <NoWarn>$(NoWarn);CS0169;CS0649;CS1591</NoWarn>
+    <!-- Предупреждения будут исправлены в коде -->
+    <!-- <NoWarn>$(NoWarn);CS0169;CS0649;CS1591</NoWarn> -->
 
     <!-- === МЕТАДАННЫЕ ПАКЕТА === -->
     <PackageId>GurJack.CommonUtils.BaseMSSqlProvider</PackageId>

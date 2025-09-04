@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿﻿﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -22,9 +22,9 @@ namespace CommonUtils.Extensions
                 return null;
 
             if (str.Length > 1)
-                return char.ToUpper(str[0]) + str.Substring(1);
+                return char.ToUpper(str[0], CultureInfo.InvariantCulture) + str.Substring(1);
 
-            return str.ToUpper();
+            return str.ToUpper(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -38,11 +38,11 @@ namespace CommonUtils.Extensions
                 return str;
 
             // Special handling for "hELLO wORLD" -> "Hello world"
-            var lowerStr = str.ToLower();
+            var lowerStr = str.ToLower(CultureInfo.InvariantCulture);
             if (lowerStr.Length > 0)
             {
                 var chars = lowerStr.ToCharArray();
-                chars[0] = char.ToUpper(chars[0]);
+                chars[0] = char.ToUpper(chars[0], CultureInfo.InvariantCulture);
                 return new string(chars);
             }
 
@@ -104,8 +104,8 @@ namespace CommonUtils.Extensions
             using (var md5 = MD5.Create())
             {
                 var inputBytes = Encoding.UTF8.GetBytes(input);
-                var hashBytes = md5.ComputeHash(inputBytes);
-                return Convert.ToHexString(hashBytes).ToLower();
+                var hashBytes = MD5.HashData(inputBytes);
+                return Convert.ToHexString(hashBytes).ToLower(CultureInfo.InvariantCulture);
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +8,17 @@ using System.Runtime.InteropServices;
 
 namespace CommonUtils.Security
 {
+    /// <summary>
+    /// Помощник для работы с безопасными строками (SecureString)
+    /// </summary>
     public static class SecurePasswordHelper
     {
-        public static SecureString ConvertToSecureString(string password)
+        /// <summary>
+        /// Преобразует обычную строку в безопасную строку
+        /// </summary>
+        /// <param name="password">Пароль в виде обычной строки</param>
+        /// <returns>Безопасная строка или null, если входной параметр пустой</returns>
+        public static SecureString? ConvertToSecureString(string password)
         {
             if (string.IsNullOrEmpty(password)) return null;
 
@@ -23,7 +31,12 @@ namespace CommonUtils.Security
             return secureString;
         }
 
-        public static string ConvertToString(SecureString secureString)
+        /// <summary>
+        /// Преобразует безопасную строку в обычную строку
+        /// </summary>
+        /// <param name="secureString">Безопасная строка</param>
+        /// <returns>Обычная строка или null, если входной параметр null</returns>
+        public static string? ConvertToString(SecureString? secureString)
         {
             if (secureString == null) return null;
 

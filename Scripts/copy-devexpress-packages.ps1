@@ -116,3 +116,4 @@ Write-Host "`n💡 Следующие шаги:" -ForegroundColor Cyan
 Write-Host "1. Добавьте LocalPackages/* в .gitignore (уже сделано)" -ForegroundColor White
 Write-Host "2. Соберите проект: dotnet build" -ForegroundColor White
 Write-Host "3. Для GitHub Actions настройте секреты с пакетами" -ForegroundColor White
+

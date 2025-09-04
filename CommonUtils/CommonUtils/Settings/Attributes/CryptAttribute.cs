@@ -1,4 +1,4 @@
-﻿namespace CommonUtils.Settings.Attributes
+﻿﻿namespace CommonUtils.Settings.Attributes
 {
     /// <summary>
     /// Указывает, должно ли свойство/поле шифроваться при сохранении
@@ -6,15 +6,21 @@
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CryptAttribute : Attribute
     {
-        /// <param name="isCrypt">Требуется ли шифрование</param>
+        /// <summary>
+        /// Получает значение, указывающее, требуется ли шифрование
+        /// </summary>
         public bool IsCrypt { get; }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр атрибута шифрования
+        /// </summary>
+        /// <param name="isCrypt">Требуется ли шифрование</param>
         public CryptAttribute(bool isCrypt)
         {
             IsCrypt = isCrypt;
         }
 
-        
+
     }
 
 }

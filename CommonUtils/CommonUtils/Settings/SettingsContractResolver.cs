@@ -1,4 +1,4 @@
-﻿using CommonUtils.Security;
+﻿﻿using CommonUtils.Security;
 using CommonUtils.Settings.Attributes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -45,7 +45,7 @@ namespace CommonUtils.Settings
             return property;
         }
 
-        private class EncryptedValueProvider : IValueProvider
+        private sealed class EncryptedValueProvider : IValueProvider
         {
             private readonly IValueProvider _innerProvider;
             private readonly string _encryptionKey;

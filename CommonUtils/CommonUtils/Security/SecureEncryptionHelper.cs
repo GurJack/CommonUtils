@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +8,18 @@ using System.Threading.Tasks;
 
 namespace CommonUtils.Security
 {
+    /// <summary>
+    /// Помощник для безопасного шифрования данных с использованием AES
+    /// </summary>
     public static class SecureEncryptionHelper
     {
+        /// <summary>
+        /// Шифрует текст с использованием AES алгоритма
+        /// </summary>
+        /// <param name="plainText">Открытый текст для шифрования</param>
+        /// <param name="key">Ключ шифрования</param>
+        /// <returns>Зашифрованный текст в формате Base64</returns>
+        /// <exception cref="ArgumentNullException">Возникает, если ключ пустой</exception>
         public static string Encrypt(string plainText, string key)
         {
             if (string.IsNullOrEmpty(plainText)) return plainText;
@@ -30,6 +40,13 @@ namespace CommonUtils.Security
             return Convert.ToBase64String(ms.ToArray());
         }
 
+        /// <summary>
+        /// Расшифровывает текст, зашифрованный методом Encrypt
+        /// </summary>
+        /// <param name="cipherText">Зашифрованный текст в формате Base64</param>
+        /// <param name="key">Ключ шифрования</param>
+        /// <returns>Расшифрованный текст</returns>
+        /// <exception cref="ArgumentNullException">Возникает, если ключ пустой</exception>
         public static string Decrypt(string cipherText, string key)
         {
             if (string.IsNullOrEmpty(cipherText)) return cipherText;
@@ -50,8 +67,7 @@ namespace CommonUtils.Security
 
         private static byte[] GenerateSalt(string seed)
         {
-            using var sha256 = SHA256.Create();
-            return sha256.ComputeHash(Encoding.UTF8.GetBytes(seed))[..16];
+            return SHA256.HashData(Encoding.UTF8.GetBytes(seed))[..16];
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿using System;
+﻿﻿﻿﻿﻿﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -101,8 +101,7 @@ namespace CommonUtils.Extensions
         /// <returns></returns>
         public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> source, int size)
         {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
+            ArgumentNullException.ThrowIfNull(source);
             if (size <= 0)
                 throw new ArgumentException("Size must be greater than 0", nameof(size));
 
