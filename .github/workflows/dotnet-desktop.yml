@@ -1,7 +1,7 @@
-name: .NET NuGet Package CI (excluding DevExpress projects)
+name: .NET NuGet Package CI (with optional DevExpress projects)
 
-# Этот workflow собирает и публикует NuGet пакеты, исключая проекты с DevExpress зависимостями
-# CommonForms проект исключен из CI/CD так как требует коммерческие DevExpress пакеты
+# Этот workflow собирает и публикует NuGet пакеты для всех проектов
+# CommonForms будет включен только при успешном restore всех DevExpress зависимостей
 
 on:
   push:
@@ -60,18 +60,71 @@ jobs:
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
+    - name: Test DevExpress dependencies and create fallback solution
+      run: |
+        Write-Host "Проверяем доступность DevExpress зависимостей для CommonForms"
+
+        # Пробуем восстановить только CommonForms
+        $restoreSuccess = $false
+        try {
+          dotnet restore "CommonUtils\CommonForms\CommonForms.csproj" --verbosity quiet
+          $restoreSuccess = $true
+          Write-Host "✅ DevExpress зависимости доступны - CommonForms будет включен"
+          echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
+          echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
+        }
+        catch {
+          Write-Host "❌ DevExpress зависимости недоступны - создаем fallback solution"
+          echo "INCLUDE_COMMONFORMS=false" >> $env:GITHUB_ENV
+          echo "TARGET_SOLUTION=$env:TEMP_SOLUTION_PATH" >> $env:GITHUB_ENV
+
+          # Копируем основной solution файл
+          Copy-Item "$env:SOLUTION_PATH" "$env:TEMP_SOLUTION_PATH"
+
+          # Удаляем строки связанные с CommonForms проектом
+          $content = Get-Content "$env:TEMP_SOLUTION_PATH" -Raw
+          $lines = $content -split "`r?`n"
+          $filteredLines = @()
+          $skipLine = $false
+
+          foreach ($line in $lines) {
+            if ($line -match 'CommonForms.*\.csproj') {
+              $skipLine = $true
+              continue
+            }
+            if ($skipLine -and $line -match '^\s*EndProject\s*$') {
+              $skipLine = $false
+              continue
+            }
+            if ($skipLine) {
+              continue
+            }
+            if ($line -match '{E4ABA06E-2F8C-4507-BEA0-D4CBEBD3490B}') {
+              continue
+            }
+            $filteredLines += $line
+          }
+
+          $filteredLines -join "`r`n" | Set-Content "$env:TEMP_SOLUTION_PATH" -NoNewline
+          Write-Host "Создан fallback solution: $env:TEMP_SOLUTION_PATH"
+        }
+
     - name: Restore dependencies
       run: |
-        Write-Host "Восстанавливаем зависимости для всех проектов (включая CommonForms)"
-        dotnet restore "$env:SOLUTION_PATH"
+        if ($env:INCLUDE_COMMONFORMS -eq "true") {
+          Write-Host "Восстанавливаем зависимости для всех проектов (включая CommonForms)"
+        } else {
+          Write-Host "Восстанавливаем зависимости для проектов без CommonForms"
+        }
+        dotnet restore "$env:TARGET_SOLUTION"
 
     - name: Build
       run: |
-        dotnet build "$env:SOLUTION_PATH" --configuration Release --no-restore
+        dotnet build "$env:TARGET_SOLUTION" --configuration Release --no-restore
 
     - name: Test
       run: |
-        dotnet test "$env:SOLUTION_PATH" --configuration Release --no-build --verbosity normal
+        dotnet test "$env:TARGET_SOLUTION" --configuration Release --no-build --verbosity normal
 
     - name: Set Package Version
       run: |
@@ -87,9 +140,16 @@ jobs:
 
     - name: Pack NuGet packages
       run: |
-        # Пакуем только проекты без DevExpress зависимостей
-        $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
-          $_.FullName -notmatch 'test|Test' -and $_.FullName -notmatch 'CommonForms'
+        if ($env:INCLUDE_COMMONFORMS -eq "true") {
+          Write-Host "Пакуем все проекты (включая CommonForms)"
+          $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
+            $_.FullName -notmatch 'test|Test'
+          }
+        } else {
+          Write-Host "Пакуем проекты без CommonForms"
+          $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
+            $_.FullName -notmatch 'test|Test|CommonForms'
+          }
         }
         foreach ($project in $projects) {
           Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"

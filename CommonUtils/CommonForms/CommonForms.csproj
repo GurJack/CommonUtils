@@ -9,7 +9,7 @@
     <NeutralLanguage>ru-RU</NeutralLanguage>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
-    <IsPublishable>False</IsPublishable>
+    <IsPublishable>True</IsPublishable>
     <UseWindowsForms>true</UseWindowsForms>
 
     <!-- Предупреждения будут исправлены в коде -->
