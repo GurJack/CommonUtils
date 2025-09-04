@@ -1,4 +1,7 @@
-name: .NET NuGet Package CI
+name: .NET NuGet Package CI (excluding DevExpress projects)
+
+# Этот workflow собирает и публикует NuGet пакеты, исключая проекты с DevExpress зависимостями
+# CommonForms проект исключен из CI/CD так как требует коммерческие DevExpress пакеты
 
 on:
   push:
@@ -8,6 +11,7 @@ on:
 
 env:
   SOLUTION_PATH: CommonUtils/CommonUtils.sln
+  TEMP_SOLUTION_PATH: CommonUtils/temp-ci.sln
   GITHUB_PACKAGES_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
 jobs:
@@ -36,28 +40,48 @@ jobs:
         # Очищаем глобальные конфигурации NuGet
         dotnet nuget locals all --clear
 
-    - name: Configure GitHub Packages source
+    - name: Configure NuGet sources
       run: |
         # Удаляем существующие источники GitHub Packages
         dotnet nuget remove source "github" 2>$null || true
         dotnet nuget remove source "github-packages" 2>$null || true
+        dotnet nuget remove source "local-packages" 2>$null || true
+
+        # Добавляем источник для локальных DevExpress пакетов
+        $localPackagesPath = "$(Get-Location)\LocalPackages"
+        Write-Host "Adding local packages source: $localPackagesPath"
+        dotnet nuget add source $localPackagesPath -n "local-packages"
 
         # Добавляем источник GitHub Packages с аутентификацией
         Write-Host "Adding GitHub Packages source: ${{ env.GITHUB_PACKAGES_URL }}"
         dotnet nuget add source "${{ env.GITHUB_PACKAGES_URL }}" -n "github-packages" -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text
 
-        # Проверка добавленного источника
+        # Проверка добавленных источников
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
+    - name: Create temporary solution file
+      run: |
+        # Исключаем CommonForms проект из сборки в CI/CD так как он требует DevExpress пакеты
+        $solutionContent = Get-Content "$env:SOLUTION_PATH"
+        $filteredContent = $solutionContent | Where-Object { $_ -notmatch "CommonForms" }
+        $filteredContent | Set-Content "$env:TEMP_SOLUTION_PATH"
+
+        Write-Host "Создан временный solution файл без CommonForms проекта для CI/CD"
+        Write-Host "Содержимое временного solution файла:"
+        Get-Content "$env:TEMP_SOLUTION_PATH"
+
     - name: Restore dependencies
-      run: dotnet restore $env:SOLUTION_PATH
+      run: |
+        dotnet restore "$env:TEMP_SOLUTION_PATH"
 
     - name: Build
-      run: dotnet build $env:SOLUTION_PATH --configuration Release --no-restore
+      run: |
+        dotnet build "$env:TEMP_SOLUTION_PATH" --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test $env:SOLUTION_PATH --configuration Release --no-build --verbosity normal
+      run: |
+        dotnet test "$env:TEMP_SOLUTION_PATH" --configuration Release --no-build --verbosity normal
 
     - name: Set Package Version
       run: |
@@ -73,7 +97,10 @@ jobs:
 
     - name: Pack NuGet packages
       run: |
-        $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object { $_.FullName -notmatch 'test|Test' }
+        # Пакуем только проекты без DevExpress зависимостей
+        $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
+          $_.FullName -notmatch 'test|Test' -and $_.FullName -notmatch 'CommonForms'
+        }
         foreach ($project in $projects) {
           Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"
           dotnet pack $project.FullName --configuration Release -p:PackageVersion=$env:PACKAGE_VERSION --output nupkg
@@ -103,4 +130,13 @@ jobs:
         foreach ($package in $packages) {
           Write-Host "Publishing $($package.Name)"
           dotnet nuget push $package.FullName --source "${{ env.GITHUB_PACKAGES_URL }}" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        }
+
+    - name: Cleanup
+      if: always()
+      run: |
+        # Удаляем временные файлы
+        if (Test-Path "$env:TEMP_SOLUTION_PATH") {
+          Remove-Item "$env:TEMP_SOLUTION_PATH" -Force
+          Write-Host "Удален временный solution файл"
         }
