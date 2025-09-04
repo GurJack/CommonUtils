@@ -22,6 +22,8 @@ bld/
 *.nupkg
 *.snupkg
 packages/
+# Исключение для DevExpress пакетов в LocalPackages
+!LocalPackages/*.nupkg
 # Exclude package lock files (you may want to include these if you prefer)
 # packages.lock.json
 
