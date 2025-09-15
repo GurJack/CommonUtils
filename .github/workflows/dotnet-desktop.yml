@@ -11,6 +11,7 @@ on:
 
 env:
   SOLUTION_PATH: CommonUtils/CommonUtils.sln
+  TEMP_SOLUTION_PATH: CommonUtils/temp-ci.sln
   GITHUB_PACKAGES_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
 jobs:
@@ -38,28 +39,79 @@ jobs:
           Write-Host "✅ Создана папка: $localPackagesPath"
         }
 
-        # Распаковываем DevExpress пакеты из секретов (если доступны)
-        $devExpressPackages = @(
-          "DevExpress.Win.Design.23.2.3.nupkg",
-          "DevExpress.Office.Core.23.2.3.nupkg",
-          "DevExpress.Utils.23.2.3.nupkg",
-          "DevExpress.Win.23.2.3.nupkg"
-        )
-
+        # Проверяем и распаковываем DevExpress пакеты из секретов
         $hasDevexpressSecrets = $false
-        foreach ($package in $devExpressPackages) {
-          $secretName = $package.Replace(".", "_").Replace("-", "_")
-          $secretValue = "${{ secrets.$secretName }}"
 
-          # Проверяем, есть ли секрет
-          if ($secretValue -and $secretValue -ne "${{ secrets.$secretName }}") {
-            # Декодируем base64 и сохраняем пакет
+        # DevExpress.Win.Design.23.2.3.nupkg
+        $secretValue = "${{ secrets.DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG }}"
+        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG }}") {
+          try {
             $bytes = [Convert]::FromBase64String($secretValue)
-            $filePath = Join-Path $localPackagesPath $package
+            $filePath = Join-Path $localPackagesPath "DevExpress.Win.Design.23.2.3.nupkg"
             [IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "✅ Распакован пакет: $package"
+            Write-Host "✅ Распакован пакет: DevExpress.Win.Design.23.2.3.nupkg"
             $hasDevexpressSecrets = $true
+          } catch {
+            Write-Host "❌ Ошибка распаковки пакета DevExpress.Win.Design.23.2.3.nupkg: $_"
           }
+        } else {
+          Write-Host "ℹ️ Секрет DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG не найден или пуст"
+        }
+
+        # DevExpress.Office.Core.23.2.3.nupkg
+        $secretValue = "${{ secrets.DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG }}"
+        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG }}") {
+          try {
+            $bytes = [Convert]::FromBase64String($secretValue)
+            $filePath = Join-Path $localPackagesPath "DevExpress.Office.Core.23.2.3.nupkg"
+            [IO.File]::WriteAllBytes($filePath, $bytes)
+            Write-Host "✅ Распакован пакет: DevExpress.Office.Core.23.2.3.nupkg"
+            $hasDevexpressSecrets = $true
+          } catch {
+            Write-Host "❌ Ошибка распаковки пакета DevExpress.Office.Core.23.2.3.nupkg: $_"
+          }
+        } else {
+          Write-Host "ℹ️ Секрет DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG не найден или пуст"
+        }
+
+        # DevExpress.Utils.23.2.3.nupkg
+        $secretValue = "${{ secrets.DEVEXPRESS_UTILS_23_2_3_NUPKG }}"
+        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_UTILS_23_2_3_NUPKG }}") {
+          try {
+            $bytes = [Convert]::FromBase64String($secretValue)
+            $filePath = Join-Path $localPackagesPath "DevExpress.Utils.23.2.3.nupkg"
+            [IO.File]::WriteAllBytes($filePath, $bytes)
+            Write-Host "✅ Распакован пакет: DevExpress.Utils.23.2.3.nupkg"
+            $hasDevexpressSecrets = $true
+          } catch {
+            Write-Host "❌ Ошибка распаковки пакета DevExpress.Utils.23.2.3.nupkg: $_"
+          }
+        } else {
+          Write-Host "ℹ️ Секрет DEVEXPRESS_UTILS_23_2_3_NUPKG не найден или пуст"
+        }
+
+        # DevExpress.Win.23.2.3.nupkg
+        $secretValue = "${{ secrets.DEVEXPRESS_WIN_23_2_3_NUPKG }}"
+        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_WIN_23_2_3_NUPKG }}") {
+          try {
+            $bytes = [Convert]::FromBase64String($secretValue)
+            $filePath = Join-Path $localPackagesPath "DevExpress.Win.23.2.3.nupkg"
+            [IO.File]::WriteAllBytes($filePath, $bytes)
+            Write-Host "✅ Распакован пакет: DevExpress.Win.23.2.3.nupkg"
+            $hasDevexpressSecrets = $true
+          } catch {
+            Write-Host "❌ Ошибка распаковки пакета DevExpress.Win.23.2.3.nupkg: $_"
+          }
+        } else {
+          Write-Host "ℹ️ Секрет DEVEXPRESS_WIN_23_2_3_NUPKG не найден или пуст"
+        }
+
+        if ($hasDevexpressSecrets) {
+          Write-Host "✅ Все доступные DevExpress пакеты успешно распакованы"
+          "HAS_DEVEXPRESS=true" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+        } else {
+          Write-Host "❌ Ни один DevExpress пакет не найден в секретах"
+          "HAS_DEVEXPRESS=false" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
         }
 
         if ($hasDevexpressSecrets) {
