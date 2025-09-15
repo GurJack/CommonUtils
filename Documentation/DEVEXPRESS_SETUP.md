@@ -9,6 +9,15 @@ DevExpress компоненты - это коммерческие лицензи
 - Не могут быть включены в Git репозиторий из-за лицензионных ограничений
 - Блокируют сборку в GitHub Actions
 
+## Новое решение: Публикация CommonForms как NuGet пакета
+
+Теперь CommonForms может быть опубликован как NuGet пакет в GitHub Packages! Это стало возможно благодаря новому подходу с использованием GitHub Secrets.
+
+### Как это работает:
+1. **Локально**: DevExpress пакеты загружаются из LocalPackages/
+2. **В GitHub Actions**: Пакеты загружаются из GitHub Secrets и распаковываются во время сборки
+3. **Результат**: CommonForms собирается и публикуется как полноценный NuGet пакет
+
 ## Решения
 
 ### Решение 1: Локальные пакеты (Рекомендуется для разработки)
@@ -32,7 +41,23 @@ DevExpress компоненты - это коммерческие лицензи
    └── DevExpress.Win.23.2.3.nupkg
    ```
 
-### Решение 2: Условная компиляция (Используется в CI/CD)
+### Решение 2: GitHub Secrets (Рекомендуется для CI/CD)
+
+1. **Запустите скрипт кодирования пакетов:**
+   ```powershell
+   .\Scripts\encode-devexpress-for-github.ps1
+   ```
+
+2. **Скрипт автоматически:**
+   - Найдет пакеты в `LocalPackages/`
+   - Закодирует их в base64
+   - Создаст инструкции для GitHub Secrets
+
+3. **Добавьте секреты в GitHub:**
+   - Следуйте инструкциям в `Scripts\GitHubSecrets\INSTRUCTIONS.md`
+   - Добавьте все секреты в настройки репозитория
+
+### Решение 3: Условная компиляция (Альтернативное)
 
 Проект CommonForms настроен на условную загрузку DevExpress пакетов:
 
@@ -48,21 +73,7 @@ DevExpress компоненты - это коммерческие лицензи
 
 **Как работает:**
 - При локальной разработке: DevExpress пакеты загружаются из LocalPackages/
-- В GitHub Actions: переменная CI=true, DevExpress пакеты игнорируются
-
-### Решение 3: Исключение CommonForms из CI/CD
-
-Если нужно полностью исключить CommonForms из автоматической сборки:
-
-1. **Обновите GitHub Actions workflow:**
-   ```yaml
-   - name: Pack NuGet packages
-     run: |
-       $projects = Get-ChildItem -Recurse -Filter *.csproj |
-         Where-Object { $_.FullName -notmatch 'test|Test|CommonForms' }
-   ```
-
-2. **Создайте отдельный workflow для локальной сборки CommonForms**
+- В GitHub Actions: DevExpress пакеты загружаются из GitHub Secrets
 
 ## Настройка разработчика
 
@@ -86,6 +97,19 @@ DevExpress компоненты - это коммерческие лицензи
    dotnet build CommonUtils\CommonForms\CommonForms.csproj
    ```
 
+### Настройка GitHub Actions
+
+1. **Закодируйте пакеты для GitHub:**
+   ```powershell
+   .\Scripts\encode-devexpress-for-github.ps1
+   ```
+
+2. **Добавьте секреты в GitHub:**
+   - Откройте `Scripts\GitHubSecrets\INSTRUCTIONS.md`
+   - Следуйте инструкциям для добавления секретов
+
+3. **Запустите GitHub Actions**
+
 ### Обновление пакетов DevExpress
 
 При обновлении версии DevExpress:
@@ -97,26 +121,31 @@ DevExpress компоненты - это коммерческие лицензи
 
 2. **Обновите версии в CommonForms.csproj**
 
-3. **Пересоберите проект**
+3. **Перекодируйте пакеты для GitHub:**
+   ```powershell
+   .\Scripts\encode-devexpress-for-github.ps1
+   ```
+
+4. **Обновите секреты в GitHub**
 
 ## GitHub Actions
 
-### Текущее поведение
+### Новое поведение
 
-GitHub Actions автоматически:
-- Устанавливает `CI=true`
-- Исключает DevExpress пакеты из сборки
-- Собирает все остальные проекты
-- Публикует пакеты без CommonForms
+GitHub Actions теперь автоматически:
+- Распаковывает DevExpress пакеты из GitHub Secrets
+- Собирает все проекты включая CommonForms
+- Упаковывает и публикует все NuGet пакеты
+- CommonForms теперь публикуется как полноценный NuGet пакет!
 
 ### Результат в GitHub Packages
 
-Публикуются пакеты:
+Публикуются все пакеты:
 - ✅ GurJack.CommonUtils
 - ✅ GurJack.CommonUtils.BaseData
 - ✅ GurJack.CommonUtils.CommonData
 - ✅ GurJack.CommonUtils.BaseMSSqlProvider
-- ❌ GurJack.CommonUtils.CommonForms (только локально)
+- ✅ GurJack.CommonUtils.CommonForms
 
 ## Альтернативные подходы
 
@@ -147,8 +176,9 @@ using DevExpress.XtraEditors;
 ⚠️ **Важно:**
 - DevExpress пакеты защищены лицензией
 - Нельзя включать в публичный репозиторий
-- Нельзя перераспределять через GitHub Packages
+- Нельзя перераспределять через GitHub Packages публично
 - Каждый разработчик должен иметь собственную лицензию
+- При использовании GitHub Secrets убедитесь, что репозиторий приватный
 
 ## Поддержка
 
