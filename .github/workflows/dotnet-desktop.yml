@@ -60,65 +60,18 @@ jobs:
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
-    - name: Test DevExpress dependencies and create fallback solution
+    - name: Test DevExpress dependencies and prepare build
       run: |
-        Write-Host "Проверяем доступность DevExpress зависимостей для CommonForms"
+        Write-Host "Проверяем возможность сборки CommonForms в CI"
 
-        # Пробуем восстановить только CommonForms
-        $restoreSuccess = $false
-        $ErrorActionPreference = "SilentlyContinue"
-
-        $restoreResult = dotnet restore "CommonUtils\CommonForms\CommonForms.csproj" --verbosity quiet 2>&1
-        if ($LASTEXITCODE -eq 0) {
-          $restoreSuccess = $true
-          Write-Host "✅ DevExpress зависимости доступны - CommonForms будет включен"
-          echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
-          echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
-        } else {
-          Write-Host "❌ DevExpress зависимости недоступны - создаем fallback solution"
-          echo "INCLUDE_COMMONFORMS=false" >> $env:GITHUB_ENV
-          echo "TARGET_SOLUTION=$env:TEMP_SOLUTION_PATH" >> $env:GITHUB_ENV
-
-          # Копируем основной solution файл
-          Copy-Item "$env:SOLUTION_PATH" "$env:TEMP_SOLUTION_PATH"
-
-          # Удаляем строки связанные с CommonForms проектом
-          $content = Get-Content "$env:TEMP_SOLUTION_PATH" -Raw
-          $lines = $content -split "`r?`n"
-          $filteredLines = @()
-          $skipLine = $false
-
-          foreach ($line in $lines) {
-            if ($line -match 'CommonForms.*\.csproj') {
-              $skipLine = $true
-              continue
-            }
-            if ($skipLine -and $line -match '^\s*EndProject\s*$') {
-              $skipLine = $false
-              continue
-            }
-            if ($skipLine) {
-              continue
-            }
-            if ($line -match '{E4ABA06E-2F8C-4507-BEA0-D4CBEBD3490B}') {
-              continue
-            }
-            $filteredLines += $line
-          }
-
-          $filteredLines -join "`r`n" | Set-Content "$env:TEMP_SOLUTION_PATH" -NoNewline
-          Write-Host "Создан fallback solution: $env:TEMP_SOLUTION_PATH"
-        }
-
-        $ErrorActionPreference = "Stop"
+        # Для CI/CD просто исключаем CommonForms чтобы избежать проблем с DevExpress
+        Write-Host "❌ Исключаем CommonForms из CI/CD сборки (требует DevExpress)"
+        "INCLUDE_COMMONFORMS=false" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+        "TARGET_SOLUTION=${{ env.SOLUTION_PATH }}" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
     - name: Restore dependencies
       run: |
-        if ($env:INCLUDE_COMMONFORMS -eq "true") {
-          Write-Host "Восстанавливаем зависимости для всех проектов (включая CommonForms)"
-        } else {
-          Write-Host "Восстанавливаем зависимости для проектов без CommonForms"
-        }
+        Write-Host "Восстанавливаем зависимости для проектов (без CommonForms)"
         dotnet restore "$env:TARGET_SOLUTION"
 
     - name: Build
@@ -131,14 +84,14 @@ jobs:
 
     - name: Set Package Version
       run: |
-        if ($env:GITHUB_REF -match '^refs/tags/v(.+)$') {
+        if ("${{ github.ref }}" -match '^refs/tags/v(.+)$') {
           $version = $matches[1]
-          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
-          echo "Building release version: $version"
+          "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "Building release version: $version"
         } else {
           $version = "1.0.0-ci-${{ github.run_number }}"
-          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
-          echo "Building CI version: $version"
+          "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "Building CI version: $version"
         }
 
     - name: Pack NuGet packages
@@ -188,8 +141,8 @@ jobs:
     - name: Cleanup
       if: always()
       run: |
-        # Удаляем временные файлы
-        if (Test-Path "$env:TEMP_SOLUTION_PATH") {
-          Remove-Item "$env:TEMP_SOLUTION_PATH" -Force
+        # Удаляем временные файлы если они были созданы
+        if (Test-Path "${{ env.TEMP_SOLUTION_PATH }}") {
+          Remove-Item "${{ env.TEMP_SOLUTION_PATH }}" -Force
           Write-Host "Удален временный solution файл"
         }
