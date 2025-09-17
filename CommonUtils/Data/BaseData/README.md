@@ -1,14 +1,14 @@
 # GurJack.CommonUtils.BaseData
 
-A foundational library providing base classes and interfaces for data access in the CommonUtils ecosystem.
+Фундаментальная библиотека, предоставляющая базовые классы и интерфейсы для доступа к данным в экосистеме CommonUtils.
 
-## Features
+## Возможности
 
-- **BaseModel**: Base entity class with unique identifier support
-- **Database Provider Abstractions**: Interfaces for multi-database support
-- **Entity Framework Integration**: Ready-to-use with Entity Framework Core
+- **BaseModel**: Базовый класс сущности с поддержкой уникального идентификатора
+- **Абстракции провайдера базы данных**: Интерфейсы для поддержки нескольких баз данных
+- **Интеграция с Entity Framework**: Готово к использованию с Entity Framework Core
 
-## Key Components
+## Основные компоненты
 
 ### BaseModel
 ```csharp
@@ -18,9 +18,9 @@ public class BaseModel
 }
 ```
 
-Base class for all entities in the system, providing a unique identifier for each entity.
+Базовый класс для всех сущностей в системе, предоставляющий уникальный идентификатор для каждой сущности.
 
-## Usage
+## Использование
 
 ```csharp
 using BaseData;
@@ -32,17 +32,17 @@ public class User : BaseModel
 }
 ```
 
-## Installation
+## Установка
 
 ```bash
 dotnet add package GurJack.CommonUtils.BaseData --source https://nuget.pkg.github.com/GurJack/index.json
 ```
 
-## Dependencies
+## Зависимости
 
 - .NET 8.0
 - Microsoft SQL Server SqlManagementObjects
 
-## License
+## Лицензия
 
-This project is part of the CommonUtils library ecosystem.
+Этот проект является частью экосистемы библиотеки CommonUtils.

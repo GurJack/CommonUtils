@@ -1,47 +1,47 @@
 # GurJack.CommonUtils.BaseMSSqlProvider
 
-SQL Server database provider implementation for the CommonUtils library ecosystem.
+Реализация провайдера базы данных SQL Server для экосистемы библиотеки CommonUtils.
 
-## Features
+## Возможности
 
-- **SQL Server Provider**: Specialized database provider for Microsoft SQL Server
-- **Entity Framework Integration**: Seamless integration with Entity Framework Core
-- **Database Operations**: Comprehensive CRUD operations for SQL Server
+- **Провайдер SQL Server**: Специализированный провайдер базы данных для Microsoft SQL Server
+- **Интеграция с Entity Framework**: Бесшовная интеграция с Entity Framework Core
+- **Операции с базой данных**: Комплексные операции CRUD для SQL Server
 
-## Key Components
+## Основные компоненты
 
-This package provides SQL Server-specific implementations of the database provider interfaces defined in BaseData.
+Этот пакет предоставляет реализации провайдера базы данных, специфичные для SQL Server, определенные в интерфейсах BaseData.
 
-## Usage
+## Использование
 
 ```csharp
 using BaseMSSqlProvider;
 
-// Configure your DbContext to use SQL Server provider
-// Usage examples will be added as the library develops
+// Настройте ваш DbContext для использования провайдера SQL Server
+// Примеры использования будут добавлены по мере развития библиотеки
 ```
 
-## Installation
+## Установка
 
 ```bash
 dotnet add package GurJack.CommonUtils.BaseMSSqlProvider --source https://nuget.pkg.github.com/GurJack/index.json
 ```
 
-## Dependencies
+## Зависимости
 
 - .NET 8.0
 - GurJack.CommonUtils.BaseData
 - GurJack.CommonUtils.CommonData
 - Microsoft Entity Framework Core SQL Server
 
-## Configuration
+## Конфигурация
 
-This provider is designed to work with SQL Server databases and requires proper connection string configuration.
+Этот провайдер предназначен для работы с базами данных SQL Server и требует правильной конфигурации строки подключения.
 
-## Development Status
+## Статус разработки
 
-This library is actively under development and provides the foundation for SQL Server database operations in the CommonUtils ecosystem.
+Эта библиотека активно разрабатывается и предоставляет основу для операций с базой данных SQL Server в экосистеме CommonUtils.
 
-## License
+## Лицензия
 
-This project is part of the CommonUtils library ecosystem.
+Этот проект является частью экосистемы библиотеки CommonUtils.

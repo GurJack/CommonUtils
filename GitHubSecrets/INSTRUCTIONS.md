@@ -1,50 +1,50 @@
-# Instructions for setting up GitHub Secrets for DevExpress packages
+# Инструкция по настройке GitHub Secrets для пакетов DevExpress
 
-## Overview
+## Обзор
 
-This folder contains base64-encoded DevExpress packages that can be used as GitHub Secrets to enable building and publishing the CommonForms NuGet package in GitHub Actions.
+Эта папка содержит пакеты DevExpress в кодировке base64, которые могут использоваться как GitHub Secrets для включения сборки и публикации пакета NuGet CommonForms в GitHub Actions.
 
-## Steps to set up GitHub Secrets
+## Шаги по настройке GitHub Secrets
 
-1. **Navigate to your GitHub repository settings**
-   - Go to your repository on GitHub
-   - Click on "Settings" tab
-   - In the left sidebar, click "Secrets and variables" → "Actions"
+1. **Перейдите к настройкам вашего репозитория GitHub**
+   - Откройте ваш репозиторий на GitHub
+   - Нажмите на вкладку "Settings"
+   - В левой боковой панели нажмите "Secrets and variables" → "Actions"
 
-2. **Add secrets for each package**
-   - Click "New repository secret" button
-   - For each .txt file in this folder:
-     - Use the filename (without .txt extension) as the "Name" (e.g., `DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG`)
-     - Open the corresponding .txt file and copy its entire content
-     - Paste the content into the "Value" field
-     - Click "Add secret"
+2. **Добавьте секреты для каждого пакета**
+   - Нажмите кнопку "New repository secret"
+   - Для каждого файла .txt в этой папке:
+     - Используйте имя файла (без расширения .txt) как "Name" (например, `DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG`)
+     - Откройте соответствующий файл .txt и скопируйте все его содержимое
+     - Вставьте содержимое в поле "Value"
+     - Нажмите "Add secret"
 
-3. **Required secrets for CommonForms**
-   The following secrets are required for building CommonForms:
+3. **Необходимые секреты для CommonForms**
+   Следующие секреты необходимы для сборки CommonForms:
    - `DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG`
    - `DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG`
    - `DEVEXPRESS_UTILS_23_2_3_NUPKG`
    - `DEVEXPRESS_WIN_23_2_3_NUPKG`
 
-## How it works
+## Как это работает
 
-1. GitHub Actions workflow reads these secrets
-2. Decodes base64 content back to .nupkg files
-3. Places them in the LocalPackages folder
-4. Restores, builds, and packages CommonForms with all dependencies
-5. Publishes CommonForms as a NuGet package to GitHub Packages
+1. GitHub Actions workflow читает эти секреты
+2. Декодирует содержимое base64 обратно в файлы .nupkg
+3. Помещает их в папку LocalPackages
+4. Восстанавливает, собирает и упаковывает CommonForms со всеми зависимостями
+5. Публикует CommonForms как пакет NuGet в GitHub Packages
 
-## Security considerations
+## Соображения безопасности
 
-- These secrets should only be added to **private repositories**
-- DevExpress packages are licensed software - ensure you have proper licenses
-- Never commit encoded package files to the repository
-- Regularly rotate secrets if needed
+- Эти секреты должны добавляться только в **приватные репозитории**
+- Пакеты DevExpress являются лицензированным программным обеспечением - убедитесь, что у вас есть соответствующие лицензии
+- Никогда не фиксируйте закодированные файлы пакетов в репозитории
+- Регулярно обновляйте секреты при необходимости
 
-## Troubleshooting
+## Устранение неполадок
 
-If you encounter issues:
-1. Verify all required secrets are added
-2. Check that secret names exactly match the filenames
-3. Ensure the repository is private
-4. Confirm you have valid DevExpress licenses
+Если вы столкнетесь с проблемами:
+1. Убедитесь, что все необходимые секреты добавлены
+2. Проверьте, что имена секретов точно совпадают с именами файлов
+3. Убедитесь, что репозиторий является приватным
+4. Подтвердите, что у вас есть действующие лицензии DevExpress

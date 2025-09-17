@@ -1,43 +1,43 @@
 # GurJack.CommonUtils.CommonData
 
-Common data utilities and SQL Server-specific implementations for the CommonUtils library.
+Общие утилиты данных и реализации для SQL Server для библиотеки CommonUtils.
 
-## Features
+## Возможности
 
-- **SQL Server Utilities**: Specialized classes for SQL Server database operations
-- **Data Readers**: Custom data reader implementations
-- **MSSQL Integration**: SQL Server-specific database operations
+- **Утилиты SQL Server**: Специализированные классы для операций с базой данных SQL Server
+- **Чтение данных**: Пользовательские реализации чтения данных
+- **Интеграция с MSSQL**: Операции с базой данных, специфичные для SQL Server
 
-## Key Components
+## Основные компоненты
 
 ### ClassAttributeReader<T>
-A specialized IDataReader implementation for handling attributed classes (currently under development).
+Специализированная реализация IDataReader для работы с классами с атрибутами (в настоящее время в стадии разработки).
 
-## Usage
+## Использование
 
-This package provides common data access utilities that can be used across different database providers.
+Этот пакет предоставляет общие утилиты доступа к данным, которые могут использоваться различными провайдерами баз данных.
 
 ```csharp
 using CommonUtils.MSSQL;
 
-// Usage examples will be added as the library develops
+// Примеры использования будут добавлены по мере развития библиотеки
 ```
 
-## Installation
+## Установка
 
 ```bash
 dotnet add package GurJack.CommonUtils.CommonData --source https://nuget.pkg.github.com/GurJack/index.json
 ```
 
-## Dependencies
+## Зависимости
 
 - .NET 8.0
 - GurJack.CommonUtils.BaseData
 
-## Development Status
+## Статус разработки
 
-This library is actively under development. Some components may have limited functionality and are subject to change.
+Эта библиотека активно разрабатывается. Некоторые компоненты могут иметь ограниченную функциональность и могут измениться.
 
-## License
+## Лицензия
 
-This project is part of the CommonUtils library ecosystem.
+Этот проект является частью экосистемы библиотеки CommonUtils.
