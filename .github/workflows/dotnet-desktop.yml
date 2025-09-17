@@ -63,16 +63,18 @@ jobs:
     - name: Set params
       run: |
         $restoreSuccess = $true
-        Write-Host $env:INCLUDE_COMMONFORMS
-        Write-Host $env:TARGET_SOLUTION
-        Write-Host $env:SOLUTION_PATH
-        Write-Host $env:GITHUB_ENV
+        Write-Host "INCLUDE_COMMONFORMS: ${{ env:INCLUDE_COMMONFORMS }}"
+        Write-Host "TARGET_SOLUTION: ${{ env:TARGET_SOLUTION }}"
+        Write-Host "SOLUTION_PATH: ${{ env:SOLUTION_PATH }}"
+        Write-Host "GITHUB_ENV: ${{ env:GITHUB_ENV }}"
+        
         echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
         echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
-        Write-Host $env:INCLUDE_COMMONFORMS
-        Write-Host $env:TARGET_SOLUTION
-        Write-Host $env:SOLUTION_PATH
-        Write-Host $env:GITHUB_ENV
+        
+        Write-Host "INCLUDE_COMMONFORMS: ${{ env:INCLUDE_COMMONFORMS }}"
+        Write-Host "TARGET_SOLUTION: ${{ env:TARGET_SOLUTION }}"
+        Write-Host "SOLUTION_PATH: ${{ env:SOLUTION_PATH }}"
+        Write-Host "GITHUB_ENV: ${{ env:GITHUB_ENV }}"
         
         
     - name: Restore dependencies
