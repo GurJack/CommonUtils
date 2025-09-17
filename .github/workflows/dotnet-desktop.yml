@@ -62,6 +62,8 @@ jobs:
 
     - name: Restore dependencies
       run: |
+        $restoreSuccess = $true
+        echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
         echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
         Write-Host "Восстанавливаем зависимости для всех проектов"
         dotnet restore "$env:TARGET_SOLUTION"
