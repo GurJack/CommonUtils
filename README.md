@@ -9,6 +9,7 @@
 - **GurJack.CommonUtils.BaseData** - Базовые абстракции и интерфейсы для работы с данными
 - **GurJack.CommonUtils.CommonData** - Общие классы и утилиты для MSSQL и MySQL
 - **GurJack.CommonUtils.BaseMSSqlProvider** - Базовые провайдеры для Microsoft SQL Server
+- **GurJack.CommonUtils.CommonForms** - Библиотека Windows Forms компонентов с поддержкой DevExpress
 
 ## Установка из GitHub Packages
 
@@ -29,6 +30,9 @@ dotnet add package GurJack.CommonUtils.CommonData --source github-gurjack
 
 # Установка SQL Server провайдера
 dotnet add package GurJack.CommonUtils.BaseMSSqlProvider --source github-gurjack
+
+# Установка Windows Forms компонентов
+dotnet add package GurJack.CommonUtils.CommonForms --source github-gurjack
 ```
 
 ## Сборка проекта
@@ -73,28 +77,42 @@ dotnet test
 - .NET 8.0 SDK
 - Visual Studio 2022 или Visual Studio Code
 - Git
+- DevExpress Components (для CommonForms)
 
 ### Структура проекта
 
 ```
 CommonUtils/
-├── CommonUtils/           # Основной проект
-│   ├── Data/
-│   │   ├── BaseData/          # Базовые абстракции
-│   │   ├── CommonData/        # Общие утилиты
-│   │   └── BaseMSSqlProvider/ # SQL Server провайдеры
-│   ├── Tests/
-│   │   ├── TestCore/         # Основные тесты
-│   │   └── TestWindows/      # Windows-специфичные тесты
-│   └── CommonUtils/       # Основная библиотека
-├── Scripts/              # PowerShell скрипты
-├── Documentation/        # Документация и XML файлы
-└── .github/workflows/    # CI/CD конфигурация
+├── CommonUtils.sln              # Файл решения
+├── CommonUtils/                 # Основная библиотека
+│   ├── Attributes/              # Пользовательские атрибуты
+│   ├── Compress/                # Утилиты сжатия
+│   ├── Database/                # Контекст базы данных
+│   ├── Event/                   # Обработка событий
+│   ├── Extensions/              # Методы расширения
+│   ├── Helpers/                 # Вспомогательные классы
+│   ├── Loggers/                 # Система логирования
+│   ├── Security/                # Утилиты безопасности
+│   ├── Serializer/              # Сериализация данных
+│   └── Settings/                # Управление настройками
+├── Data/
+│   ├── BaseData/                # Базовые абстракции данных
+│   ├── CommonData/              # Общие утилиты данных
+│   └── BaseMSSqlProvider/       # Провайдер SQL Server
+├── CommonForms/                 # Компоненты Windows Forms
+├── LocalPackages/               # Локальные NuGet пакеты (DevExpress)
+├── Tests/
+│   ├── TestCore/                # Основные тесты
+│   └── TestWindows/             # Windows-специфичные тесты
+├── Scripts/                     # PowerShell скрипты
+├── Documentation/               # Документация и XML файлы
+└── .github/workflows/           # CI/CD конфигурация
 ```
 
 ## Документация
 
 - [PowerShell скрипты](Scripts/README.md)
+- [Настройка DevExpress](Documentation/DEVEXPRESS_SETUP.md)
 - [Руководство по устранению неполадок](Documentation/TROUBLESHOOTING.md)
 - [Настройка NuGet](Documentation/NUGET_SETUP_GUIDE.md)
 - [Исправление предупреждений](Documentation/WARNING_RESOLUTION.md)

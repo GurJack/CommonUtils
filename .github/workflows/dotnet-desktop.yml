@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 env:
-  SOLUTION_PATH: CommonUtils/CommonUtils.sln
-  TEMP_SOLUTION_PATH: CommonUtils/temp-ci.sln
+  SOLUTION_PATH: CommonUtils.sln
+  TEMP_SOLUTION_PATH: temp-ci.sln
   GITHUB_PACKAGES_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
 jobs:
@@ -59,7 +59,6 @@ jobs:
         # Проверка добавленных источников
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
-        cd ..
 
     - name: Set params
       run: |
@@ -68,31 +67,39 @@ jobs:
         Write-Host "TARGET_SOLUTION: $env:TARGET_SOLUTION"
         Write-Host "SOLUTION_PATH: $env:SOLUTION_PATH"
         Write-Host "GITHUB_ENV: $env:GITHUB_ENV"
-        
+
         echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
         echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
-        
+
         Write-Host "INCLUDE_COMMONFORMS: $env:INCLUDE_COMMONFORMS"
         Write-Host "TARGET_SOLUTION: $env:TARGET_SOLUTION"
         Write-Host "SOLUTION_PATH: $env:SOLUTION_PATH"
         Write-Host "GITHUB_ENV: $env:GITHUB_ENV"
-        
-        
+
     - name: Restore dependencies
       run: |
         Write-Host "Восстанавливаем зависимости для всех проектов"
+        # Перейдем в каталог с solution файлом
+        Set-Location -Path "CommonUtils"
+        Write-Host "Current location: $(Get-Location)"
         dotnet restore "$env:TARGET_SOLUTION"
 
     - name: Build
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         dotnet build "$env:TARGET_SOLUTION" --configuration Release --no-restore
 
     - name: Test
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         dotnet test "$env:TARGET_SOLUTION" --configuration Release --no-build --verbosity normal
 
     - name: Set Package Version
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         if ($env:GITHUB_REF -match '^refs/tags/v(.+)$') {
           $version = $matches[1]
           echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
@@ -105,6 +112,8 @@ jobs:
 
     - name: Pack NuGet packages
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         if ($env:INCLUDE_COMMONFORMS -eq "true") {
           Write-Host "Пакуем все проекты (включая CommonForms)"
           $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
@@ -122,10 +131,15 @@ jobs:
         }
 
     - name: List files in nupkg directory
-      run: ls  nupkg/
+      run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
+        ls nupkg/
 
     - name: Verify packages were created
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         if (!(Test-Path nupkg/*.nupkg)) {
           Write-Error "No nupkg files found!"
           exit 1
@@ -138,20 +152,20 @@ jobs:
         # Проверяем настройки NuGet
         dotnet nuget list source
 
-
     - name: Publish to GitHub Packages
       run: |
+        # Продолжаем работать в каталоге CommonUtils
+        Set-Location -Path "CommonUtils"
         $packages = Get-ChildItem -Path nupkg -Filter *.nupkg
         foreach ($package in $packages) {
           Write-Host "Publishing $($package.Name)"
           dotnet nuget push $package.FullName --source "${{ env.GITHUB_PACKAGES_URL }}" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
-        }
 
     - name: Cleanup
       if: always()
       run: |
         # Удаляем временные файлы
-        if (Test-Path "$env:TEMP_SOLUTION_PATH") {
-          Remove-Item "$env:TEMP_SOLUTION_PATH" -Force
+        if (Test-Path "CommonUtils\$env:TEMP_SOLUTION_PATH") {
+          Remove-Item "CommonUtils\$env:TEMP_SOLUTION_PATH" -Force
           Write-Host "Удален временный solution файл"
         }
