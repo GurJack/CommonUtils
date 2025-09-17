@@ -1,26 +1,12 @@
 using CommonUtils.Security;
-#if !CI_BUILD
 using DevExpress.XtraEditors;
-#endif
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CommonForms.Views
 {
-#if !CI_BUILD
     public partial class LoginForm : DevExpress.XtraEditors.XtraForm
-#else
-    public partial class LoginForm : Form
-#endif
     {
         public string Username { get; private set; }
         public string PasswordHash { get; private set; }
@@ -38,13 +24,8 @@ namespace CommonForms.Views
 
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(txtPassword.Text))
             {
-#if !CI_BUILD
                 XtraMessageBox.Show("Введите имя пользователя и пароль", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-#else
-                MessageBox.Show("Введите имя пользователя и пароль", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-#endif
                 return;
             }
 

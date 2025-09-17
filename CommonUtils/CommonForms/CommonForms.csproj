@@ -12,9 +12,6 @@
     <IsPublishable>True</IsPublishable>
     <UseWindowsForms>true</UseWindowsForms>
 
-    <!-- Условная компиляция для CI/CD -->
-    <DefineConstants Condition="'$(CI)' == 'true'">CI_BUILD</DefineConstants>
-
     <!-- Предупреждения будут исправлены в коде -->
     <!-- <NoWarn>$(NoWarn);CS1591;CS8618;CS8603;CS8625;CS8612;CS8765;CS8767;CA1051;CA1710;CA1036;CA1850;CA1305;CA1309;CA1310;CA1304;CA1311;CA1852;EF1002;CA1510;CA5351</NoWarn> -->
 
@@ -67,20 +64,12 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <!-- Зависимости DevExpress - только если не CI -->
-  <ItemGroup Condition="'$(CI)' != 'true'">
+  <!-- Зависимости DevExpress -->
+  <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="23.2.3" />
     <PackageReference Include="DevExpress.Office.Core" Version="23.2.3" />
     <PackageReference Include="DevExpress.Utils" Version="23.2.3" />
     <PackageReference Include="DevExpress.Win" Version="23.2.3" />
-  </ItemGroup>
-
-  <!-- Mock DevExpress зависимости для CI/CD -->
-  <ItemGroup Condition="'$(CI)' == 'true'">
-    <!-- Заменяем на минимальные зависимости для успешной компиляции в CI -->
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 
   <!-- Обязательные зависимости -->
