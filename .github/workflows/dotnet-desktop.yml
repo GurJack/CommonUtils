@@ -1,7 +1,7 @@
-name: .NET NuGet Package CI (with DevExpress projects)
+name: .NET NuGet Package CI (with optional DevExpress projects)
 
 # Этот workflow собирает и публикует NuGet пакеты для всех проектов
-# Включая CommonForms с использованием DevExpress пакетов из секретов
+# CommonForms будет включен только при успешном restore всех DevExpress зависимостей
 
 on:
   push:
@@ -30,97 +30,15 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Prepare DevExpress packages
+    - name: Clean NuGet configuration
       run: |
-        # Создаем папку для локальных пакетов
-        $localPackagesPath = "$(Get-Location)\LocalPackages"
-        if (-not (Test-Path $localPackagesPath)) {
-          New-Item -ItemType Directory -Path $localPackagesPath -Force | Out-Null
-          Write-Host "✅ Создана папка: $localPackagesPath"
+        # Очищаем любые локальные конфиги с credentials чтобы избежать конфликтов
+        if (Test-Path "nuget.config.user") {
+          Remove-Item "nuget.config.user" -Force
+          Write-Host "Removed local nuget.config.user file"
         }
-
-        # Проверяем и распаковываем DevExpress пакеты из секретов
-        $hasDevexpressSecrets = $false
-
-        # DevExpress.Win.Design.23.2.3.nupkg
-        $secretValue = "${{ secrets.DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG }}"
-        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG }}") {
-          try {
-            $bytes = [Convert]::FromBase64String($secretValue)
-            $filePath = Join-Path $localPackagesPath "DevExpress.Win.Design.23.2.3.nupkg"
-            [IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "✅ Распакован пакет: DevExpress.Win.Design.23.2.3.nupkg"
-            $hasDevexpressSecrets = $true
-          } catch {
-            Write-Host "❌ Ошибка распаковки пакета DevExpress.Win.Design.23.2.3.nupkg: $_"
-          }
-        } else {
-          Write-Host "ℹ️ Секрет DEVEXPRESS_WIN_DESIGN_23_2_3_NUPKG не найден или пуст"
-        }
-
-        # DevExpress.Office.Core.23.2.3.nupkg
-        $secretValue = "${{ secrets.DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG }}"
-        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG }}") {
-          try {
-            $bytes = [Convert]::FromBase64String($secretValue)
-            $filePath = Join-Path $localPackagesPath "DevExpress.Office.Core.23.2.3.nupkg"
-            [IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "✅ Распакован пакет: DevExpress.Office.Core.23.2.3.nupkg"
-            $hasDevexpressSecrets = $true
-          } catch {
-            Write-Host "❌ Ошибка распаковки пакета DevExpress.Office.Core.23.2.3.nupkg: $_"
-          }
-        } else {
-          Write-Host "ℹ️ Секрет DEVEXPRESS_OFFICE_CORE_23_2_3_NUPKG не найден или пуст"
-        }
-
-        # DevExpress.Utils.23.2.3.nupkg
-        $secretValue = "${{ secrets.DEVEXPRESS_UTILS_23_2_3_NUPKG }}"
-        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_UTILS_23_2_3_NUPKG }}") {
-          try {
-            $bytes = [Convert]::FromBase64String($secretValue)
-            $filePath = Join-Path $localPackagesPath "DevExpress.Utils.23.2.3.nupkg"
-            [IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "✅ Распакован пакет: DevExpress.Utils.23.2.3.nupkg"
-            $hasDevexpressSecrets = $true
-          } catch {
-            Write-Host "❌ Ошибка распаковки пакета DevExpress.Utils.23.2.3.nupkg: $_"
-          }
-        } else {
-          Write-Host "ℹ️ Секрет DEVEXPRESS_UTILS_23_2_3_NUPKG не найден или пуст"
-        }
-
-        # DevExpress.Win.23.2.3.nupkg
-        $secretValue = "${{ secrets.DEVEXPRESS_WIN_23_2_3_NUPKG }}"
-        if ($secretValue -and $secretValue -ne "${{ secrets.DEVEXPRESS_WIN_23_2_3_NUPKG }}") {
-          try {
-            $bytes = [Convert]::FromBase64String($secretValue)
-            $filePath = Join-Path $localPackagesPath "DevExpress.Win.23.2.3.nupkg"
-            [IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "✅ Распакован пакет: DevExpress.Win.23.2.3.nupkg"
-            $hasDevexpressSecrets = $true
-          } catch {
-            Write-Host "❌ Ошибка распаковки пакета DevExpress.Win.23.2.3.nupkg: $_"
-          }
-        } else {
-          Write-Host "ℹ️ Секрет DEVEXPRESS_WIN_23_2_3_NUPKG не найден или пуст"
-        }
-
-        if ($hasDevexpressSecrets) {
-          Write-Host "✅ Все доступные DevExpress пакеты успешно распакованы"
-          "HAS_DEVEXPRESS=true" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-        } else {
-          Write-Host "❌ Ни один DevExpress пакет не найден в секретах"
-          "HAS_DEVEXPRESS=false" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-        }
-
-        if ($hasDevexpressSecrets) {
-          Write-Host "✅ Все DevExpress пакеты успешно распакованы"
-          "HAS_DEVEXPRESS=true" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-        } else {
-          Write-Host "❌ DevExpress пакеты не найдены в секретах"
-          "HAS_DEVEXPRESS=false" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-        }
+        # Очищаем глобальные конфигурации NuGet
+        dotnet nuget locals all --clear
 
     - name: Configure NuGet sources
       run: |
@@ -129,7 +47,7 @@ jobs:
         dotnet nuget remove source "github-packages" 2>$null || true
         dotnet nuget remove source "local-packages" 2>$null || true
 
-        # Добавляем источник для локальных пакетов
+        # Добавляем источник для локальных DevExpress пакетов
         $localPackagesPath = "$(Get-Location)\LocalPackages"
         Write-Host "Adding local packages source: $localPackagesPath"
         dotnet nuget add source $localPackagesPath -n "local-packages"
@@ -142,36 +60,99 @@ jobs:
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
+    - name: Test DevExpress dependencies and create fallback solution
+      run: |
+        Write-Host "Проверяем доступность DevExpress зависимостей для CommonForms"
+
+        # Пробуем восстановить только CommonForms
+        $restoreSuccess = $false
+        $ErrorActionPreference = "SilentlyContinue"
+
+        $restoreResult = dotnet restore "CommonUtils\CommonForms\CommonForms.csproj" --verbosity quiet 2>&1
+        if ($LASTEXITCODE -eq 0) {
+          $restoreSuccess = $true
+          Write-Host "✅ DevExpress зависимости доступны - CommonForms будет включен"
+          echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
+          echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
+        } else {
+          Write-Host "❌ DevExpress зависимости недоступны - создаем fallback solution"
+          echo "INCLUDE_COMMONFORMS=false" >> $env:GITHUB_ENV
+          echo "TARGET_SOLUTION=$env:TEMP_SOLUTION_PATH" >> $env:GITHUB_ENV
+
+          # Копируем основной solution файл
+          Copy-Item "$env:SOLUTION_PATH" "$env:TEMP_SOLUTION_PATH"
+
+          # Удаляем строки связанные с CommonForms проектом
+          $content = Get-Content "$env:TEMP_SOLUTION_PATH" -Raw
+          $lines = $content -split "`r?`n"
+          $filteredLines = @()
+          $skipLine = $false
+
+          foreach ($line in $lines) {
+            if ($line -match 'CommonForms.*\.csproj') {
+              $skipLine = $true
+              continue
+            }
+            if ($skipLine -and $line -match '^\s*EndProject\s*$') {
+              $skipLine = $false
+              continue
+            }
+            if ($skipLine) {
+              continue
+            }
+            if ($line -match '{E4ABA06E-2F8C-4507-BEA0-D4CBEBD3490B}') {
+              continue
+            }
+            $filteredLines += $line
+          }
+
+          $filteredLines -join "`r`n" | Set-Content "$env:TEMP_SOLUTION_PATH" -NoNewline
+          Write-Host "Создан fallback solution: $env:TEMP_SOLUTION_PATH"
+        }
+
+        $ErrorActionPreference = "Stop"
+
     - name: Restore dependencies
       run: |
-        Write-Host "Восстанавливаем зависимости для всех проектов"
-        dotnet restore "$env:SOLUTION_PATH"
+        if ($env:INCLUDE_COMMONFORMS -eq "true") {
+          Write-Host "Восстанавливаем зависимости для всех проектов (включая CommonForms)"
+        } else {
+          Write-Host "Восстанавливаем зависимости для проектов без CommonForms"
+        }
+        dotnet restore "$env:TARGET_SOLUTION"
 
     - name: Build
       run: |
-        dotnet build "$env:SOLUTION_PATH" --configuration Release --no-restore
+        dotnet build "$env:TARGET_SOLUTION" --configuration Release --no-restore
 
     - name: Test
       run: |
-        dotnet test "$env:SOLUTION_PATH" --configuration Release --no-build --verbosity normal
+        dotnet test "$env:TARGET_SOLUTION" --configuration Release --no-build --verbosity normal
 
     - name: Set Package Version
       run: |
-        if ("${{ github.ref }}" -match '^refs/tags/v(.+)$') {
+        if ($env:GITHUB_REF -match '^refs/tags/v(.+)$') {
           $version = $matches[1]
-          "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          Write-Host "Building release version: $version"
+          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
+          echo "Building release version: $version"
         } else {
           $version = "1.0.0-ci-${{ github.run_number }}"
-          "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          Write-Host "Building CI version: $version"
+          echo "PACKAGE_VERSION=$version" >> $env:GITHUB_ENV
+          echo "Building CI version: $version"
         }
 
     - name: Pack NuGet packages
       run: |
-        Write-Host "Пакуем все проекты (включая CommonForms)"
-        $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
-          $_.FullName -notmatch 'test|Test'
+        if ($env:INCLUDE_COMMONFORMS -eq "true") {
+          Write-Host "Пакуем все проекты (включая CommonForms)"
+          $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
+            $_.FullName -notmatch 'test|Test'
+          }
+        } else {
+          Write-Host "Пакуем проекты без CommonForms"
+          $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
+            $_.FullName -notmatch 'test|Test|CommonForms'
+          }
         }
         foreach ($project in $projects) {
           Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"
@@ -207,4 +188,8 @@ jobs:
     - name: Cleanup
       if: always()
       run: |
-        Write-Host "Очистка завершена"
+        # Удаляем временные файлы
+        if (Test-Path "$env:TEMP_SOLUTION_PATH") {
+          Remove-Item "$env:TEMP_SOLUTION_PATH" -Force
+          Write-Host "Удален временный solution файл"
+        }
