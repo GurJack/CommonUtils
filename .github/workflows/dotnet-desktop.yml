@@ -59,6 +59,7 @@ jobs:
         # Проверка добавленных источников
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
+        cd ..
 
     - name: Set params
       run: |
