@@ -33,12 +33,94 @@ jobs:
     - name: Clean NuGet configuration
       run: |
         # Очищаем любые локальные конфиги с credentials чтобы избежать конфликтов
+                                                            
         if (Test-Path "nuget.config.user") {
           Remove-Item "nuget.config.user" -Force
           Write-Host "Removed local nuget.config.user file"
         }
         # Очищаем глобальные конфигурации NuGet
         dotnet nuget locals all --clear
+                                      
+
+                                            
+                                                                          
+                                                                                                     
+               
+                                                              
+                                                                                         
+                                                       
+                                                
+                                         
+                   
+                                                                                                                  
+           
+                
+                                                        
+         
+
+                                             
+                                                                           
+                                                                                                      
+               
+                                                              
+                                                                                          
+                                                       
+                                                 
+                                         
+                   
+                                                                                                                   
+           
+                
+                                                        
+         
+
+                                       
+                                                                     
+                                                                                                
+               
+                                                              
+                                                                                    
+                                                       
+                                              
+                                         
+                   
+                                                       
+           
+                
+                                                     
+         
+
+                                     
+                                                                   
+                                                                                              
+               
+                                                              
+                                                                                  
+                                                       
+                                             
+                                         
+                   
+                                                      
+           
+                
+                                                    
+         
+
+                                    
+                                                         
+                                                                                           
+                
+                                                  
+                                                                                            
+         
+
+                                    
+                                                
+                                                                                           
+                
+                                             
+                                                                                            
+         
 
     - name: Configure NuGet sources
       run: |
@@ -193,3 +275,4 @@ jobs:
           Remove-Item "$env:TEMP_SOLUTION_PATH" -Force
           Write-Host "Удален временный solution файл"
         }
+
