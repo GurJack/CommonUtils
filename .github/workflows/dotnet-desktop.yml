@@ -48,7 +48,7 @@ jobs:
         dotnet nuget remove source "local-packages" 2>$null || true
 
         # Добавляем источник для локальных DevExpress пакетов
-        $localPackagesPath = "\CommonUtils\LocalPackages"
+        $localPackagesPath = "$(Get-Location)\LocalPackages"
         Write-Host "Adding local packages source: $localPackagesPath"
         dotnet nuget add source $localPackagesPath -n "local-packages"
 
