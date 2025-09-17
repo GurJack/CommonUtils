@@ -60,11 +60,15 @@ jobs:
         Write-Host "Configured NuGet sources:"
         dotnet nuget list source
 
-    - name: Restore dependencies
+    - name: Set params
       run: |
         $restoreSuccess = $true
         echo "INCLUDE_COMMONFORMS=true" >> $env:GITHUB_ENV
         echo "TARGET_SOLUTION=$env:SOLUTION_PATH" >> $env:GITHUB_ENV
+        
+        
+    - name: Restore dependencies
+      run: |
         Write-Host "Восстанавливаем зависимости для всех проектов"
         dotnet restore "$env:TARGET_SOLUTION"
 
