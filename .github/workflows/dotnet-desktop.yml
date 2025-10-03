@@ -65,8 +65,8 @@ jobs:
         # Перейдем в каталог с solution файлом
         Set-Location -Path "CommonUtils"
         Write-Host "Current location: $(Get-Location)"
-        # Используем nuget.config из текущей директории
-        dotnet restore "$env:SOLUTION_PATH" --configfile "nuget.config"
+        # Используем nuget.config из корневой директории
+        dotnet restore "$env:SOLUTION_PATH" --configfile "../nuget.config"
 
     - name: Build
       run: |
@@ -98,12 +98,12 @@ jobs:
       run: |
         # Продолжаем работать в каталоге CommonUtils
         Set-Location -Path "CommonUtils"
-
+        
           Write-Host "Пакуем все проекты (включая CommonForms)"
           $projects = Get-ChildItem -Recurse -Filter *.csproj | Where-Object {
             $_.FullName -notmatch 'test|Test'
           }
-
+        
         foreach ($project in $projects) {
           Write-Host "Packing $($project.Name) with version $env:PACKAGE_VERSION"
           dotnet pack $project.FullName --configuration Release -p:PackageVersion=$env:PACKAGE_VERSION --output nupkg
