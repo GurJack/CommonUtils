@@ -11,7 +11,6 @@ on:
 
 env:
   SOLUTION_PATH: CommonUtils.sln
-  TEMP_SOLUTION_PATH: temp-ci.sln
   GITHUB_PACKAGES_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
 jobs:
@@ -70,7 +69,7 @@ jobs:
       run: |
         Write-Host "Восстанавливаем зависимости для всех проектов"
         # Перейдем в каталог с solution файлом
-        Set-Location -Path ".."
+        # Set-Location -Path ".."
         Write-Host "Current location: $(Get-Location)"
         dotnet restore "CommonUtils/$env:SOLUTION_PATH"
 
@@ -146,11 +145,4 @@ jobs:
           Write-Host "Publishing $($package.Name)"
           dotnet nuget push $package.FullName --source "${{ env.GITHUB_PACKAGES_URL }}" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
 
-    - name: Cleanup
-      if: always()
-      run: |
-        # Удаляем временные файлы
-        if (Test-Path "CommonUtils\$env:TEMP_SOLUTION_PATH") {
-          Remove-Item "CommonUtils\$env:TEMP_SOLUTION_PATH" -Force
-          Write-Host "Удален временный solution файл"
-        }
+   
