@@ -65,7 +65,8 @@ jobs:
         # Перейдем в каталог с solution файлом
         Set-Location -Path "CommonUtils"
         Write-Host "Current location: $(Get-Location)"
-        dotnet restore "$env:SOLUTION_PATH"
+        # Используем nuget.config из текущей директории
+        dotnet restore "$env:SOLUTION_PATH" --configfile "nuget.config"
 
     - name: Build
       run: |
