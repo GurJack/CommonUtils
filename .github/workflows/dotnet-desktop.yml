@@ -72,7 +72,7 @@ jobs:
         # Перейдем в каталог с solution файлом
         #Set-Location -Path ".."
         Write-Host "Current location: $(Get-Location)"
-        dotnet restore "$env:SOLUTION_PATH"
+        dotnet restore "CommonUtils/"+"$env:SOLUTION_PATH"
 
     - name: Build
       run: |
