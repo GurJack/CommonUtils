@@ -70,14 +70,14 @@ jobs:
       run: |
         Write-Host "Восстанавливаем зависимости для всех проектов"
         # Перейдем в каталог с solution файлом
-        # Set-Location -Path ".."
+        Set-Location -Path ".."
         Write-Host "Current location: $(Get-Location)"
         dotnet restore "CommonUtils/$env:SOLUTION_PATH"
 
     - name: Build
       run: |
         # Продолжаем работать в каталоге CommonUtils
-        # Set-Location -Path "CommonUtils"
+        Set-Location -Path ".."
         dotnet build "$env:SOLUTION_PATH" --configuration Release --no-restore
 
     - name: Test
